@@ -1,9 +1,9 @@
 export const light = {
     text: '#000000',
-    background: '#FCFFF4',
-    primary: "#007078",
-    primaryHover: "#007090",
-    secundary: "#E4572E",
+    background: '#FFF',
+    primary: "#F86E04",
+    primaryHover: "#E4572E",
+    secundary: "#067C60",
     dashboardBackground: '#f8f5f0',
     dashboardBackgroundHover: '#f8f5f4',
 

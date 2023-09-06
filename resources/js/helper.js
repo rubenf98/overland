@@ -1,4 +1,4 @@
-export const borderRadius = "30px";
+export const borderRadius = "10px";
 export const buttonPadding = "15px";
 export const margin = "20px";
 

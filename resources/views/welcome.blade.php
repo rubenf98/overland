@@ -12,8 +12,9 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;700;900&display=swap" rel="stylesheet">
-
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;700&family=Montserrat:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
     <!-- Styles -->
 
 
@@ -22,8 +23,14 @@
         body,
         #index {
             height: 100%;
-            font-family: 'Nunito', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             scroll-behavior: smooth;
+        }
+
+        h1,
+        h2,
+        h3 {
+            font-family: 'Cabin', sans-serif;
         }
 
         body {
