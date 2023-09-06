@@ -70,3 +70,23 @@ export const SecundaryButton = styled(PrimaryButton)`
         color: ${({ theme }) => theme.primaryHover};
     }
 `;
+
+export const SectionTitle = styled.h2`
+    font-size: clamp(28px, 2.5vw, 40px);
+
+    span {
+        color: ${({ theme }) => theme.primary}
+    }
+`;
+
+export const Section = styled.section`
+    width: 100%;
+    max-width: 1600px;
+    margin: 150px auto;
+    display: block;
+
+    @media (max-width: "1600px") {
+        padding: 0px 30px;
+        box-sizing: border-box;
+    }
+`;

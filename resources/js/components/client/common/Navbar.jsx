@@ -13,7 +13,7 @@ const Container = styled.section`
     text-transform: uppercase;
 
     .logo {
-        height: 90px;
+        height: 80px;
     }
 
     .language {

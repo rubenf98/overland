@@ -3,15 +3,15 @@ import styled from "styled-components";
 import { connect } from 'react-redux'
 import { setLanguage } from '../../redux/application/actions';
 import { fetchBlockDates } from '../../redux/blockDate/actions';
-import Navbar from './common/Navbar';
-import Menu from './common/Menu';
-import { borderRadius, dimensions } from '../../helper';
 import { useNavigate } from 'react-router-dom';
 import Header from './homepage/Header';
+import Services from './homepage/Services';
+import Safari from './homepage/Safari';
+import Levada from './homepage/Levada';
+import Tour from './homepage/Tour';
 
 const Container = styled.section`
-//
-
+    //
 `;
 
 
@@ -23,6 +23,10 @@ function Homepage(props) {
     return (
         <Container>
             <Header />
+            <Services />
+            <Safari />
+            <Levada text={text} />
+            <Tour />
 
 
         </Container>

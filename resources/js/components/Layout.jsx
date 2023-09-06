@@ -5,6 +5,7 @@ import ThemeContainer from "./helpers/ThemeContainer";
 import { setCookiesVisibility } from "../redux/application/actions";
 import { connect } from "react-redux";
 import Navbar from "./client/common/Navbar";
+import Footer from "./client/common/Footer";
 
 const Container = styled.div`
     width: 100%;
@@ -21,6 +22,7 @@ export const Layout = (props) => {
                 <Container>
                     <Navbar />
                     <div> {props.children} </div>
+                    <Footer />
                 </Container>
             </ScrollToTop>
         </ThemeContainer>

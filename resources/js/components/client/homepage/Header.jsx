@@ -5,7 +5,7 @@ import { Col, Input, Row, Select } from 'antd';
 
 const Container = styled.section`
     width: 100%;
-    height: calc(100vh - 150px);
+    height: calc(100vh - 200px);
     display: flex;
     background-color: #F5F5F6;
     position: relative;
@@ -54,10 +54,12 @@ const Background = styled.img`
 
 const Form = styled.div`
     width: calc(100% - 100px);
+    max-width: 1600px;
     position: absolute;
     z-index: 2;
-    bottom: -25px;
-    left: 50px;
+    bottom: -50px;
+    left: 50%;
+    transform: translate(-50%);
 
     h3 {
         background-color: ${({ theme }) => theme.primary};
