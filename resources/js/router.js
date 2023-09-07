@@ -18,6 +18,7 @@ import About from "./components/client/About";
 import Faq from "./components/client/Faq";
 import ReservationDetails from "./components/dashboard/reservation/ReservationDetails";
 import Partner from "./components/dashboard/partner/Partner";
+import Contact from "./components/client/Contact";
 
 export const history = createBrowserHistory();
 
@@ -36,7 +37,7 @@ function Router() {
                 <Route exact path="/activity/:activityId" element={<Layout enable><Activity /></Layout>} />
                 <Route exact path="/category/:category" element={<Layout enable><Activities /></Layout>} />
                 <Route exact path="/about" element={<Layout enable><About /></Layout>} />
-                <Route exact path="/faq" element={<Layout enable><Faq /></Layout>} />
+                <Route exact path="/contact" element={<Layout enable><Contact /></Layout>} />
                 <Route exact path="/" element={<Layout enable><Homepage /></Layout>} />
             </Routes>
         </BrowserRouter>

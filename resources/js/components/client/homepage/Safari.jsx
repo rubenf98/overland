@@ -52,6 +52,17 @@ const FlexContainer = styled.div`
     @media (max-width: ${dimensions.md}) {
         width: 100%;
     }
+
+    button {
+        background-color: ${({ theme }) => theme.primary};
+        color: white;
+        padding: 12px 35px;
+        box-sizing: border-box;
+        border-radius: ${borderRadius};
+        cursor: pointer;
+        border: 0px;
+        font-size: clamp(16px, 2vw, 20px);
+    }
 `;
 
 function Safari() {
@@ -63,7 +74,7 @@ function Safari() {
                         <div>
                             <SectionTitle><span>Jeep Safari</span> crafted by us, designed for you.</SectionTitle>
                             <p>Our West Yorkshire workshop leads the way in Micro Camper, VW Transporter and Ford Transit van conversions. Each campervan conversion comes with a lifetime guarantee.</p>
-                            <button>book now</button>
+                            <button>Book now</button>
                         </div>
                     </div>
                 </FlexContainer>

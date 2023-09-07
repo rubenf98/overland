@@ -43,6 +43,7 @@ const TourImage = styled.div`
         margin-bottom: 0px;
     }
     
+    
 `;
 
 function Tour() {

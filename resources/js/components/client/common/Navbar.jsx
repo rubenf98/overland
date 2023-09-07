@@ -28,10 +28,10 @@ const PageContainer = styled.div`
     justify-content: flex-end;
     align-items: center;
     text-transform: capitalize;
+    gap: 40px;
 
     a {
-        width: 150px;
-        font-size: 20px;
+        font-size: clamp(16px, 2vw, 20px);
         color: black;
         text-decoration: none;
     }
@@ -39,7 +39,7 @@ const PageContainer = styled.div`
     button {
         background-color: ${({ theme }) => theme.secundary};
         color: white;
-        font-size: 20px;
+        font-size: clamp(16px, 2vw, 20px);
         border-radius: ${borderRadius};
         padding: 12px 24px;
         box-sizing: border-box;
