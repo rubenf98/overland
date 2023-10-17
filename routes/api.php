@@ -5,6 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BlockDateController;
 use App\Http\Controllers\BlockPeriodController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\ConfirmReservationInvokable;
+use App\Http\Controllers\ErrorReservationInvokable;
 use App\Http\Controllers\FetchRelevantReservationsInvokable;
 use App\Http\Controllers\FetchReservationsPerMonthInvokable;
 use App\Http\Controllers\PartnerController;
@@ -35,6 +37,10 @@ Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', 'App\Http\Controllers\AuthController@logout');
 Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
 Route::get('me', 'App\Http\Controllers\AuthController@me');
+
+
+Route::put('/confirm/reservation', ConfirmReservationInvokable::class);
+Route::put('/error/reservation', ErrorReservationInvokable::class);
 
 Route::put('/activity-status/{activity}', UpdateActivityStatusInvokable::class);
 

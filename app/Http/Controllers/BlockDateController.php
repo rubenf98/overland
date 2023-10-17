@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\BlockDateResource;
 use App\Models\BlockDate;
+use App\QueryFilters\BlockDateFilters;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class BlockDateController extends Controller
@@ -12,9 +15,9 @@ class BlockDateController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(BlockDateFilters $filters)
     {
-        //
+        return BlockDateResource::collection(BlockDate::filterBy($filters)->where("date", ">", Carbon::now())->orderBy('date', 'DESC')->get());
     }
 
     /**

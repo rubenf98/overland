@@ -2,6 +2,8 @@ import { types } from "./types";
 
 export const initialState = {
     data: [],
+    levadas: [],
+    tours: [],
     selector: [],
     loading: false,
     current: {},
@@ -16,6 +18,8 @@ export default (state = initialState, action = {}) => {
         case `${types.SET_ACTIVITY_STATUS}_PENDING`:
         case `${types.CREATE_ACTIVITY}_PENDING`:
         case `${types.FETCH_ACTIVITY_SELECTOR}_PENDING`:
+        case `${types.FETCH_LEVADAS}_PENDING`:
+        case `${types.FETCH_TOURS}_PENDING`:
             return {
                 ...state,
                 loading: true,
@@ -26,9 +30,24 @@ export default (state = initialState, action = {}) => {
         case `${types.DELETE_ACTIVITY}_REJECTED`:
         case `${types.SET_ACTIVITY_STATUS}_REJECTED`:
         case `${types.FETCH_ACTIVITY_SELECTOR}_REJECTED`:
+        case `${types.FETCH_LEVADAS}_REJECTED`:
+        case `${types.FETCH_TOURS}_REJECTED`:
             return {
                 ...state,
                 loading: false,
+            };
+
+        case `${types.FETCH_LEVADAS}_FULFILLED`:
+            return {
+                ...state,
+                loading: false,
+                levadas: action.payload.data.data,
+            };
+        case `${types.FETCH_TOURS}_FULFILLED`:
+            return {
+                ...state,
+                loading: false,
+                tours: action.payload.data.data,
             };
 
         case `${types.FETCH_ACTIVITY_SELECTOR}_FULFILLED`:

@@ -24,6 +24,7 @@ class CreateReservationsTable extends Migration
             $table->double('price', 6, 2);
             $table->string('status')->default('pendente');
             $table->text('notes')->nullable();
+            $table->text('address')->nullable();
             $table->datetime('confirmed_at')->nullable();
             $table->datetime('payed_at')->nullable();
             $table->timestamps();

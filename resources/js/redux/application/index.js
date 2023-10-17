@@ -3,9 +3,8 @@ import { types } from "./types";
 export const initialState = {
     theme: "light",
     menuVisible: false,
-    formVisible: false,
+    formVisible: { date: undefined, time: undefined, activity: [] },
     cookiesVisibility: false,
-    activityInitialValue: [],
     language: localStorage.language ? localStorage.language : "en",
 }
 
@@ -38,8 +37,7 @@ export default (state = initialState, action = {}) => {
         case `${types.HANDLE_FORM}`:
             return {
                 ...state,
-                formVisible: action.payload[0],
-                activityInitialValue: action.payload[1],
+                formVisible: action.payload,
             };
         default:
             return state

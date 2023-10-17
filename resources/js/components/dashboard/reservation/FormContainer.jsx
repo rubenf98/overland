@@ -52,10 +52,11 @@ function FormContainer({ loading, edit, handleClose, updateReservation, visible,
 
     const onFinish = () => {
         form.validateFields().then((values) => {
+            var formData = { ...values, date: dayjs(values.date).format('YYYY-MM-DD HH:mm') };
             if (edit) {
-                updateReservation(current.id, values);
+                updateReservation(current.id, formData);
             } else {
-                createReservation(values);
+                createReservation(formData);
             }
 
             handleModalClose();
@@ -97,7 +98,7 @@ function FormContainer({ loading, edit, handleClose, updateReservation, visible,
         }
     }, [visible])
 
-    console.log(current)
+
     return (
         <Container>
             <div>

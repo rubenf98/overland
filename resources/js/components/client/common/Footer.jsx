@@ -2,11 +2,24 @@ import React from 'react'
 import styled from 'styled-components';
 import { Section } from '../../helpers/style';
 import { Link } from 'react-router-dom';
+import { dimensions } from '../../../helper';
 
 const Container = styled.section`
     border-top: 1px solid #D9D9D9;
     padding: 150px 0px 30px 0px;
     box-sizing: border-box;
+    position: relative;
+    color: white;
+`;
+
+const Background = styled.div`
+    position: absolute;
+    z-index: -1;
+    width: 100vw;
+    height: 100%;
+    top: 0;
+    left: -30px;
+    background-color: ${({ theme }) => theme.secundary};
 `;
 
 const FlexContainer = styled.div`
@@ -18,6 +31,16 @@ const FlexContainer = styled.div`
         padding: 0px 50px;
         box-sizing: border-box;
         width: 25%;
+    }
+
+    @media (max-width: ${dimensions.md}) {
+        flex-wrap: wrap;
+
+        .logo {
+            width: 40%;
+            padding: 0px;
+        }
+        
     }
 `;
 
@@ -34,6 +57,10 @@ const ContactContainer = styled.div`
             height: 30px;
         }
     }
+
+    @media (max-width: ${dimensions.md}) {
+        width: 100%; 
+    }
 `;
 
 const LinkContainer = styled.div`
@@ -43,7 +70,7 @@ const LinkContainer = styled.div`
         display: block;
         width: 100%;
         text-decoration: none;
-        color: black;
+        color: white;
         margin: 15px 0px;
     }
 `;
@@ -58,16 +85,17 @@ const LegalContainer = styled.div`
     a {
         display: block;
         text-decoration: none;
-        color: black;
+        color: white;
     }
 `;
 
 function Footer() {
     return (
         <Container>
+            <Background />
             <Section style={{ margin: "auto" }}>
                 <FlexContainer>
-                    <img className='logo' src="/images/logo.svg" alt="" />
+                    <img className='logo' src="/images/logo_white.svg" alt="logo" />
 
                     <ContactContainer>
                         <h3>Contact</h3>
@@ -77,9 +105,9 @@ function Footer() {
 
                         <h3>Social</h3>
                         <div className='social'>
-                            <img src="/icons/instagram_black.svg" alt="instagram" />
-                            <img src="/icons/facebook_black.svg" alt="facebook" />
-                            <img src="/icons/whatsapp_black.svg" alt="whatsapp" />
+                            <img src="/icons/instagram_white.svg" alt="instagram" />
+                            <img src="/icons/facebook_white.svg" alt="facebook" />
+                            <img src="/icons/whatsapp_white.svg" alt="whatsapp" />
                         </div>
                     </ContactContainer>
                     <LinkContainer>

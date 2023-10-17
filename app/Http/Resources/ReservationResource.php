@@ -25,6 +25,7 @@ class ReservationResource extends JsonResource
             'created_at' => (string) $this->created_at,
             'date' => $this->date,
             'notes' => $this->notes,
+            'address' => $this->address,
             'payment_method' => $this->payment_method
         ];
     }

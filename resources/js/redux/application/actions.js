@@ -24,9 +24,9 @@ export function setLanguage(value) {
     };
 }
 
-export function handleForm(state, activity = []) {
+export function handleForm(formValues) {
     return {
-        type: types.HANDLE_FORM, payload: [state, activity]
+        type: types.HANDLE_FORM, payload: formValues
     };
 }
 

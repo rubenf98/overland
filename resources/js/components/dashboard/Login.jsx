@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { login, setAuthorizationToken } from "../../redux/auth/actions";
-import { dimensions } from "../../helper";
+import { borderRadius, dimensions } from "../../helper";
 import { connect } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { message } from 'antd';
 
 const Container = styled.div`
     width: 100%;
-    height: 100vh;
-    background: ${({ theme }) => theme.secundary};
+    height: calc(100vh - 100px);
+    
     overflow: hidden;
     display: flex;
     align-items: center;
@@ -48,7 +48,7 @@ const FormContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 8px;
+    border-radius: ${borderRadius};
 `;
 
 const Card = styled.div`
@@ -58,9 +58,9 @@ const Card = styled.div`
     min-height: 500px;
     display: block;
     padding: 20px;
-    background: ${({ theme }) => theme.primary};	
+    background: ${({ theme }) => theme.secundary};	
 	position: relative;	
-    border-radius: 8px;
+    border-radius: ${borderRadius};
 	box-shadow: 0px 0px 24px #0000005a;
 
     @media (max-width: ${dimensions.lg}) {
@@ -109,7 +109,7 @@ const Button = styled.button`
     color: white;
     cursor: pointer;
     font-size: 16px;
-    border-radius: 0px;
+    border-radius: ${borderRadius};
     transition: all .3s ease;
 
     &:hover {

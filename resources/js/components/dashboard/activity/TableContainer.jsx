@@ -57,7 +57,7 @@ function TableContainer({ loading, data, meta, handlePageChange, onDelete, handl
         },
         {
             title: 'ATIVIDADE',
-            dataIndex: 'name',
+            dataIndex: 'translation_names',
             render: (name) => name.pt,
         },
         {

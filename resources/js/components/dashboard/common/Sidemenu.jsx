@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const Logo = styled.img`
-    width: 150px;
+    width: 70px;
     margin: auto;
     display: block;
 `;
@@ -65,7 +65,7 @@ function Sidemenu({ user }) {
 
     const items = [
         {
-            label: <Logo src="/image/logo_navbar.png" alt="logo" />,
+            label: <Logo src="/images/logo.svg" alt="logo" />,
         },
         {
             label: <Link to="/painel/"><img className='icon' src="/icon/dashboard/dashboard.svg" /></Link>,

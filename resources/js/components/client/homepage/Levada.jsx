@@ -1,10 +1,12 @@
-import React, { useRef } from 'react'
+import React, { useRef, useEffect } from 'react'
 import { getCarouselBreakpoints, dimensions, borderRadius } from '../../../helper';
 import styled from 'styled-components';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { useNavigate } from "react-router-dom";
 import { SectionTitle } from '../../helpers/style';
+import { fetchLevadas } from '../../../redux/activity/actions';
+import { connect } from 'react-redux';
 
 const Container = styled.div`
     margin: 100px 0px 100px calc((100vw - 1600px) / 2);
@@ -146,13 +148,18 @@ const Title = styled.div`
     }
 `;
 
-function Levada({ text }) {
+function Levada(props) {
     const carouselRef = useRef(null);
     const navigate = useNavigate();
 
+    useEffect(() => {
+        props.fetchLevadas(1, { categoryId: 2 });
+    }, [])
+
+
 
     function handleItemClick(event, element, route) {
-        navigate(route);
+        navigate("/levadas/" + route);
     }
 
     return (
@@ -175,20 +182,20 @@ function Levada({ text }) {
                 responsive={getCarouselBreakpoints([1, 1, 2, 3, 3])}
                 ref={carouselRef}
             >
-                {text.portfolioItems.map((item, index) => (
+                {props.activities.map((activity, index) => (
 
                     <div>
                         <Item
-                            background={item.image}
+                            background={activity.image}
                         >
 
                             <div className='image-container'>
-                                <div className='overlay' onClick={(e) => handleItemClick(e, this, item.to)} />
+                                <div className='overlay' onClick={(e) => handleItemClick(e, this, activity.id)} />
 
                             </div>
 
                             <div className='info' >
-                                <h3>{item.title}</h3>
+                                <h3>{activity.translation_names[props.language]}</h3>
                             </div>
                         </Item>
 
@@ -201,4 +208,19 @@ function Levada({ text }) {
     )
 }
 
-export default Levada
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        fetchLevadas: (page, filters) => dispatch(fetchLevadas(page, filters)),
+    };
+};
+
+const mapStateToProps = (state) => {
+    return {
+        activities: state.activity.levadas,
+        loading: state.activity.loading,
+        language: state.application.language,
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Levada);

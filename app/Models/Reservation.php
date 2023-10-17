@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Cerbero\QueryFilters\FiltersRecords;
 use Illuminate\Database\Eloquent\Model;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
 
 class Reservation extends Model
 {
@@ -11,8 +13,19 @@ class Reservation extends Model
 
     protected $fillable = [
         'payment_method', 'activity_id', 'client_id', 'token', 'price',
-        'date', 'notes', 'status', 'participants'
+        'date', 'notes', 'status', 'participants', 'address'
     ];
+
+    public function generateInvoice()
+    {
+        $reservation = $this;
+        $pdf = PDF::loadView('emails.invoice', compact('reservation'));
+
+        Storage::put("/public/invoice_" . $this->token . ".pdf", $pdf->output());
+        $content = $pdf->download('invoice.pdf');
+
+        return $content;
+    }
 
     public function activity()
     {

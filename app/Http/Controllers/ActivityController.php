@@ -6,7 +6,6 @@ use App\Http\Requests\StoreActivityRequest;
 use App\Http\Requests\UpdateActivityRequest;
 use App\Http\Resources\ActivityResource;
 use App\Models\Activity;
-use App\Models\ActivityImage;
 use App\QueryFilters\ActivityFilters;
 use Illuminate\Http\Request;
 
@@ -51,9 +50,7 @@ class ActivityController extends Controller
             ],
             'category_id' => $validator['category_id'],
             'price' => $validator['price'],
-            'limit' => $validator['limit'],
             'image' => '/storage/activities/' . $imageName,
-            'duration' => $validator['duration'],
             'description1' => [
                 'pt' => $validator['description1_pt'],
                 'en' => $validator['description1_en'],
@@ -62,29 +59,12 @@ class ActivityController extends Controller
                 'pt' => $validator['description2_pt'],
                 'en' => $validator['description2_en'],
             ],
-            'included' => [
-                'pt' => $validator['included_pt'],
-                'en' => $validator['included_en'],
+            'description3' => [
+                'pt' => $validator['description3_pt'],
+                'en' => $validator['description3_en'],
             ],
-            'material' => [
-                'pt' => $validator['material_pt'],
-                'en' => $validator['material_en'],
-            ],
+
         ]);
-
-        foreach ($validator['images'] as $image) {
-            $filename = uniqid() . '.' . $image->extension();
-            $image->storeAs(
-                'public/activities',
-                $filename
-            );
-
-            ActivityImage::create([
-                'path' => '/storage/activities/' . $filename,
-                'activity_id' => $record->id
-            ]);
-        }
-
 
         return new ActivityResource($record);
     }
@@ -117,8 +97,6 @@ class ActivityController extends Controller
             ],
             'category_id' => $validator['category_id'],
             'price' => $validator['price'],
-            'limit' => $validator['limit'],
-            'duration' => $validator['duration'],
             'description1' => [
                 'pt' => $validator['description1_pt'],
                 'en' => $validator['description1_en'],
@@ -127,13 +105,9 @@ class ActivityController extends Controller
                 'pt' => $validator['description2_pt'],
                 'en' => $validator['description2_en'],
             ],
-            'included' => [
-                'pt' => $validator['included_pt'],
-                'en' => $validator['included_en'],
-            ],
-            'material' => [
-                'pt' => $validator['material_pt'],
-                'en' => $validator['material_en'],
+            'description3' => [
+                'pt' => $validator['description3_pt'],
+                'en' => $validator['description3_en'],
             ],
         ]);
 
@@ -146,21 +120,6 @@ class ActivityController extends Controller
 
             $activity->image =  '/storage/activities/' . $imageName;
             $activity->save();
-        }
-        if ($request->has('images')) {
-            $activity->images()->detach();
-            foreach ($validator['images'] as $image) {
-                $filename = uniqid() . '.' . $image->extension();
-                $image->storeAs(
-                    'public/activities',
-                    $filename
-                );
-
-                ActivityImage::create([
-                    'path' => '/storage/activities/' . $filename,
-                    'activity_id' => $activity->id
-                ]);
-            }
         }
 
         return new ActivityResource($activity);

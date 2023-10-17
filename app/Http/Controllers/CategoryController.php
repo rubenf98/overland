@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Http\Resources\CategoryResource;
-use App\Http\Resources\CategorySelectorResource;
 use App\Models\Category;
 use App\QueryFilters\CategoryFilters;
 use Illuminate\Http\Request;
@@ -17,12 +16,12 @@ class CategoryController extends Controller
      */
     public function index(CategoryFilters $filters)
     {
-        return CategoryResource::collection(Category::filterBy($filters)->get());
+        return CategoryResource::collection(Category::filterBy($filters)->paginate(10));
     }
 
     public function selector(CategoryFilters $filters)
     {
-        return CategorySelectorResource::collection(Category::filterBy($filters)->get());
+        return CategoryResource::collection(Category::filterBy($filters)->get());
     }
 
 

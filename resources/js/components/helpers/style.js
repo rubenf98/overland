@@ -82,7 +82,7 @@ export const SectionTitle = styled.h2`
 export const Section = styled.section`
     width: 100%;
     max-width: 1600px;
-    margin: 150px auto;
+    margin: 100px auto;
     display: block;
 
     @media (max-width: "1600px") {

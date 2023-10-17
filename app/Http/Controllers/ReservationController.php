@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ReservationRequest;
+use App\Http\Requests\UpdateReservationRequest;
 use App\Http\Resources\ReservationResource;
+use App\Jobs\HandleReservationJob;
 use App\Models\BlockDate;
 use App\Models\Client;
 use App\Models\LogRecord;
@@ -41,10 +43,11 @@ class ReservationController extends Controller
             'token' => $token,
             'date' => $validator['date'],
             'participants' => $validator['participants'],
-            'payment_method' => $validator['payment_method'] == 1 ? "Cartão de crédito" : "Pagamento no levantamento",
+            'payment_method' => Arr::get($validator, 'payment_method') == 1 ? "Pagamento no levantamento" : "Cartão de crédito",
             'price' => $validator['price'],
             'activity_id' => $validator['activity_id'],
             'client_id' => $client->id,
+            'address' => Arr::get($validator, 'address'),
         ]);
 
         BlockDate::create([
@@ -53,6 +56,19 @@ class ReservationController extends Controller
             "reservation_id" => $reservation->id
         ]);
         DB::commit();
+        HandleReservationJob::dispatch($reservation);
+        //$reservation->generateInvoice();
+        $payment = new \GuzzleHttp\Client();
+
+        $response = $payment->request('POST', 'https://sandbox.eupago.pt/api/v1.02/creditcard/create', [
+            'body' => '{"payment":{"amount":{"currency":"EUR","value":' . $validator['price'] . '},"lang":"EN","successUrl":"https://overlandmadeira.com/confirmation?token=' . $reservation->token . '","failUrl":"https://overlandmadeira.com/error?token=' . $reservation->token . '","backUrl":"https://overlandmadeira.com/error?token=' . $reservation->token . '","identifier":"' . $reservation->token . '"},"customer":{"notify":true,"email":"joseruben98@hotmail.com"}}',
+            'headers' => [
+                'Authorization' => 'ApiKey demo-4b74-73db-c3b0-a29',
+                'accept' => 'application/json',
+                'content-type' => 'application/json',
+            ],
+        ]);
+        return json_decode($response->getBody(), true);
 
         return new ReservationResource($reservation);
     }
@@ -75,7 +91,7 @@ class ReservationController extends Controller
      * @param  \App\Models\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function update(ReservationRequest $request, Reservation $reservation)
+    public function update(UpdateReservationRequest $request, Reservation $reservation)
     {
         $validator = $request->validated();
         DB::beginTransaction();

@@ -2,37 +2,46 @@ import React, { useEffect } from "react";
 import styled from "styled-components";
 import ScrollToTop from "./helpers/ScrollToTop";
 import ThemeContainer from "./helpers/ThemeContainer";
-import { setCookiesVisibility } from "../redux/application/actions";
+import { handleForm } from "../redux/application/actions";
 import { connect } from "react-redux";
 import Navbar from "./client/common/Navbar";
 import Footer from "./client/common/Footer";
+import FormContainer from "./client/FormContainer";
 
 const Container = styled.div`
     width: 100%;
     box-sizing: border-box;
-    padding: 0px 30px;
+    padding: ${props => props.enable ? "0px 30px" : "0px"};
 `;
 
 export const Layout = (props) => {
-
     return (
         <ThemeContainer>
-
+            <FormContainer initForm={props.formVisible} handleVisibility={props.handleForm} />
             <ScrollToTop>
-                <Container>
-                    <Navbar />
+                <Container enable={props.enable}>
+                    {props.enable && <Navbar />}
                     <div> {props.children} </div>
-                    <Footer />
+                    {props.enable && <Footer />}
                 </Container>
             </ScrollToTop>
         </ThemeContainer>
     )
 }
 
-const mapDispatchToProps = (dispatch) => {
+const mapStateToProps = (state) => {
     return {
-        setCookiesVisibility: (state) => dispatch(setCookiesVisibility(state)),
+        formVisible: state.application.formVisible
     };
 };
 
-export default connect(null, mapDispatchToProps)(Layout);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        handleForm: (visibility) => dispatch(handleForm(visibility)),
+    };
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Layout);

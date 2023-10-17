@@ -6,6 +6,16 @@ use Illuminate\Http\Resources\Json\JsonResource;
 
 class ActivityResource extends JsonResource
 {
+
+    private $language;
+
+    public function __construct($collection, $language = "")
+    {
+        parent::__construct($collection);
+        $this->language = $language;
+    }
+
+
     /**
      * Transform the resource into an array.
      *
@@ -16,20 +26,15 @@ class ActivityResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->getTranslations('name'),
+            'translation_names' => $this->getTranslations('name'),
+            'name' => $this->getTranslation('name', $this->language),
             'image' => $this->image,
-            'images' => $this->images,
             'status' => $this->status,
             'price' => $this->price,
-            'limit' => $this->limit,
             'category' => $this->category,
-            'days' => $this->availabilityDays,
-            'hours' => $this->availabilityHours,
-            'duration' => $this->getTranslations('duration'),
             'description1' => $this->getTranslations('description1'),
             'description2' => $this->getTranslations('description2'),
-            'included' => $this->getTranslations('included'),
-            'material' => $this->getTranslations('material'),
+            'description3' => $this->getTranslations('description3'),
         ];
     }
 }

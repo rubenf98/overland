@@ -9,6 +9,22 @@ export const fetchActivities = (page = 1, filters = {}) => ({
     })}&page=${page}`)
 })
 
+export const fetchLevadas = (page = 1, filters = {}) => ({
+    type: types.FETCH_LEVADAS,
+    payload: axios.get(`${window.location.origin}/api/activities?${queryString.stringify(filters, {
+        arrayFormat: "index"
+    })}&page=${page}`)
+})
+
+
+export const fetchTours = (page = 1, filters = {}) => ({
+    type: types.FETCH_TOURS,
+    payload: axios.get(`${window.location.origin}/api/activities?${queryString.stringify(filters, {
+        arrayFormat: "index"
+    })}&page=${page}`)
+})
+
+
 export const fetchActivitySelector = (filters = {}) => ({
     type: types.FETCH_ACTIVITY_SELECTOR,
     payload: axios.get(`${window.location.origin}/api/selector/activities?${queryString.stringify(filters, {

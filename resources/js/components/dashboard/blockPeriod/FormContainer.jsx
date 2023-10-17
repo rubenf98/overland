@@ -5,6 +5,7 @@ import dayjs from 'dayjs';
 import { connect } from "react-redux";
 import TextArea from "antd/lib/input/TextArea";
 import { createBlockPeriod } from "../../../redux/blockPeriod/actions";
+import ActivityRemoteSelectContainer from "../activity/ActivityRemoteSelectContainer";
 
 const { RangePicker } = DatePicker;
 
@@ -97,7 +98,7 @@ function FormContainer(props) {
                             />
                         </Form.Item>
 
-                        <Form.List name="activities" >
+                        {/* <Form.List name="activities" >
                             {() => (
                                 <Row>
                                     {classes.map((item) => (
@@ -109,7 +110,14 @@ function FormContainer(props) {
                                     ))}
                                 </Row>
                             )}
-                        </Form.List>
+                        </Form.List> */}
+
+                        <Form.Item
+                            name="activities"
+                            label="Atividades a bloquear"
+                        >
+                            <ActivityRemoteSelectContainer mode="multiple" />
+                        </Form.Item>
 
                         <Form.Item
                             name="notes"

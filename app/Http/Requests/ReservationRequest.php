@@ -22,12 +22,14 @@ class ReservationRequest extends FormRequest
 
     protected function prepareForValidation()
     {
-        $activity = Activity::find($this->activity_id);
+        $activityId = $this->activity_id ? $this->activity_id : $this->activity[1];
+        $activity = Activity::find($activityId);
 
 
 
         $this->merge([
             'price' => $activity->price * $this->participants,
+            'activity_id' => $activityId,
         ]);
         // Log::alert("step 9");
     }
@@ -51,6 +53,7 @@ class ReservationRequest extends FormRequest
             'activity_id' =>  'required|integer|exists:activities,id',
             'price' => 'required|numeric',
             'participants' => 'required|integer',
+            'address' => 'nullable|string',
 
             'notes' => 'nullable|string',
             'payment_method' => 'nullable|string',

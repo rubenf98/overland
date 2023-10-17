@@ -12,11 +12,9 @@ class Activity extends Model
     use FiltersRecords;
 
     public $fillable = [
-        'duration',
         'description1',
         'description2',
-        'included',
-        'material',
+        'description3',
         'name',
         'category_id',
         'image',
@@ -26,36 +24,14 @@ class Activity extends Model
     ];
 
     public $translatable = [
-        'duration',
         'description1',
         'description2',
-        'included',
-        'material',
+        'description3',
         'name',
     ];
 
     public function category()
     {
         return $this->belongsTo(Category::class);
-    }
-
-    public function images()
-    {
-        return $this->hasMany(ActivityImage::class);
-    }
-
-    public function partners()
-    {
-        return $this->belongsToMany(Partner::class, 'partner_has_activities');
-    }
-
-    public function availabilityDays()
-    {
-        return $this->hasOne(Availability::class);
-    }
-
-    public function availabilityHours()
-    {
-        return $this->hasMany(AvailabilityHour::class);
     }
 }

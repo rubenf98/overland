@@ -10,6 +10,11 @@ use Cerbero\QueryFilters\QueryFilters;
  */
 class ActivityFilters extends QueryFilters
 {
+    public function categoryId($id)
+    {
+        $this->query->where('category_id', $id);
+    }
+
     public function category($string)
     {
         $this->query->whereHas('category', function ($movies) use ($string) {

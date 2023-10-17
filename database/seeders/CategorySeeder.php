@@ -16,26 +16,23 @@ class CategorySeeder extends Seeder
     {
         Category::create([
             'name' => [
-                "en" => "Flying experiences",
-                "pt" => "Experiência voadora",
+                "en" => "safari",
+                "pt" => "safari",
             ],
-            "image" => "/images/activities/"
         ]);
 
         Category::create([
             'name' => [
-                "en" => "Land expeditions",
-                "pt" => "Expedição terrestre",
+                "en" => "levada",
+                "pt" => "levada",
             ],
-            "image" => "/images/activities/"
         ]);
 
         Category::create([
             'name' => [
-                "en" => "Marine adventures",
-                "pt" => "Aventura marinha",
+                "en" => "tour",
+                "pt" => "tour",
             ],
-            "image" => "/images/activities/"
         ]);
     }
 }

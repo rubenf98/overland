@@ -3,21 +3,21 @@ import React, { useEffect } from 'react'
 import { connect } from "react-redux";
 import { fetchActivitySelector } from '../../../redux/activity/actions';
 
-function ActivityRemoteSelectContainer({ fetchActivitySelector, data, loading, value, onChange }) {
+function ActivityRemoteSelectContainer({ fetchActivitySelector, data, loading, value, onChange, mode }) {
     useEffect(() => {
         fetchActivitySelector()
     }, [])
-    console.log(data)
+
     return (
         <Select
             value={value}
             onChange={onChange}
             loading={loading}
             showSearch
-            mode="multiple"
+            mode={mode}
         >
             {data.map((element) => (
-                <Select.Option key={element.id} value={element.id}>{element.name.pt}</Select.Option>
+                <Select.Option key={element.id} value={element.id}>{element.translation_names.pt}</Select.Option>
             ))}
         </Select>
     )

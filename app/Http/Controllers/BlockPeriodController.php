@@ -61,14 +61,14 @@ class BlockPeriodController extends Controller
             'notes' => $notes ? $notes : null
         ]);
 
-        foreach ($activities as $id => $activitiy) {
+        foreach ($activities as $activitiy) {
             if ($activitiy) {
-                array_push($activity_ids, $id);
+                array_push($activity_ids, $activitiy);
                 foreach ($period as $date) {
                     BlockDate::create([
                         'date' => $date->format('Y-m-d'),
                         'block_period_id' => $blockPeriod->id,
-                        'activity_id' => $id,
+                        'activity_id' => $activitiy,
                         'notes' => $notes ? $notes : null
                     ]);
                 }

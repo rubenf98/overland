@@ -5,7 +5,7 @@ import { fetchCategorySelector } from '../../../redux/category/actions';
 
 function CategoryRemoteSelectContainer({ fetchCategorySelector, data, loading, value, onChange }) {
     useEffect(() => {
-        fetchCategorySelector()
+        fetchCategorySelector({ language: "pt" })
     }, [])
 
     return (
@@ -19,7 +19,7 @@ function CategoryRemoteSelectContainer({ fetchCategorySelector, data, loading, v
             filterOption={(input, option) => option.children.toLowerCase().includes(input.toLowerCase())}
         >
             {data.map((element) => (
-                <Select.Option key={element.id} value={element.id}>{element.name.pt}</Select.Option>
+                <Select.Option key={element.id} value={element.id}>{element.name}</Select.Option>
             ))}
         </Select>
     )

@@ -19,13 +19,10 @@ class CreateActivitiesTable extends Migration
             $table->unsignedBigInteger("category_id");
             $table->integer('price');
             $table->string('image');
-            $table->string('duration');
-            $table->integer('limit')->default(20);
             $table->boolean('status')->default(true);
             $table->text('description1');
             $table->text('description2');
-            $table->text('included');
-            $table->text('material');
+            $table->text('description3');
             $table->timestamps();
 
             $table->foreign("category_id")->references("id")->on("categories")->onDelete("cascade");
