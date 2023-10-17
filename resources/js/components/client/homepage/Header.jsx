@@ -17,7 +17,7 @@ const Container = styled.section`
 
     @media (max-width: ${maxWidth}) {
         box-sizing: border-box;
-        padding: 0px 20px;
+        padding: 0px 10px;
     }
 
 `;
@@ -27,14 +27,14 @@ const TitleContainer = styled.div`
     display: block;
     width: 100%;
     box-sizing: border-box;
-    margin: 10vh 0px 5vh 0px;
+    margin: 100px 0px 50px 0px;
 
     h1 {
         font-size: 6.6vw;
         font-size: 38px;
         font-weight: 700;
         line-height: 94%;
-        margin-bottom: 0px;
+        margin: 5px 0px 50px 0px;
     }
 
     h2 {
@@ -43,7 +43,7 @@ const TitleContainer = styled.div`
         opacity: .7;
         font-weight: 700;
         line-height: 94%;
-        margin-bottom: 50px;
+        margin: 0px;
     }
 
     h1, h2 {
@@ -56,8 +56,7 @@ const TitleContainer = styled.div`
     @media (max-width: ${dimensions.md}) {
 
         h1 {
-            width: 100%;
-            font-size: 42px;
+            font-size: 36px;
         }
 
         h2 {
@@ -122,7 +121,6 @@ const ContactItem = styled.div`
     @media (max-width: ${dimensions.md}) {
         font-size: 16px;
         padding: 10px 16px;
-        width: 100%;
         margin: 10px 0px;
 
         img {
