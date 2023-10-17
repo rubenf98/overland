@@ -2,13 +2,8 @@ import React, { useState } from 'react'
 import styled from "styled-components";
 import { connect } from 'react-redux'
 import { setLanguage } from '../../redux/application/actions';
-import { fetchBlockDates } from '../../redux/blockDate/actions';
-import { useNavigate } from 'react-router-dom';
 import Header from './homepage/Header';
-import Services from './homepage/Services';
-import Safari from './homepage/Safari';
-import Levada from './homepage/Levada';
-import Tour from './homepage/Tour';
+
 
 const Container = styled.section`
     //
@@ -17,28 +12,19 @@ const Container = styled.section`
 
 function Homepage(props) {
     const { text } = require('../../../assets/' + props.language + "/homepage");
-    const [active, setActive] = useState(1)
-    let navigate = useNavigate();
 
     return (
         <Container>
-            <Header />
-            <Services />
+            <Header text={text} />
+            {/* <Services />
             <Safari />
             <Levada text={text} />
-            <Tour />
+            <Tour /> */}
 
 
         </Container>
     )
 }
-
-const mapDispatchToProps = (dispatch) => {
-    return {
-        setLanguage: (state) => dispatch(setLanguage(state)),
-        fetchBlockDates: (filters) => dispatch(fetchBlockDates(filters)),
-    };
-};
 
 const mapStateToProps = (state) => {
     return {
@@ -46,4 +32,4 @@ const mapStateToProps = (state) => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Homepage);
+export default connect(mapStateToProps, null)(Homepage);

@@ -1,7 +1,7 @@
 export const borderRadius = "10px";
 export const buttonPadding = "15px";
 export const margin = "20px";
-
+export const maxWidth = "1270px";
 export const dimensions = {
     "xs": "575px",
     "sm": "576px",

@@ -12,17 +12,18 @@ const Container = styled.div`
     width: 100%;
     box-sizing: border-box;
     padding: ${props => props.enable ? "0px 30px" : "0px"};
+    background-color: ${({ theme }) => theme.secundary};
 `;
 
 export const Layout = (props) => {
     return (
         <ThemeContainer>
-            <FormContainer initForm={props.formVisible} handleVisibility={props.handleForm} />
+            {/* <FormContainer initForm={props.formVisible} handleVisibility={props.handleForm} /> */}
             <ScrollToTop>
                 <Container enable={props.enable}>
-                    {props.enable && <Navbar />}
+                    {/* {props.enable && <Navbar />} */}
                     <div> {props.children} </div>
-                    {props.enable && <Footer />}
+                    {/* {props.enable && <Footer />} */}
                 </Container>
             </ScrollToTop>
         </ThemeContainer>
