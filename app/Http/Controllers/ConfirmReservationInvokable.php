@@ -21,17 +21,16 @@ class ConfirmReservationInvokable extends Controller
         $reservation = Reservation::with('activity')->where('token', $request->token)->firstOrFail();
 
 
-        if (!$reservation->confirmed_at) {
-            if ($reservation->payment_method == "Cartão de crédito") {
-                $reservation->payed_at = Carbon::now();
-            }
-            $reservation->confirmed_at = Carbon::now();
-            $reservation->status = "confirmado";
-            $reservation->save();
 
-            $reservation->generateInvoice();
-            // Mail::to("jrubenf98@gmail.com")->queue(new ReservationEmail($reservation->token, $reservation->pickup_date, $reservation->return_date, $reservation->carPref->title));
-            Mail::to("jrubenf98@gmail.com")->queue(new ReservationEmail($reservation->token, $reservation->date, $reservation->activity->title));
+        if ($reservation->payment_method == "Cartão de crédito") {
+            $reservation->payed_at = Carbon::now();
         }
+        $reservation->confirmed_at = Carbon::now();
+        $reservation->status = "confirmado";
+        $reservation->save();
+
+        $reservation->generateInvoice();
+        // Mail::to("jrubenf98@gmail.com")->queue(new ReservationEmail($reservation->token, $reservation->pickup_date, $reservation->return_date, $reservation->carPref->title));
+        Mail::to("jrubenf98@gmail.com")->queue(new ReservationEmail($reservation->token, $reservation->date, $reservation->activity->title));
     }
 }

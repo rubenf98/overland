@@ -3,6 +3,7 @@ import { Row, Form, Col, Input } from 'antd';
 import { CustomCascader, CustomInput, CustomSelect, CustomTextArea } from './styles';
 import { fetchCategorySelector } from "../../../redux/category/actions";
 import { connect } from "react-redux";
+import CouncilRemoteSelectContainer from "../../dashboard/council/CouncilRemoteSelectContainer";
 
 const rules = {
     required: [
@@ -49,7 +50,7 @@ const rules = {
 
 function Information({ fetchCategorySelector, data, text }) {
     useEffect(() => {
-        fetchCategorySelector({ language: localStorage.getItem('language') });
+        //fetchCategorySelector({ language: localStorage.getItem('language') });
     }, [])
 
     return (
@@ -95,8 +96,18 @@ function Information({ fetchCategorySelector, data, text }) {
                     </Form.Item>
                 </Col>
 
+                <Col xs={24} md={12}>
+                    <Form.Item
+                        name="council_id"
+                        rules={rules.required}
+                    >
 
-                <Col xs={24} md={24}>
+                        <CouncilRemoteSelectContainer placeholder={text.form.council.placeholder} />
+                    </Form.Item>
+                </Col>
+
+
+                <Col xs={24} md={12}>
                     <Form.Item
                         name="participants"
                         rules={rules.required}
@@ -131,13 +142,12 @@ function Information({ fetchCategorySelector, data, text }) {
                     </Form.Item>
                 </Col>
 
-
                 <Col span={24}>
                     <Form.Item
                         name="address"
                         rules={rules.required}
                     >
-                        <CustomTextArea size='large' placeholder={text.form.address.placeholder} />
+                        <CustomInput size='large' placeholder={text.form.address.placeholder} />
                     </Form.Item>
                 </Col>
             </Row>

@@ -2,6 +2,7 @@ import React from 'react'
 import styled from "styled-components";
 import { borderRadius, dimensions } from '../../../helper';
 import { Section, SectionTitle } from '../../helpers/style';
+import { useNavigate } from 'react-router-dom';
 
 const Container = styled.div`
     width: 100%;
@@ -65,16 +66,18 @@ const FlexContainer = styled.div`
     }
 `;
 
-function Safari() {
+function Safari({ text }) {
+    const navigate = useNavigate();
+
     return (
         <Section>
             <Container>
                 <FlexContainer>
                     <div className='content'>
                         <div>
-                            <SectionTitle><span>Jeep Safari</span> crafted by us, designed for you.</SectionTitle>
-                            <p>Our West Yorkshire workshop leads the way in Micro Camper, VW Transporter and Ford Transit van conversions. Each campervan conversion comes with a lifetime guarantee.</p>
-                            <button>Book now</button>
+                            <SectionTitle>{text.title}</SectionTitle>
+                            <p>{text.subtitle}</p>
+                            <button onClick={() => navigate("/safaries")}>{text.button}</button>
                         </div>
                     </div>
                 </FlexContainer>
@@ -88,7 +91,7 @@ function Safari() {
                     </div>
                 </FlexContainer>
             </Container>
-        </Section>
+        </Section >
     )
 }
 

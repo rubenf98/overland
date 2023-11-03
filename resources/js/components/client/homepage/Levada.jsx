@@ -153,7 +153,7 @@ function Levada(props) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        props.fetchLevadas(1, { categoryId: 2 });
+        props.fetchLevadas({ categoryId: 2, active: 1 });
     }, [])
 
 
@@ -166,19 +166,20 @@ function Levada(props) {
         <Container>
 
             <Title>
-                <SectionTitle>Slow down and enjoy <br /> Madeira’s <span>levadas</span></SectionTitle>
-                <p>Um destino ideal para os amantes de caminhadas. Montanha, oceano, florestas verdejantes, quedas de água e miradouros: a riqueza natural do arquipélago faz com que caminhar na Madeira seja uma experiência inesquecível e revigorante.</p>
+                <SectionTitle>{props.text.title}</SectionTitle>
+                <p>{props.text.subtitle}</p>
             </Title>
 
             <CarouselContainer
                 autoPlay={false}
                 interval={200000}
-                arrows={true}
+                infinite
+                arrows
                 draggable={false}
                 itemClass="image-item"
                 partialVisible
                 swipeable
-                transitionDuration={700}
+                transitionDuration={400}
                 responsive={getCarouselBreakpoints([1, 1, 2, 3, 3])}
                 ref={carouselRef}
             >

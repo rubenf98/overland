@@ -17,7 +17,7 @@ class CategoryResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->getTranslation('name', $request->language),
-            'activities' => ActivityResource::collection($this->activities, $request->language),
+            'activities' => ActivityResource::collection($this->activities->where('status', $request->active && 1), $request->language),
         ];
     }
 }

@@ -17,11 +17,14 @@ class CreateReservationsTable extends Migration
             $table->id();
             $table->unsignedBigInteger('activity_id');
             $table->unsignedBigInteger('client_id');
+            $table->unsignedBigInteger('council_id');
             $table->string('token')->unique();
             $table->string('payment_method')->nullable();
             $table->datetime('date');
             $table->integer('participants');
             $table->double('price', 6, 2);
+            $table->double('transportation_price', 6, 2);
+            $table->double('activity_price', 6, 2);
             $table->string('status')->default('pendente');
             $table->text('notes')->nullable();
             $table->text('address')->nullable();
@@ -30,6 +33,7 @@ class CreateReservationsTable extends Migration
             $table->timestamps();
             $table->softDeletes();
 
+            $table->foreign('council_id')->references('id')->on('councils');
             $table->foreign('activity_id')->references('id')->on('activities');
             $table->foreign('client_id')->references('id')->on('clients');
         });

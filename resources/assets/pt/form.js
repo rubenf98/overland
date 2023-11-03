@@ -15,8 +15,8 @@ export const text = {
                 phone: {
                     placeholder: "Número telemóvel *"
                 },
-                indicative: {
-                    placeholder: "+351"
+                council: {
+                    placeholder: "Zona de recolha *"
                 },
                 address: {
                     placeholder: "Morada de recolha *"
@@ -79,7 +79,9 @@ export const text = {
                 created_at: "Data da reserva",
                 country: "País",
                 participants: "Nº de participantes",
-                price: "Preço"
+                council: "Zona de recolha",
+                councilPrice: "Preço de transporte",
+                price: "Total"
             },
         },
         {

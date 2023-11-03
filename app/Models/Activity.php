@@ -20,7 +20,8 @@ class Activity extends Model
         'image',
         'status',
         'price',
-        'image'
+        'minimum',
+
     ];
 
     public $translatable = [

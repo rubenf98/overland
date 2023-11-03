@@ -58,7 +58,7 @@ function Reservation(props) {
     return (
         <div>
             <Banner>
-                <h1>As minhas atividades</h1>
+                <h1>As minhas reservas</h1>
             </Banner>
 
             <FormContainer

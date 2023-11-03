@@ -4,9 +4,11 @@ export const initialState = {
     data: [],
     levadas: [],
     tours: [],
+    safaries: [],
     selector: [],
     loading: false,
     current: {},
+    activityAvailable: false,
 }
 
 export default (state = initialState, action = {}) => {
@@ -20,8 +22,16 @@ export default (state = initialState, action = {}) => {
         case `${types.FETCH_ACTIVITY_SELECTOR}_PENDING`:
         case `${types.FETCH_LEVADAS}_PENDING`:
         case `${types.FETCH_TOURS}_PENDING`:
+        case `${types.FETCH_SAFARIES}_REJECTED`:
             return {
                 ...state,
+                loading: true,
+            };
+
+        case `${types.IS_ACTIVITY_AVAILABLE}_PENDING`:
+            return {
+                ...state,
+                activityAvailable: false,
                 loading: true,
             };
 
@@ -32,11 +42,28 @@ export default (state = initialState, action = {}) => {
         case `${types.FETCH_ACTIVITY_SELECTOR}_REJECTED`:
         case `${types.FETCH_LEVADAS}_REJECTED`:
         case `${types.FETCH_TOURS}_REJECTED`:
+        case `${types.FETCH_SAFARIES}_REJECTED`:
+
+        case `${types.IS_ACTIVITY_AVAILABLE}_PENDING`:
             return {
                 ...state,
                 loading: false,
             };
 
+        case `${types.IS_ACTIVITY_AVAILABLE}_FULFILLED`:
+            return {
+                ...state,
+                loading: false,
+                activityAvailable: action.payload.data,
+            };
+
+
+        case `${types.FETCH_SAFARIES}_FULFILLED`:
+            return {
+                ...state,
+                loading: false,
+                safaries: action.payload.data.data,
+            };
         case `${types.FETCH_LEVADAS}_FULFILLED`:
             return {
                 ...state,

@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from 'react'
 import styled from "styled-components";
-import { borderRadius } from '../../../helper';
-import { Cascader, Col, DatePicker, Row, Select } from 'antd';
+import { Cascader, Col, DatePicker, Row, Select, message } from 'antd';
 import { fetchCategorySelector } from "../../../redux/category/actions";
+import { isActivityAvailable } from "../../../redux/activity/actions";
 import { handleForm } from '../../../redux/application/actions';
 import { connect } from 'react-redux';
 import dayjs from "dayjs";
+import { dimensions } from '../../../helper';
 
 const Container = styled.section`
     width: 100%;
-    height: calc(100vh - 200px);
-    display: flex;
-    background-color: #F5F5F6;
+    height: calc(100vh - 100px);
     position: relative;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
 `;
 
 export const CustomCascader = styled(Cascader)`
@@ -35,14 +37,22 @@ export const CustomCascader = styled(Cascader)`
 
 const TextContainer = styled.div`
     width: 50%;
-    padding: 0px 50px 0px 50px;
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    
+    color: white;
+    padding: 0px 30px;
+
+    @media (max-width: ${dimensions.lg}) {
+        width: 70%;
+    }
+
+    @media (max-width: ${dimensions.md}) {
+        width: 100%;
+    }
 
     h2 {
-        font-size: clamp(30px, 3vw, 60px);
+        font-size: clamp(30px, 3vw, 50px);
         margin: 0px;
 
         span {
@@ -53,86 +63,118 @@ const TextContainer = styled.div`
     p {
         font-size: 20px;
         box-sizing: border-box;
-        margin: 30px 0px;
+        margin: 30px 0px 100px 0px;
     }
 
-    .social-container {
-        display: flex;
-        align-items: center;
-        gap: 20px;
+`;
 
-        img {
-            height: 55px;
+const SocialContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    gap: 20px;
+    bottom: 20px;
+    right: 20px;
+
+    a {
+        background-color: ${({ theme }) => theme.primary};
+        padding: 7px;
+        box-sizing: border-box;
+        border-radius: 32px;
+    }
+
+    img {
+        height: 25px;
+        width: 25px;
+    }
+
+    @media (max-width: ${dimensions.md}) {
+        flex-direction: row;
+
+        a {
+            border-radius: 22px;
         }
-        margin-bottom: 50px;
+        img {
+            height: 15px;
+            width: 15px;
+        }
     }
+       
 `;
 
 const Background = styled.img`
-    width: 50%;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
     object-fit: cover;
+    position: absolute;
+    top: -100px;
+    left: 0;
+    z-index: -1;
 `;
 
 const Form = styled.div`
-    width: calc(100% - 100px);
-    max-width: 1600px;
-    position: absolute;
-    z-index: 2;
-    bottom: -50px;
-    left: 50%;
-    transform: translate(-50%);
+    background-color: rgba(0, 0, 0, 0.3);
+    padding: 20px 30px;
+    box-sizing: border-box;
+    width: 60%;
 
-    h3 {
-        background-color: ${({ theme }) => theme.primary};
+    @media (max-width: ${dimensions.lg}) {
+        width: 70%;
+    }
+
+    @media (max-width: ${dimensions.md}) {
+        width: 100%;
+    }
+
+    p {
+        margin: 0px 0px 5px 0px;
+        font-size: 18px;
+        font-weight: 400;
+        opacity: .7;
         color: white;
-        padding: 12px 25px;
-        box-sizing: border-box;
-        border-top-left-radius: ${borderRadius};
-        border-top-right-radius: ${borderRadius};
-        display: inline;
     }
 
-    .form {
-        padding: 50px;
+    input::placeholder, .ant-select-selection-placeholder {
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+    }
+    .ant-select-selector {
+        background-color: transparent !important;
+    }
+
+    input, .ant-select-selection-item {
+        color: white !important;
+        font-weight: bold;
+    }
+
+    input::placeholder, .ant-select-selection-placeholder {
+        font-size: clamp(16px, 2vw, 18px);;
+        font-weight: bold;
+        color: white !important;
+    }
+
+    button {
+        background-color: transparent;
+        border: 0px;
+        display: block;
+        padding: 20px;
         box-sizing: border-box;
-        background-color: #fff;
-        box-shadow: 0px 4px 20px 0px rgba(0, 0, 0, 0.15); 
-        margin-top: 12px;
-        border-top-right-radius: ${borderRadius};
-        border-bottom-left-radius: ${borderRadius};
-        border-bottom-right-radius: ${borderRadius};
+        box-shadow: 0px;
+        margin: auto;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-        p {
-            margin: 0px 0px 5px 0px;
-            font-size: 18px;
-            font-weight: 400;
-            opacity: .7;
-        }
-
-        input::placeholder, .ant-select-selection-placeholder {
-            font-size: 18px;
-            font-weight: bold;
-            color: black;
-        }
-
-        button {
-            color: ${({ theme }) => theme.primary};
-            background-color: white;
-            border: ${({ theme }) => "4px solid " + theme.primary};
-            font-size: 18px;
-            font-weight: bold;
-            text-align: center;
-            display: block;
-            border-radius: ${borderRadius};
-            width: 100%;
-            padding: 16px 32px;
-            box-sizing: border-box;
-            box-shadow: 0px;
-            margin: auto;
-            cursor: pointer;
+        img {
+            width: 50%;
+            height: 50%;
+            object-fit: contain;
         }
     }
+    
 
     .ant-select-selector, .ant-input {
         padding: 0px !important;
@@ -141,6 +183,8 @@ const Form = styled.div`
 
 function Header(props) {
     const [form, setForm] = useState({ date: undefined, time: undefined, activity: [] })
+    const [messageApi, contextHolder] = message.useMessage();
+    const [hasChecked, setHasChecked] = useState(false)
 
     useEffect(() => {
         var searchDate = ""
@@ -155,42 +199,67 @@ function Header(props) {
 
         props.fetchCategorySelector({
             language: localStorage.getItem('language'),
-            date: searchDate
+            date: searchDate,
+            active: 1
         });
     }, [form.date, form.time])
 
+    const handleSubmit = ({ }) => {
+        props.isActivityAvailable({ 'date': dayjs(form.date).format('YYYY-MM-DD'), activity_id: form.activity[1] })
+        setHasChecked(true);
+    }
+
+    useEffect(() => {
+        if (hasChecked) {
+            if (props.activityAvailable) {
+                props.handleForm(form);
+            } else {
+                messageApi.open({
+                    type: 'warning',
+                    content: 'The selected activity is not available at that specific date',
+                });
+            }
+        }
+
+    }, [props.activityAvailable])
 
     return (
         <Container>
-            <TextContainer>
-                <div>
-                    <h2>Levada, Tours, Hiking, Camping: <span>Madeira</span> Unveiled</h2>
-                    <p>Discover Madeira's hidden beauty through guided levada tours, exhilarating hikes, and memorable camping experiences, immersing you in the island's natural wonders.</p>
-                    <div className='social-container'>
-                        <a href="http://" target="_blank" rel="noopener noreferrer">
-                            <img src="/images/social/facebook.svg" alt="facebook" />
-                        </a>
-                        <a href="http://" target="_blank" rel="noopener noreferrer">
-                            <img src="/images/social/instagram.svg" alt="instagram" />
-                        </a>
-                        <a href="http://" target="_blank" rel="noopener noreferrer">
-                            <img src="/images/social/email.svg" alt="email" />
-                        </a>
+            {contextHolder}
+            <Background src="/images/homepage/header_1920.jpg" alt="green leafs" />
+            <SocialContainer>
+                <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <img src="/icons/facebook_white.svg" alt="facebook" />
+                </a>
+                <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <img src="/icons/whatsapp_white.svg" alt="whatsapp" />
+                </a>
+                <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <img src="/icons/instagram_white.svg" alt="instagram" />
+                </a>
+                <a href="http://" target="_blank" rel="noopener noreferrer">
+                    <img src="/icons/email_white.svg" alt="email" />
+                </a>
+            </SocialContainer>
+
+            <div>
+                <TextContainer>
+                    <div>
+                        <h2>{props.text.title}</h2>
+                        <p>{props.text.subtitle}</p>
+
                     </div>
-                </div>
-            </TextContainer>
-            <Background src="/images/homepage/header.jpg" alt="green leafs" />
-            <Form>
-                <h3>Online booking</h3>
-                <div className='form'>
+                </TextContainer>
+
+                <Form>
                     <Row type="flex" align="middle" gutter={64}>
                         <Col span={6} >
-                            <p>Date</p>
+                            <p>{props.text.form.date.label}</p>
                             <DatePicker
                                 onChange={(e) => setForm({ ...form, date: e })}
                                 style={{ width: "100%", paddingLeft: "0px" }}
                                 bordered={false}
-                                placeholder='DD / MM / YYYY'
+                                placeholder={props.text.form.date.placeholder}
                                 format="DD/MM/YYYY"
                                 disabledDate={(currentDate) => {
                                     return currentDate &&
@@ -202,13 +271,13 @@ function Header(props) {
                             borderRight: "3px solid #E5E4DC",
                             borderLeft: "3px solid #E5E4DC",
                         }}>
-                            <p>Hour</p>
+                            <p>{props.text.form.hour.label}</p>
                             <Select
                                 onChange={(e) => setForm({ ...form, time: e })}
                                 style={{ width: "100%" }}
                                 bordered={false}
                                 size='large'
-                                placeholder="HH:MM"
+                                placeholder={props.text.form.hour.placeholder}
                                 options={[
                                     { value: "07:00", label: "07:00" },
                                     { value: "07:30", label: "07:30" },
@@ -241,14 +310,14 @@ function Header(props) {
                                 ]}
                             /></Col>
                         <Col span={6}>
-                            <p>Activity</p>
+                            <p>{props.text.form.activity.label}</p>
                             <CustomCascader
                                 onChange={(e) => setForm({ ...form, activity: e })}
                                 size="large"
                                 expandTrigger="hover"
                                 options={props.data}
                                 allowClear={false}
-                                placeholder="Choose the activity"
+                                placeholder={props.text.form.activity.placeholder}
                                 fieldNames={{
                                     label: 'name',
                                     value: 'id',
@@ -258,11 +327,12 @@ function Header(props) {
                             />
                         </Col>
                         <Col span={6}>
-                            <button onClick={() => props.handleForm(form)}>Book now</button>
+                            <button onClick={handleSubmit}> <img src="/icons/search.svg" alt="search" /></button>
                         </Col>
                     </Row>
-                </div>
-            </Form>
+
+                </Form>
+            </div>
         </Container>
     )
 }
@@ -271,6 +341,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         handleForm: (formValues) => dispatch(handleForm(formValues)),
         fetchCategorySelector: (filters) => dispatch(fetchCategorySelector(filters)),
+        isActivityAvailable: (filters) => dispatch(isActivityAvailable(filters))
     };
 };
 
@@ -279,6 +350,7 @@ const mapStateToProps = (state) => {
         data: state.category.selector,
         loading: state.blockDate.loading,
         dates: state.blockDate.data,
+        activityAvailable: state.activity.activityAvailable
     };
 };
 

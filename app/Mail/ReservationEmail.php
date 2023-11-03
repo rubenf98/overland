@@ -21,7 +21,7 @@ class ReservationEmail extends Mailable
      *
      * @return void
      */
-    public function __construct($aActivity, $aToken, $aDate)
+    public function __construct($aToken, $aDate, $aActivity)
     {
         $this->activity = $aActivity;
         $this->token = $aToken;
@@ -37,7 +37,7 @@ class ReservationEmail extends Mailable
     {
         return $this->view('emails.reservation')
             ->subject('Nova reserva Overland')
-            ->attach(public_path("/invoice_" . $this->token . ".pdf"), [
+            ->attach(public_path("/storage/invoice_" . $this->token . ".pdf"), [
                 'as' => 'reservation_details.pdf',
                 'mime' => 'application/pdf',
             ]);

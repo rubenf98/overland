@@ -18,6 +18,7 @@ class CreateActivitiesTable extends Migration
             $table->string('name');
             $table->unsignedBigInteger("category_id");
             $table->integer('price');
+            $table->integer('minimum')->default(0);
             $table->string('image');
             $table->boolean('status')->default(true);
             $table->text('description1');

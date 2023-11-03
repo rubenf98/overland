@@ -13,7 +13,7 @@ class Reservation extends Model
 
     protected $fillable = [
         'payment_method', 'activity_id', 'client_id', 'token', 'price',
-        'date', 'notes', 'status', 'participants', 'address'
+        'date', 'notes', 'status', 'participants', 'address', 'transportation_price', 'activity_price', 'council_id'
     ];
 
     public function generateInvoice()
@@ -25,6 +25,11 @@ class Reservation extends Model
         $content = $pdf->download('invoice.pdf');
 
         return $content;
+    }
+
+    public function council()
+    {
+        return $this->belongsTo(Council::class);
     }
 
     public function activity()

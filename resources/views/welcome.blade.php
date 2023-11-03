@@ -9,6 +9,22 @@
 
     <title>Overland Madeira</title>
 
+    <meta name="keywords"
+        content="Overland Madeira, Madeira Island, levadas, tours, safari, campervans, outdoor adventures, island exploration, hiking, nature excursions, travel experiences, Madeira tours, campervan rentals, guided tours, Madeira safaris, adventure travel, scenic routes, off-road trips, camping, island exploration, natural beauty, Madeira destinations">
+    <meta name="author" content="Rúben Freitas">
+    <meta name="description"
+        content="Welcome to Outlander, your gateway to unparalleled exploration on the stunning island of Madeira. With a deep passion for nature and a commitment to providing exceptional experiences, we specialize in offering guided levada tours, exhilarating hiking expeditions, and convenient van rentals for unforgettable camping escapades.">
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#067c60">
+    <meta name="msapplication-TileColor" content="#067c60">
+    <meta name="theme-color" content="#ffffff">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

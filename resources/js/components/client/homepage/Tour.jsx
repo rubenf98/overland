@@ -61,7 +61,7 @@ function Tour(props) {
     const navigate = useNavigate();
 
     useEffect(() => {
-        props.fetchTours(1, { categoryId: 3 });
+        props.fetchTours({ categoryId: 3, active: 1 });
     }, [])
 
 
@@ -73,7 +73,7 @@ function Tour(props) {
     return (
         <Section>
             <SectionTitle style={{ textAlign: "center" }}>
-                A local’s view on the best <span>tours</span> around the island
+                {props.text.title}
             </SectionTitle>
             <Container>
                 {props.activities.map((activity, index) => (

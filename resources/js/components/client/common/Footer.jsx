@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { Section } from '../../helpers/style';
 import { Link } from 'react-router-dom';
 import { dimensions } from '../../../helper';
+import { connect } from 'react-redux';
 
 const Container = styled.section`
     border-top: 1px solid #D9D9D9;
@@ -18,7 +19,7 @@ const Background = styled.div`
     width: 100vw;
     height: 100%;
     top: 0;
-    left: -30px;
+    left: 0px;
     background-color: ${({ theme }) => theme.secundary};
 `;
 
@@ -89,7 +90,8 @@ const LegalContainer = styled.div`
     }
 `;
 
-function Footer() {
+function Footer(props) {
+    const { text } = require('../../../../assets/' + props.language + "/footer");
     return (
         <Container>
             <Background />
@@ -98,33 +100,40 @@ function Footer() {
                     <img className='logo' src="/images/logo_white.svg" alt="logo" />
 
                     <ContactContainer>
-                        <h3>Contact</h3>
+                        <h3>{text.titles[0]}</h3>
                         <p>Entreposto Comercial e Industrial Sambrasense – Sítio dos BarrabésCx Postal 908-Z, 8150-016, São Brás de Alportel</p>
                         <p>00351 944 180 092</p>
                         <p>geral@overlandmadeira.com</p>
 
-                        <h3>Social</h3>
+                        <h3>{text.titles[1]}</h3>
                         <div className='social'>
                             <img src="/icons/instagram_white.svg" alt="instagram" />
                             <img src="/icons/facebook_white.svg" alt="facebook" />
                             <img src="/icons/whatsapp_white.svg" alt="whatsapp" />
+                            <img src="/icons/email_white.svg" alt="email" />
                         </div>
                     </ContactContainer>
                     <LinkContainer>
-                        <h3>Pages</h3>
-                        <Link to="/">Homepage</Link>
-                        <Link to="/about">About</Link>
-                        <Link to="/contact">Contact</Link>
+                        <h3>{text.titles[2]}</h3>
+                        <Link to="/">{text.pages[0]}</Link>
+                        <Link to="/about">{text.pages[1]}</Link>
+                        <Link to="/contact">{text.pages[2]}</Link>
                     </LinkContainer>
                 </FlexContainer>
             </Section>
 
             <LegalContainer>
-                <Link to="/privacy">Privacy terms</Link>
-                <Link to="/policy">Legal policy</Link>
+                <Link to="/privacy">{text.links[0]}</Link>
+                <Link to="/policy">{text.links[1]}</Link>
             </LegalContainer>
         </Container>
     )
 }
 
-export default Footer
+const mapStateToProps = (state) => {
+    return {
+        language: state.application.language,
+    };
+};
+
+export default connect(mapStateToProps, null)(Footer);

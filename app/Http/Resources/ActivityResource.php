@@ -31,6 +31,7 @@ class ActivityResource extends JsonResource
             'image' => $this->image,
             'status' => $this->status,
             'price' => $this->price,
+            'minimum' => $this->minimum,
             'category' => $this->category,
             'description1' => $this->getTranslations('description1'),
             'description2' => $this->getTranslations('description2'),

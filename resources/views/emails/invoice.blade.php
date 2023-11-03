@@ -137,7 +137,7 @@
     <div class="vrc-emailc-wrap"
         style="max-width: 720px; background: #fff; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: 1px solid #ddd; border-right: 1px solid #ddd; margin: 0 auto; padding: 24px;">
         <div class="vrc-emailc-logo" style="text-align: center; margin: 8px 0;">
-            <img src="https://cr-rent.com/image/logo.png" alt="Logo" border="0" width="48"
+            <img src="https://overlandmadeira.com/images/logo.svg" alt="Logo" border="0" width="48"
                 style="display: block; width: 120px; max-width: 120px; min-width: 120px; margin: auto">
         </div>
 
@@ -158,14 +158,6 @@
                         Confirmation Number
                     </span>
                     <span class="vrc-email-summ-values">{{$reservation->token}}</span>
-                </div>
-                <div class="boxstatusorder" style="width: 25%; padding:10px; box-sizing: border-box;">
-                    <span class="vrc-email-summ-lbl"
-                        style="display: block; font-weight: bold; margin-bottom: 2px; font-size: 1.1em;">
-                        Order Status
-                    </span>
-                    <span style="font-weight: bold;" class="vrc-email-summ-values">{{$reservation->confirmed_at
-                        ? "Confirmado" : "Pendente"}}</span>
                 </div>
                 <div class="boxstatusorder" style="width: 25%; padding:10px; box-sizing: border-box;">
                     <span class="vrc-email-summ-lbl"
@@ -215,7 +207,12 @@
 
                     <div style="font-size: 14px;">
                         <span>Activity</span>
-                        <div style="float: right">{{$reservation->price}} EUR</div>
+                        <div style="float: right">{{$reservation->activity_price}} EUR</div>
+                    </div>
+
+                    <div style="font-size: 14px;">
+                        <span>Transportation</span>
+                        <div style="float: right">{{$reservation->transportation_price}} EUR</div>
                     </div>
 
 

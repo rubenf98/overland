@@ -20,6 +20,9 @@ import Success from "./components/client/Success";
 import Error from "./components/client/Error";
 import Levada from "./components/client/Levada";
 import Tour from "./components/client/Tour";
+import ActivityDetails from "./components/dashboard/activity/ActivityDetails";
+import Safari from "./components/client/Safari";
+import LogRecord from "./components/dashboard/logRecord/LogRecord";
 
 export const history = createBrowserHistory();
 
@@ -27,10 +30,12 @@ function Router() {
     return (
         <BrowserRouter history={history}>
             <Routes>
+                <Route path="/painel/logs" element={<Layout><Dashboard><LogRecord /></Dashboard></Layout>} />
                 <Route path="/painel/reservas/:reservationId" element={<Layout><Dashboard><ReservationDetails /></Dashboard></Layout>} />
                 <Route path="/painel/reservas" element={<Layout><Dashboard><Reservation /></Dashboard></Layout>} />
                 <Route path="/painel/datas" element={<Layout><Dashboard><BlockPeriod /></Dashboard></Layout>} />
                 <Route path="/painel/parceiros" element={<Layout><Dashboard><Partner /></Dashboard></Layout>} />
+                <Route path="/painel/atividades/:activityId" element={<Layout><Dashboard><ActivityDetails /></Dashboard></Layout>} />
                 <Route path="/painel/atividades" element={<Layout><Dashboard><DashboardActivity /></Dashboard></Layout>} />
                 <Route path="/painel" element={<Layout><Dashboard><Home /></Dashboard></Layout>} />
                 <Route path="/login" element={<Layout><Login /></Layout>} />
@@ -40,6 +45,7 @@ function Router() {
                 {/* <Route exact path="/booking" element={<Layout enable><Checkout /></Layout>} />
                 <Route exact path="/activity/:activityId" element={<Layout enable><Activity /></Layout>} />
                 <Route exact path="/category/:category" element={<Layout enable><Activities /></Layout>} /> */}
+                <Route exact path="/safaries" element={<Layout enable><Safari /></Layout>} />
                 <Route exact path="/tours/:tourId" element={<Layout enable><Tour /></Layout>} />
                 <Route exact path="/levadas/:levadaId" element={<Layout enable><Levada /></Layout>} />
                 <Route exact path="/about" element={<Layout enable><About /></Layout>} />

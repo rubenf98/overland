@@ -11,7 +11,7 @@ import FormContainer from "./client/FormContainer";
 const Container = styled.div`
     width: 100%;
     box-sizing: border-box;
-    padding: ${props => props.enable ? "0px 30px" : "0px"};
+    /* padding: ${props => props.enable ? "0px 30px" : "0px"}; */
 `;
 
 export const Layout = (props) => {

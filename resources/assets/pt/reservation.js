@@ -1,7 +1,8 @@
 export const text = {
     success: {
         title: "Está quase a terminar!",
-        text: "Por favor verifique a conta de email que forneceu na secção \"Informação do cliente\" e confirme a reserva através do email enviado."
+        text: "Por favor verifique a conta de email que forneceu na secção \"Informação do cliente\" e confirme a reserva através do email enviado.",
+        button: "voltar"
     },
     error: {
         title: "Ocorreu um erro no pagamento",

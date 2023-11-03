@@ -45,6 +45,9 @@ class ReservationController extends Controller
             'participants' => $validator['participants'],
             'payment_method' => Arr::get($validator, 'payment_method') == 1 ? "Pagamento no levantamento" : "Cartão de crédito",
             'price' => $validator['price'],
+            'council_id' => $validator['council_id'],
+            'activity_price' => $validator['activity_price'],
+            'transportation_price' => $validator['transportation_price'],
             'activity_id' => $validator['activity_id'],
             'client_id' => $client->id,
             'address' => Arr::get($validator, 'address'),
@@ -68,9 +71,10 @@ class ReservationController extends Controller
                 'content-type' => 'application/json',
             ],
         ]);
+
         return json_decode($response->getBody(), true);
 
-        return new ReservationResource($reservation);
+        //return new ReservationResource($reservation);
     }
 
     /**

@@ -6,6 +6,7 @@ use App\Http\Requests\StoreActivityRequest;
 use App\Http\Requests\UpdateActivityRequest;
 use App\Http\Resources\ActivityResource;
 use App\Models\Activity;
+use App\Models\LogRecord;
 use App\QueryFilters\ActivityFilters;
 use Illuminate\Http\Request;
 
@@ -50,6 +51,7 @@ class ActivityController extends Controller
             ],
             'category_id' => $validator['category_id'],
             'price' => $validator['price'],
+            'minimum' => $validator['minimum'],
             'image' => '/storage/activities/' . $imageName,
             'description1' => [
                 'pt' => $validator['description1_pt'],
@@ -64,6 +66,11 @@ class ActivityController extends Controller
                 'en' => $validator['description3_en'],
             ],
 
+        ]);
+
+        LogRecord::create([
+            'user_id' => auth()->user()->id,
+            'description' => "criou a atividade " . $record->id . " com o nome " . $validator['name_pt']
         ]);
 
         return new ActivityResource($record);

@@ -22,11 +22,11 @@ function Homepage(props) {
 
     return (
         <Container>
-            <Header />
-            <Services />
-            <Safari />
-            <Levada text={text} />
-            <Tour />
+            <Header text={text.header} />
+            <Services text={text.services} />
+            <Safari text={text.safari} />
+            <Levada text={text.levada} />
+            <Tour text={text.tour} />
 
 
         </Container>

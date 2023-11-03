@@ -9,19 +9,34 @@ export const fetchActivities = (page = 1, filters = {}) => ({
     })}&page=${page}`)
 })
 
-export const fetchLevadas = (page = 1, filters = {}) => ({
+export const fetchLevadas = (filters = {}) => ({
     type: types.FETCH_LEVADAS,
-    payload: axios.get(`${window.location.origin}/api/activities?${queryString.stringify(filters, {
+    payload: axios.get(`${window.location.origin}/api/selector/activities?${queryString.stringify(filters, {
         arrayFormat: "index"
-    })}&page=${page}`)
+    })}`)
 })
 
 
-export const fetchTours = (page = 1, filters = {}) => ({
+export const fetchTours = (filters = {}) => ({
     type: types.FETCH_TOURS,
-    payload: axios.get(`${window.location.origin}/api/activities?${queryString.stringify(filters, {
+    payload: axios.get(`${window.location.origin}/api/selector/activities?${queryString.stringify(filters, {
         arrayFormat: "index"
-    })}&page=${page}`)
+    })}`)
+})
+
+export const fetchSafaries = (filters = {}) => ({
+    type: types.FETCH_SAFARIES,
+    payload: axios.get(`${window.location.origin}/api/selector/activities?${queryString.stringify(filters, {
+        arrayFormat: "index"
+    })}`)
+})
+
+
+export const isActivityAvailable = (filters = {}) => ({
+    type: types.IS_ACTIVITY_AVAILABLE,
+    payload: axios.get(`${window.location.origin}/api/is-available?${queryString.stringify(filters, {
+        arrayFormat: "index"
+    })}`)
 })
 
 

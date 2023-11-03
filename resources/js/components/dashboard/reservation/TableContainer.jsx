@@ -96,10 +96,10 @@ function TableContainer({ loading, data, meta, handlePageChange, onDelete, handl
         <Container>
             <FilterContainer type="flex" justify="space-between" style={{ margin: "30px 0px" }} gutter={16}>
                 <Col md={8}>
-                    <Input size="large" allowClear value={filters.activity} onChange={(e) => setFilters({ ...filters, activity: e.target.value })} placeholder="Título da atividade" suffix={<SearchIcon />} />
+                    <Input size="large" allowClear value={filters.activity} onChange={(e) => setFilters({ ...filters, activity: e.target.value })} placeholder="Atividade" suffix={<SearchIcon />} />
                 </Col>
                 <Col md={8}>
-                    <DatePicker style={{ width: "100%" }} size="large" allowClear value={filters.date} onChange={(e) => setFilters({ ...filters, date: e })} placeholder="Data da atividade" suffix={<SearchIcon />} />
+                    <DatePicker style={{ width: "100%" }} size="large" allowClear value={filters.date} onChange={(e) => setFilters({ ...filters, date: e })} placeholder="Data" suffix={<SearchIcon />} />
                 </Col>
 
                 <Col md={8}>

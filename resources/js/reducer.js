@@ -11,6 +11,8 @@ import activity from './redux/activity'
 import blockDate from './redux/blockDate'
 import blockPeriod from './redux/blockPeriod'
 import partner from './redux/partner'
+import logRecord from './redux/logRecord'
+import council from './redux/council'
 
 const reducer = combineReducers({
     auth,
@@ -22,7 +24,9 @@ const reducer = combineReducers({
     activity,
     blockDate,
     blockPeriod,
-    partner
+    partner,
+    logRecord,
+    council
 })
 
 export default reducer

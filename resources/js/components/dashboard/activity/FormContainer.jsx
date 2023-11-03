@@ -75,6 +75,7 @@ function FormContainer({ loading, edit, handleClose, updateActivity, visible, cu
         formData.append('name_en', values.name_en);
         formData.append('category_id', values.category_id);
         formData.append('price', values.price);
+        formData.append('minimum', values.minimum);
         formData.append('description1_pt', values.description1_pt);
         formData.append('description1_en', values.description1_en);
         formData.append('description2_pt', values.description2_pt);
@@ -98,6 +99,9 @@ function FormContainer({ loading, edit, handleClose, updateActivity, visible, cu
             }
 
             handleModalClose();
+        }).catch((err) => {
+            console.log(err)
+            alert("ocorreu um problema")
         })
     };
 
@@ -109,6 +113,7 @@ function FormContainer({ loading, edit, handleClose, updateActivity, visible, cu
                     name_en: current?.translation_names?.en,
                     category_id: current?.category?.id,
                     price: current.price,
+                    minimum: current.minimum,
                     description1_pt: current?.description1?.pt,
                     description1_en: current?.description1?.en,
                     description2_pt: current?.description2?.pt,
@@ -122,6 +127,7 @@ function FormContainer({ loading, edit, handleClose, updateActivity, visible, cu
                     name_en: undefined,
                     category_id: undefined,
                     price: undefined,
+                    minimum: undefined,
                     description1_pt: undefined,
                     description1_en: undefined,
                     description2_pt: undefined,
@@ -169,6 +175,11 @@ function FormContainer({ loading, edit, handleClose, updateActivity, visible, cu
 
                             <Col span={8}>
                                 <Form.Item rules={rules.people} name="price" label="Preço">
+                                    <InputNumber style={{ width: "100%" }} addonAfter="€" />
+                                </Form.Item>
+                            </Col>
+                            <Col span={8}>
+                                <Form.Item rules={rules.people} name="minimum" label="Valor mínimo">
                                     <InputNumber style={{ width: "100%" }} addonAfter="€" />
                                 </Form.Item>
                             </Col>

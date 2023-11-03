@@ -11,22 +11,35 @@ import { handleForm } from '../../redux/application/actions';
 
 const Content = styled.section`
     display: flex;
-
-    img {
-        width: 40%;
-        padding-right: 50px;
-        box-sizing: border-box;
-        border-radius: ${borderRadius};
-        height: 100%;
-        object-fit: cover;
-        min-height: 60vh;
-
-        
-    }
+    align-items: stretch;
 
     @media (max-width: ${dimensions.md}) {
         flex-wrap: wrap;
 
+        img {
+            width: 100%;
+            padding-right: 0px;
+            min-height: 0px;
+        }
+            
+    }
+`;
+
+const ImageContainer = styled.div`
+    width: 40%;
+    padding-right: 50px;
+    box-sizing: border-box;
+    min-height: 60vh;  
+
+    img {
+        width: 100%;
+        border-radius: ${borderRadius};
+        height: 100%;
+        object-fit: cover;
+          
+    }
+
+    @media (max-width: ${dimensions.md}) {
         img {
             width: 100%;
             padding-right: 0px;
@@ -143,6 +156,7 @@ const Form = styled.div`
 function Levada(props) {
     const [loading, setLoading] = useState(true)
     const [form, setForm] = useState({ date: undefined, time: undefined, activity: [] })
+    const { text } = require('../../../assets/' + props.language + "/activity");
     const { levadaId } = useParams();
     const { activity, language } = props;
 
@@ -155,13 +169,16 @@ function Levada(props) {
         <Section>
             {loading ? "loading" :
                 <>
-                    <p>Levadas {'>'} {activity?.translation_names[language]}</p>
-                    <Content>
-                        <img src={activity.image} alt={activity.name} />
 
+                    <p>Levadas {'>'} {activity?.translation_names[language]}</p>
+
+                    <Content>
+                        <ImageContainer>
+                            <img src={activity.image} alt={activity.name} />
+                        </ImageContainer>
                         <InfoContent>
                             <h1>{activity?.translation_names[language]}</h1>
-                            <h2>desde <span className='price'>{activity.price}</span> <span className='person'>€/p</span></h2>
+                            <h2>{text.price} <span className='price'>{activity.price}</span> <span className='person'>€/p</span></h2>
 
                             <p className='description'>{activity.description1[language]}</p>
                             <p className='description'>{activity.description2[language]}</p>
@@ -170,7 +187,7 @@ function Levada(props) {
                             <Form>
                                 <Row type="flex" align="middle" gutter={{ xs: 8, md: 64 }}>
                                     <Col span={8} >
-                                        <p>Date</p>
+                                        <p>{text.form.date.label}</p>
                                         <DatePicker
                                             onChange={(e) => setForm({ ...form, date: e })}
                                             style={{ width: "100%", paddingLeft: "0px" }}
@@ -184,7 +201,7 @@ function Levada(props) {
                                         />
                                     </Col>
                                     <Col span={8}>
-                                        <p>Hour</p>
+                                        <p>{text.form.hour.label}</p>
                                         <Select
                                             onChange={(e) => setForm({ ...form, time: e })}
                                             style={{ width: "100%" }}
@@ -223,7 +240,7 @@ function Levada(props) {
                                             ]}
                                         /></Col>
                                     <Col span={8}>
-                                        <button onClick={() => props.handleForm(form)}>Book now</button>
+                                        <button onClick={() => props.handleForm(form)}>{text.button}</button>
                                     </Col>
                                 </Row>
                             </Form>

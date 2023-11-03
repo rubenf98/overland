@@ -86,7 +86,7 @@ const Next = styled.div`
 const Loading = styled.img`
     width: 50px;
     animation: ${rotate} 2s linear infinite;  
-    opacity: ${props => props.isloading ? "1 !important" : "0 !important"};
+    opacity: 1 !important;
 `;
 
 const Previous = styled.img`
@@ -139,7 +139,6 @@ const FormContainer = ({ initForm, handleVisibility, createReservation, loading,
     const { text } = require('../../../assets/' + localStorage.getItem('language') + "/form");
     const [formData, setFormData] = useState({})
     const [step, setStep] = useState(0);
-    const [stepOrder, setStepOrder] = useState([]);
     const [nParticipants, setNParticipants] = useState(3);
     const [drawerWidth, setDrawerWidth] = useState(720);
     const [form] = Form.useForm();
@@ -161,10 +160,6 @@ const FormContainer = ({ initForm, handleVisibility, createReservation, loading,
             title: text.pages[0].title,
             content: <Information text={text.pages[0]} />
         },
-        // {
-        //     title: text.pages[1].title,
-        //     content: <Date form={form} text={text.pages[1]} activity={form.getFieldValue('activity')} />
-        // },
         {
             title: text.pages[1].title,
             content: <Summary text={text.pages[3]} data={{ ...formData, date: dayjs(formData.date).format("YYYY-MM-DD") }} />
@@ -179,22 +174,17 @@ const FormContainer = ({ initForm, handleVisibility, createReservation, loading,
             if (step == 0) {
                 setNParticipants(form.getFieldValue('participants'));
             }
-            // setStepOrder([step, ...stepOrder])
             setStep(1);
         })
 
     }
 
     const previousStep = () => {
-        var newOrder = [...stepOrder];
-        newOrder.splice(0, 1)
-        setStep(stepOrder[0]);
-        setStepOrder(newOrder)
+        setStep(0);
     }
 
     const handleReset = (close = true) => {
         setStep(0);
-        setStepOrder([])
         form.resetFields();
         setFormData({});
         if (!close) {
@@ -286,8 +276,8 @@ const FormContainer = ({ initForm, handleVisibility, createReservation, loading,
                     </Next> :
                     <Row type="flex" justify='end'>
                         <Submit isloading={loading ? 1 : 0} onClick={handleFinish} type='primary' htmlType="submit">
-                            <Loading isloading={loading ? 1 : 0} src="/image/navbar/loading.svg" alt='loading' />
-                            Book now
+
+                            {loading ? <Loading src="/icons/loading.svg" alt='loading' /> : "Book now"}
                         </Submit>
                     </Row>
 

@@ -15,8 +15,8 @@ export const text = {
                 phone: {
                     placeholder: "Phone Number *"
                 },
-                indicative: {
-                    placeholder: "+351"
+                council: {
+                    placeholder: "Pickup zone *"
                 },
                 address: {
                     placeholder: "Pickup Address *"
@@ -80,7 +80,9 @@ export const text = {
                 created_at: "Reserved at",
                 country: "Country",
                 participants: "Number of participants",
-                price: "Price"
+                council: "Pickup zone",
+                councilPrice: "Transportation price",
+                price: "Total"
             },
         },
         {

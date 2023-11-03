@@ -12,21 +12,26 @@ import { handleForm } from '../../redux/application/actions';
 const Content = styled.section`
     display: flex;
 
+    @media (max-width: ${dimensions.md}) {
+        flex-wrap: wrap;            
+    }
+`;
+
+const ImageContainer = styled.div`
+    width: 40%;
+    padding-right: 50px;
+    box-sizing: border-box;
+    min-height: 60vh;  
+
     img {
-        width: 40%;
-        padding-right: 50px;
-        box-sizing: border-box;
+        width: 100%;
         border-radius: ${borderRadius};
         height: 100%;
         object-fit: cover;
-        min-height: 60vh;
-
-        
+          
     }
 
     @media (max-width: ${dimensions.md}) {
-        flex-wrap: wrap;
-
         img {
             width: 100%;
             padding-right: 0px;
@@ -35,6 +40,7 @@ const Content = styled.section`
             
     }
 `;
+
 
 const InfoContent = styled.section`
     width: 60%;
@@ -157,7 +163,9 @@ function Tour(props) {
                 <>
                     <p>Levadas {'>'} {activity?.translation_names[language]}</p>
                     <Content>
-                        <img src={activity.image} alt={activity.name} />
+                        <ImageContainer>
+                            <img src={activity.image} alt={activity.name} />
+                        </ImageContainer>
 
                         <InfoContent>
                             <h1>{activity?.translation_names[language]}</h1>

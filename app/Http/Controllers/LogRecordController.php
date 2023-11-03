@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\LogRecordResource;
 use App\Models\LogRecord;
 use Illuminate\Http\Request;
 
@@ -14,17 +15,7 @@ class LogRecordController extends Controller
      */
     public function index()
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return LogRecordResource::collection(LogRecord::latest()->take(100)->with('user')->get());
     }
 
     /**
@@ -45,17 +36,6 @@ class LogRecordController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(LogRecord $logRecord)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\LogRecord  $logRecord
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(LogRecord $logRecord)
     {
         //
     }

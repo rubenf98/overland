@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Activity;
+use App\Models\Council;
 use Carbon\Carbon;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Http\Exceptions\HttpResponseException;
@@ -24,11 +25,21 @@ class ReservationRequest extends FormRequest
     {
         $activityId = $this->activity_id ? $this->activity_id : $this->activity[1];
         $activity = Activity::find($activityId);
+        $council = Council::find($this->council_id);
 
 
+        $activityPrice = $activity->price * $this->participants;
+        $total = $activityPrice + $council->price;
+
+        if ($total < $activity->minimum) {
+            $total = $activity->minimum + $council->price;
+            $activityPrice = $activity->minimum;
+        }
 
         $this->merge([
-            'price' => $activity->price * $this->participants,
+            'price' => $total,
+            'activity_price' => $activityPrice,
+            'transportation_price' => $council->price,
             'activity_id' => $activityId,
         ]);
         // Log::alert("step 9");
@@ -51,7 +62,10 @@ class ReservationRequest extends FormRequest
 
             'date' => 'required|date|after:' . Carbon::now()->addDay()->startOfDay(),
             'activity_id' =>  'required|integer|exists:activities,id',
+            'council_id' => 'required|integer|exists:councils,id',
             'price' => 'required|numeric',
+            'activity_price' => 'required|numeric',
+            'transportation_price' => 'required|numeric',
             'participants' => 'required|integer',
             'address' => 'nullable|string',
 

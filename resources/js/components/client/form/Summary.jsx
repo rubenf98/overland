@@ -47,18 +47,30 @@ const Feedback = styled.h3`
 `;
 
 
-function Summary({ text, data, categories }) {
+function Summary({ text, data, categories, councils }) {
     const [activityName, setActivityName] = useState("");
     const [activityPrice, setActivityPrice] = useState(0);
+    const [councilName, setCouncilName] = useState("");
+    const [councilPrice, setCouncilPrice] = useState(0);
 
     useEffect(() => {
-        console.log(categories)
         categories.map((category) => {
             if (data.activity.length == 2) {
                 category.activities.map((activity) => {
                     if (activity.id == data.activity[1]) {
-                        setActivityName(activity.name + " (" + activity.price + "€)");
-                        setActivityPrice(activity.price * data.participants);
+                        setActivityName(activity.name);
+                        var price = activity.price * data.participants;
+                        if (price < activity.minimum) {
+                            price = activity.minimum;
+                        }
+                        setActivityPrice(price);
+
+                        var council = councils.find((val) => {
+                            return val.id === data.council_id;
+                        })
+
+                        setCouncilName(council.name)
+                        setCouncilPrice(council.price)
                     }
                 })
             }
@@ -76,8 +88,9 @@ function Summary({ text, data, categories }) {
                 <Detail><span className="fieldname">{text.details.phone} </span> {data.phone} </Detail>
                 <Detail><span className="fieldname">{text.details.country} </span> {data.country} </Detail>
                 <Detail><span className="fieldname">{text.details.participants} </span> {data.participants} </Detail>
-                <Detail><span className="fieldname">{text.details.price} </span>  {activityPrice}€ </Detail>
-
+                <Detail><span className="fieldname">{text.details.council} </span> {councilName} </Detail>
+                {/* <Detail><span className="fieldname">{text.details.councilPrice} </span> {councilPrice}€ </Detail> */}
+                <Detail><span className="fieldname">{text.details.price} </span>  {activityPrice + councilPrice}€ </Detail>
             </Flex>
 
         </div >
@@ -88,6 +101,7 @@ function Summary({ text, data, categories }) {
 const mapStateToProps = (state) => {
     return {
         categories: state.category.selector,
+        councils: state.council.selector,
     };
 };
 

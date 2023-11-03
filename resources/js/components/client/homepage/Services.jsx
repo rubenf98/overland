@@ -29,7 +29,7 @@ const Container = styled.div`
     }
 `;
 
-function Services() {
+function Services({ text }) {
 
     const Service = ({ title, image, text }) => (
         <div>
@@ -42,10 +42,10 @@ function Services() {
     return (
         <Section>
             <Container>
-                <Service image="service_transport" title="Transportation" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
-                <Service image="service_guide" title="Experienced guides" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
-                <Service image="service_language" title="Multilangual" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
-                <Service image="service_nature" title="Nature connection" text="Lorem ipsum dolor sit amet, consectetur adipiscing elit." />
+                <Service image="service_transport" title={text.transportation.title} text={text.transportation.description} />
+                <Service image="service_guide" title={text.guides.title} text={text.guides.description} />
+                <Service image="service_language" title={text.language.title} text={text.language.description} />
+                <Service image="service_nature" title={text.nature.title} text={text.nature.description} />
             </Container>
         </Section>
     )
