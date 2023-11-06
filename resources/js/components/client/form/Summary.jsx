@@ -90,7 +90,7 @@ function Summary({ text, data, categories, councils }) {
                 <Detail><span className="fieldname">{text.details.participants} </span> {data.participants} </Detail>
                 <Detail><span className="fieldname">{text.details.council} </span> {councilName} </Detail>
                 {/* <Detail><span className="fieldname">{text.details.councilPrice} </span> {councilPrice}€ </Detail> */}
-                <Detail><span className="fieldname">{text.details.price} </span>  {activityPrice + councilPrice}€ </Detail>
+                <Detail><span className="fieldname">{text.details.price} </span>  {parseInt(activityPrice) + parseInt(councilPrice)}€ </Detail>
             </Flex>
 
         </div >
