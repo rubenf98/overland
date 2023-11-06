@@ -104,6 +104,7 @@ class ActivityController extends Controller
             ],
             'category_id' => $validator['category_id'],
             'price' => $validator['price'],
+            'minimum' => $validator['minimum'],
             'description1' => [
                 'pt' => $validator['description1_pt'],
                 'en' => $validator['description1_en'],
