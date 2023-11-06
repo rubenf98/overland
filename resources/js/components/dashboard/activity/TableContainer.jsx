@@ -66,9 +66,14 @@ function TableContainer({ loading, data, meta, handlePageChange, onDelete, handl
             render: (category) => category?.name?.pt,
         },
         {
-            title: 'PREÇO',
+            title: 'PREÇO /p',
             dataIndex: 'price',
             render: (price) => price + "€",
+        },
+        {
+            title: 'VALOR MÍNIMO',
+            dataIndex: 'minimum',
+            render: (minimum) => minimum + "€",
         },
         {
             title: 'ESTADO',

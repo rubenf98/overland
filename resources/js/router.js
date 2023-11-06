@@ -13,7 +13,7 @@ import BlockPeriod from "./components/dashboard/blockPeriod/BlockPeriod";
 import Reservation from "./components/dashboard/reservation/Reservation";
 import About from "./components/client/About";
 import ReservationDetails from "./components/dashboard/reservation/ReservationDetails";
-import Partner from "./components/dashboard/partner/Partner";
+import Client from "./components/dashboard/client/Client";
 import Contact from "./components/client/Contact";
 import Confirmation from "./components/client/Confirmation";
 import Success from "./components/client/Success";
@@ -23,6 +23,8 @@ import Tour from "./components/client/Tour";
 import ActivityDetails from "./components/dashboard/activity/ActivityDetails";
 import Safari from "./components/client/Safari";
 import LogRecord from "./components/dashboard/logRecord/LogRecord";
+import Council from "./components/dashboard/council/Council";
+import ClientDetails from "./components/dashboard/client/ClientDetails";
 
 export const history = createBrowserHistory();
 
@@ -34,7 +36,9 @@ function Router() {
                 <Route path="/painel/reservas/:reservationId" element={<Layout><Dashboard><ReservationDetails /></Dashboard></Layout>} />
                 <Route path="/painel/reservas" element={<Layout><Dashboard><Reservation /></Dashboard></Layout>} />
                 <Route path="/painel/datas" element={<Layout><Dashboard><BlockPeriod /></Dashboard></Layout>} />
-                <Route path="/painel/parceiros" element={<Layout><Dashboard><Partner /></Dashboard></Layout>} />
+                <Route path="/painel/concelhos" element={<Layout><Dashboard><Council /></Dashboard></Layout>} />
+                <Route path="/painel/clientes/:clientId" element={<Layout><Dashboard><ClientDetails /></Dashboard></Layout>} />
+                <Route path="/painel/clientes" element={<Layout><Dashboard><Client /></Dashboard></Layout>} />
                 <Route path="/painel/atividades/:activityId" element={<Layout><Dashboard><ActivityDetails /></Dashboard></Layout>} />
                 <Route path="/painel/atividades" element={<Layout><Dashboard><DashboardActivity /></Dashboard></Layout>} />
                 <Route path="/painel" element={<Layout><Dashboard><Home /></Dashboard></Layout>} />

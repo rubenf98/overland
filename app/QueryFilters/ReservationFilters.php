@@ -11,6 +11,17 @@ use Cerbero\QueryFilters\QueryFilters;
  */
 class ReservationFilters extends QueryFilters
 {
+    public function token($string)
+    {
+        $this->query->where('token', 'like', '%' .  $string . '%');
+    }
+
+    public function client($id)
+    {
+        $this->query->where('client_id', $id);
+    }
+
+
     public function activity($string)
     {
         $this->query->whereHas('activity', function ($movies) use ($string) {

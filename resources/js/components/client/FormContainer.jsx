@@ -195,7 +195,7 @@ const FormContainer = ({ initForm, handleVisibility, createReservation, loading,
 
     const handleFinish = () => {
         form.validateFields().then((currentStepData) => {
-            createReservation({ ...formData, ...currentStepData, date: dayjs(formData.date).format('YYYY-MM-DD HH:mm') }).then((response, err) => {
+            createReservation({ ...formData, ...currentStepData, date: dayjs(formData.date).format('YYYY-MM-DD') + " " + formData.time }).then((response, err) => {
                 if (!err) {
                     if (response.action.payload.data.transactionStatus == "Success") {
                         handleReset(false);

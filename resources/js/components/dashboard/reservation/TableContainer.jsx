@@ -46,14 +46,18 @@ const FilterContainer = styled(Row)`
     }
 `;
 
-function TableContainer({ loading, data, meta, handlePageChange, onDelete, handleUpdateClick, setCarStatus, handleCreateClick, handleFilters }) {
-    const [filters, setFilters] = useState({ activity: undefined, date: undefined });
+function TableContainer({ loading, data, meta, handlePageChange, onDelete, handleUpdateClick, handleCreateClick, handleFilters }) {
+    const [filters, setFilters] = useState({ activity: undefined, date: undefined, token: undefined });
 
     const columns = [
         {
             title: 'ID',
             dataIndex: 'id',
             render: (id) => <Tag color="purple">#{id}</Tag>,
+        },
+        {
+            title: 'Identificador',
+            dataIndex: 'token',
         },
         {
             title: 'ATIVIDADE',
@@ -79,7 +83,7 @@ function TableContainer({ loading, data, meta, handlePageChange, onDelete, handl
             dataIndex: 'id',
             render: (id) => <Link to={"/painel/reservas/" + id}>ver detalhes</Link>
         },
-        {
+        (onDelete || handleUpdateClick) ? {
             title: 'Ações',
             dataIndex: 'id',
             render: (text, row) => (
@@ -89,27 +93,34 @@ function TableContainer({ loading, data, meta, handlePageChange, onDelete, handl
                     />
                 </StopPropagation>
             ),
-        },
+        } : {}
+
     ];
 
     return (
         <Container>
             <FilterContainer type="flex" justify="space-between" style={{ margin: "30px 0px" }} gutter={16}>
-                <Col md={8}>
+                <Col md={6}>
+                    <Input size="large" allowClear value={filters.token} onChange={(e) => setFilters({ ...filters, token: e.target.value })} placeholder="Nº confirmação" suffix={<SearchIcon />} />
+                </Col>
+                <Col md={6}>
                     <Input size="large" allowClear value={filters.activity} onChange={(e) => setFilters({ ...filters, activity: e.target.value })} placeholder="Atividade" suffix={<SearchIcon />} />
                 </Col>
-                <Col md={8}>
+                <Col md={6}>
                     <DatePicker style={{ width: "100%" }} size="large" allowClear value={filters.date} onChange={(e) => setFilters({ ...filters, date: e })} placeholder="Data" suffix={<SearchIcon />} />
                 </Col>
 
-                <Col md={8}>
-                    <PrimaryButton
-                        onClick={handleCreateClick}
-                        style={{ float: "right", marginLeft: "10px" }} type="primary"
-                        loading={loading}
-                    >
-                        Adicionar
-                    </PrimaryButton>
+                <Col md={6}>
+                    {handleCreateClick &&
+                        <PrimaryButton
+                            onClick={handleCreateClick}
+                            style={{ float: "right", marginLeft: "10px" }} type="primary"
+                            loading={loading}
+                        >
+                            Adicionar
+                        </PrimaryButton>
+                    }
+
 
                     <SecundaryButton
                         onClick={() => handleFilters({ ...filters, date: filters.date && dayjs(filters.date).format('YYYY-MM-DD') })}

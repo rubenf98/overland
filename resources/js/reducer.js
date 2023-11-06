@@ -10,7 +10,7 @@ import category from './redux/category'
 import activity from './redux/activity'
 import blockDate from './redux/blockDate'
 import blockPeriod from './redux/blockPeriod'
-import partner from './redux/partner'
+import client from './redux/client'
 import logRecord from './redux/logRecord'
 import council from './redux/council'
 
@@ -24,7 +24,7 @@ const reducer = combineReducers({
     activity,
     blockDate,
     blockPeriod,
-    partner,
+    client,
     logRecord,
     council
 })

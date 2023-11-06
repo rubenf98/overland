@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CouncilRequest;
 use App\Http\Resources\CouncilResource;
 use App\Models\Council;
+use App\Models\LogRecord;
 use App\QueryFilters\CouncilFilters;
 use Illuminate\Http\Request;
 
@@ -43,7 +45,7 @@ class CouncilController extends Controller
      */
     public function show(Council $council)
     {
-        //
+        return new CouncilResource($council);
     }
 
     /**
@@ -53,9 +55,20 @@ class CouncilController extends Controller
      * @param  \App\Models\Council  $council
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Council $council)
+    public function update(CouncilRequest $request, Council $council)
     {
-        //
+        $validator = $request->validated();
+        $council->update([
+            'name' => $validator['name'],
+            'price' => $validator['price'],
+        ]);
+
+        LogRecord::create([
+            'user_id' => auth()->user()->id,
+            'description' => "editou os dados do concelho  " . $council->id . " (" . $council->name . ")"
+        ]);
+
+        return new CouncilResource($council);
     }
 
     /**
@@ -66,6 +79,11 @@ class CouncilController extends Controller
      */
     public function destroy(Council $council)
     {
+        LogRecord::create([
+            'user_id' => auth()->user()->id,
+            'description' => "apagou o concelho  " . $council->id . " (" . $council->name . ")"
+        ]);
+
         $council->delete();
 
         return response()->json(null, 204);

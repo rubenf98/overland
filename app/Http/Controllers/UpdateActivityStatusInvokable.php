@@ -25,7 +25,7 @@ class UpdateActivityStatusInvokable extends Controller
 
         LogRecord::create([
             'user_id' => auth()->user()->id,
-            'description' => "atualizou o estado do veículo " . $activity->id
+            'description' => "atualizou o estado da atividade " . $activity->id . " (" . $activity->name . ")"
         ]);
 
         return new ActivityResource($activity);

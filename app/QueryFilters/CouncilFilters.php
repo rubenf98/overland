@@ -10,5 +10,8 @@ use Cerbero\QueryFilters\QueryFilters;
  */
 class CouncilFilters extends QueryFilters
 {
-    //
+    public function name($string)
+    {
+        $this->query->where('name', 'like', '%' .  $string . '%');
+    }
 }

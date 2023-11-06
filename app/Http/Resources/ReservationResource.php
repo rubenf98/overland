@@ -20,6 +20,8 @@ class ReservationResource extends JsonResource
             'activity' => $this->activity,
             'client' => $this->client,
             'price' => $this->price,
+            'activity_price' => $this->activity_price,
+            'transportation_price' => $this->transportation_price,
             'participants' => $this->participants,
             'status' => $this->status,
             'created_at' => (string) $this->created_at,

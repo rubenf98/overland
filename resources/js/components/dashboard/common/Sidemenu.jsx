@@ -83,14 +83,21 @@ function Sidemenu({ user }) {
             label: <Link to="/painel/atividades"><img className='icon' src="/icon/dashboard/activity.svg" /></Link>,
             key: 'carros',
         },
-        user.admin && {
+        {
             label:
-                <Link to="/painel/parceiros">
+                <Link to="/painel/concelhos">
+                    <img className='icon' src="/icon/dashboard/council.svg" />
+                </Link>,
+            key: 'concelhos',
+        },
+        {
+            label:
+                <Link to="/painel/clientes">
                     <img className='icon' src="/icon/dashboard/client.svg" />
                 </Link>,
             key: 'clientes',
         },
-        user.admin && {
+        {
             label: <Link to="/painel/logs">
                 <img className='icon' src="/icon/dashboard/config.svg" />
             </Link>,

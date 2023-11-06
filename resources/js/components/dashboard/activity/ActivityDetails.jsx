@@ -13,6 +13,8 @@ const Content = styled.section`
 
     img {
         width: 100%;
+        height: 100%;
+        object-fit: cover;
     }
 `;
 
@@ -54,7 +56,7 @@ function ActivityDetails(props) {
             <Banner text={"Atividade #" + activityId} />
 
             <Content>
-                <Row gutter={64}>
+                <Row gutter={64} align="stretch">
                     <Col xs={24} md={8}>
                         <img src={props.current.image} alt="" />
                     </Col>
@@ -80,16 +82,21 @@ function ActivityDetails(props) {
                                 <Item label="Descrição (EN)" value={props.current?.description2?.en} />
                             </Col>
                             <Col xs={24} md={12}>
-                                <Item label="Requisitos (PT)" value={props.current?.description3?.pt} />
+                                <Item label="Detalhes (PT)" value={props.current?.description3?.pt} />
                             </Col>
                             <Col xs={24} md={12}>
-                                <Item label="Requisitos (EN)" value={props.current?.description3?.en} />
+                                <Item label="Detalhes (EN)" value={props.current?.description3?.en} />
                             </Col>
+
+                            <Col xs={24} md={12}>
+                                <Item label="Preço mínimo" value={props.current?.minimum + "€"} />
+                            </Col>
+                            <Col xs={24} md={12}>
+                                <Item label="Preço /p" value={props.current?.price + "€"} />
+                            </Col>
+
                             <Col xs={24} md={12}>
                                 <Item label="Estado" value={props.current?.status ? "Desbloqueado" : "Bloqueado"} />
-                            </Col>
-                            <Col xs={24} md={12}>
-                                <Item label="Preço" value={props.current?.price + "€"} />
                             </Col>
                         </Row>
 

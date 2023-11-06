@@ -142,23 +142,31 @@ function DrawerContainer(props) {
 
                         <FieldContainer name="Data da reserva" value={dayjs(data.created_at).format('DD-MM-YYYY HH:mm')} />
                         <FieldContainer name="Data da atividade" value={dayjs(data.date).format('DD-MM-YYYY HH:mm')} />
-                        <FieldContainer name="Estado atual" value={data.status} />
 
                         <FieldContainer name="Método de pagamento" value={EmptyField(data.payment_method)} />
 
                         <Field className='field-width' >
                             <p>
-                                <span className='name'>Atividiade:</span> <span className='value'>{data.activity?.name?.pt}</span> <Url to={"/painel/atividades/" + data.activity?.id}><img src='/icon/dashboard/link.svg' /></Url>
+                                <span className='name'>Atividade:</span> <span className='value'>{data.activity?.name?.pt}</span> <Url to={"/painel/atividades/" + data.activity?.id}><img src='/icon/dashboard/link.svg' /></Url>
                             </p>
 
                         </Field>
 
 
-                        <FieldContainer name="Pagamento" value={<Tag color={data.payed_at ? "success" : "warning"}>{data.payed_at ? "Pago" : "Pendente"}</Tag>} />
+                        {/* <FieldContainer name="Pagamento" value={<Tag color={data.payed_at ? "success" : "warning"}>{data.payed_at ? "Pago" : "Pendente"}</Tag>} /> */}
+
+
+                        {/* <FieldContainer width="100%" name="Notas" value={EmptyField(data.notes)} /> */}
+
+                    </FieldsContainer>
+                </Col>
+
+                <Col xs={24}>
+                    <Section><h3>Custos</h3> <div className='underline' /></Section>
+                    <FieldsContainer width="50%">
+                        <FieldContainer name="Preço atividade" value={data.activity_price + "€"} />
+                        <FieldContainer name="Preço de transporte" value={data.transportation_price + "€"} />
                         <FieldContainer name="Total" value={data.price + "€"} />
-
-                        <FieldContainer width="100%" name="Notas" value={EmptyField(data.notes)} />
-
                     </FieldsContainer>
                 </Col>
 

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import { Modal, Row, Form, Button, Input, Col, InputNumber, Select, Upload } from 'antd';
+import { Modal, Row, Form, Button, Input, Col, InputNumber, Select, Upload, message } from 'antd';
 import { connect } from "react-redux";
 import TextArea from "antd/lib/input/TextArea";
 import { updateActivity, createActivity } from "../../../redux/activity/actions";
@@ -174,7 +174,7 @@ function FormContainer({ loading, edit, handleClose, updateActivity, visible, cu
                             </Col>
 
                             <Col span={8}>
-                                <Form.Item rules={rules.people} name="price" label="Preço">
+                                <Form.Item rules={rules.people} name="price" label="Preço por pessoa">
                                     <InputNumber style={{ width: "100%" }} addonAfter="€" />
                                 </Form.Item>
                             </Col>
@@ -222,11 +222,15 @@ function FormContainer({ loading, edit, handleClose, updateActivity, visible, cu
                                 <p>Imagem</p>
                                 <Upload
                                     maxCount={1}
+                                    accept=".jpeg, .jpg"
                                     onRemove={() => setBanner(undefined)}
                                     beforeUpload={(file) => {
                                         const isLt5M = file.size / 1024 / 1024 < 5;
                                         if (isLt5M) {
                                             setBanner(file);
+                                        } else {
+                                            setBanner(undefined)
+                                            message.warning("Imagem demasiado grande, o tamanho máximo suportado é 5Mb")
                                         }
                                         return false;
                                     }}

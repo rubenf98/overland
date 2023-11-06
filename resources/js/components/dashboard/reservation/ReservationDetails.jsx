@@ -30,17 +30,19 @@ function ReservationDetails(props) {
         <div>
             <Banner text={"Reserva #" + reservationId} />
 
-            <Row>
+            <Row style={{ padding: "50px", boxSizing: "border-box" }}>
                 <Col xs={24} md={8}>
                     <h2>Detalhes da reserva</h2>
-                    <Item label="Token" value={props.current.token} />
+                    <Item label="Identificador de confirmação" value={props.current.token} />
                     <Item label="Data da atividade" value={props.current.date} />
                     <Item label="Data de reserva" value={props.current.created_at} />
-                    <Item label="Preço" value={props.current.price + "€"} />
                     <Item label="Participantes" value={props.current.participants} />
                     <Item label="Estado" value={props.current.status} />
                     <Item label="Método de pagamento" value={props.current.payment_method} />
-                    <Item label="Notas" value={props.current.notes ? props.current.notes : "---"} />
+                    <Item label="Total" value={props.current.price + "€"} />
+                    <Item label="Preço da atividade" value={props.current.activity_price + "€"} />
+                    <Item label="Preço do transporte" value={props.current.transportation_price + "€"} />
+                    {/* <Item label="Notas" value={props.current.notes ? props.current.notes : "---"} /> */}
                 </Col>
                 <Col xs={24} md={8}>
                     <h2>Cliente</h2>
@@ -54,6 +56,7 @@ function ReservationDetails(props) {
                     <h2>Atividade</h2>
                     <Item label="Id" value={props.current?.activity?.id} />
                     <Item label="Título" value={props.current?.activity?.name?.pt} />
+                    <Item label="Valor mínimo" value={props.current?.activity?.minimum + "€"} />
                 </Col>
             </Row>
         </div>

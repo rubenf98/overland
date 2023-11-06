@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ClientRequest;
+use App\Http\Resources\ClientResource;
 use App\Models\Client;
+use App\Models\LogRecord;
+use App\QueryFilters\ClientFilters;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 
 class ClientController extends Controller
 {
@@ -12,19 +17,9 @@ class ClientController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(ClientFilters $filters)
     {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return ClientResource::collection(Client::filterBy($filters)->paginate(10));
     }
 
     /**
@@ -46,18 +41,7 @@ class ClientController extends Controller
      */
     public function show(Client $client)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Client  $client
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Client $client)
-    {
-        //
+        return new ClientResource($client);
     }
 
     /**
@@ -67,9 +51,24 @@ class ClientController extends Controller
      * @param  \App\Models\Client  $client
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Client $client)
+    public function update(ClientRequest $request, Client $client)
     {
-        //
+        $validator = $request->validated();
+        $client->update([
+            'name' => $validator['name'],
+            'cc' => Arr::get($validator, 'cc'),
+            'nif' => Arr::get($validator, 'nif'),
+            'country' => Arr::get($validator, 'country'),
+            'email' => $validator['email'],
+            'phone' => $validator['phone'],
+        ]);
+
+        LogRecord::create([
+            'user_id' => auth()->user()->id,
+            'description' => "editou os dados do cliente  " . $client->id . " (" . $client->name . ")"
+        ]);
+
+        return new ClientResource($client);
     }
 
     /**
@@ -80,6 +79,13 @@ class ClientController extends Controller
      */
     public function destroy(Client $client)
     {
-        //
+        LogRecord::create([
+            'user_id' => auth()->user()->id,
+            'description' => "apagou o cliente  " . $client->id . " (" . $client->name . ")"
+        ]);
+
+        $client->delete();
+
+        return response()->json(null, 204);
     }
 }

@@ -2,18 +2,19 @@
 
 namespace App\Models;
 
+use Cerbero\QueryFilters\FiltersRecords;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Arr;
 
 class Client extends Model
 {
-    use HasFactory;
+    use FiltersRecords;
     protected $fillable = ['notes', 'name', 'cc', 'nif', 'address', 'country', 'postal_code', 'email', 'phone', 'company'];
 
     public static function store($validator)
     {
-        $client = self::where('cc', Arr::get($validator, 'cc'))->orWhere('email', $validator['email'])->first();
+        $client = self::where('email', $validator['email'])->first();
 
         if ($client) {
             $client->update([

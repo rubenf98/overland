@@ -29,7 +29,7 @@ export const deleteCouncil = id => ({
 
 export const updateCouncil = (id, data) => ({
     type: types.UPDATE_COUNCIL,
-    payload: axios.post(`${window.location.origin}/api/councils/${id}`, data),
+    payload: axios.put(`${window.location.origin}/api/councils/${id}`, data),
 });
 
 export const createCouncil = (data) => ({
