@@ -11,7 +11,7 @@ export const text = {
     },
     confirmation: {
         title: "Thank you for your reservation!",
-        text: "Your reservation is confirmed. If you have any questions, send us an email to info@overlandmadeira.com or contact us at +351 934 953 682",
+        text: "Your reservation is confirmed. If you have any questions, send us an email to overlandmadeira@gmail.com or contact us at +351 934 953 682",
         button: "return"
     }
 };

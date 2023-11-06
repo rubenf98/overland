@@ -64,7 +64,7 @@ class ReservationController extends Controller
         $payment = new \GuzzleHttp\Client();
 
         $response = $payment->request('POST', 'https://sandbox.eupago.pt/api/v1.02/creditcard/create', [
-            'body' => '{"payment":{"amount":{"currency":"EUR","value":' . $validator['price'] . '},"lang":"EN","successUrl":"https://overlandmadeira.com/confirmation?token=' . $reservation->token . '","failUrl":"https://overlandmadeira.com/error?token=' . $reservation->token . '","backUrl":"https://overlandmadeira.com/error?token=' . $reservation->token . '","identifier":"' . $reservation->token . '"},"customer":{"notify":true,"email":"joseruben98@hotmail.com"}}',
+            'body' => '{"payment":{"amount":{"currency":"EUR","value":' . $validator['price'] . '},"lang":"EN","successUrl":"https://teste.overlandmadeira.com/confirmation?token=' . $reservation->token . '","failUrl":"https://teste.overlandmadeira.com/error?token=' . $reservation->token . '","backUrl":"https://teste.overlandmadeira.com/error?token=' . $reservation->token . '","identifier":"' . $reservation->token . '"},"customer":{"notify":true,"email":"joseruben98@hotmail.com"}}',
             'headers' => [
                 'Authorization' => 'ApiKey demo-4b74-73db-c3b0-a29',
                 'accept' => 'application/json',

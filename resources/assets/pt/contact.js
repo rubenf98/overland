@@ -3,15 +3,9 @@ export const text = {
         Entre em contacto</>),
     button: "enviar",
     form: {
-        name: {
-            placeholder: "Nome"
-        },
-        email: {
-            placeholder: "Email"
-        },
-        message: {
-            placeholder: "Fale connosco"
-        },
+        name: "Nome",
+        email: "Email",
+        message: "Fale connosco",
     },
     feedback: "A sua mensagem foi enviada. Iremos entrar em contacto consigo o mais rapidamente possível.",
 } 

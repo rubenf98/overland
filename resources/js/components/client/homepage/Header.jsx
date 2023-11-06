@@ -228,16 +228,16 @@ function Header(props) {
             {contextHolder}
             <Background src="/images/homepage/header_1920.jpg" alt="green leafs" />
             <SocialContainer>
-                <a href="http://" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.facebook.com/profile.php?id=61551065549062" target="_blank" rel="noopener noreferrer">
                     <img src="/icons/facebook_white.svg" alt="facebook" />
                 </a>
-                <a href="http://" target="_blank" rel="noopener noreferrer">
+                <a href="https://api.whatsapp.com/send?l=en&phone=351910178500" target="_blank" rel="noopener noreferrer">
                     <img src="/icons/whatsapp_white.svg" alt="whatsapp" />
                 </a>
-                <a href="http://" target="_blank" rel="noopener noreferrer">
+                <a href="https://www.instagram.com/overland_madeira?igshid=YTQwZjQ0NmI0OA%3D%3D" target="_blank" rel="noopener noreferrer">
                     <img src="/icons/instagram_white.svg" alt="instagram" />
                 </a>
-                <a href="http://" target="_blank" rel="noopener noreferrer">
+                <a href="mailto:overlandmadeira@gmail.com" target="_blank" rel="noopener noreferrer">
                     <img src="/icons/email_white.svg" alt="email" />
                 </a>
             </SocialContainer>

@@ -103,14 +103,22 @@ function Footer(props) {
                         <h3>{text.titles[0]}</h3>
                         <p>Entreposto Comercial e Industrial Sambrasense – Sítio dos BarrabésCx Postal 908-Z, 8150-016, São Brás de Alportel</p>
                         <p>00351 944 180 092</p>
-                        <p>geral@overlandmadeira.com</p>
+                        <p>overlandmadeira@gmail.com</p>
 
                         <h3>{text.titles[1]}</h3>
                         <div className='social'>
-                            <img src="/icons/instagram_white.svg" alt="instagram" />
-                            <img src="/icons/facebook_white.svg" alt="facebook" />
-                            <img src="/icons/whatsapp_white.svg" alt="whatsapp" />
-                            <img src="/icons/email_white.svg" alt="email" />
+                            <a href="https://www.facebook.com/profile.php?id=61551065549062" target="_blank" rel="noopener noreferrer">
+                                <img src="/icons/facebook_white.svg" alt="facebook" />
+                            </a>
+                            <a href="https://api.whatsapp.com/send?l=en&phone=351910178500" target="_blank" rel="noopener noreferrer">
+                                <img src="/icons/whatsapp_white.svg" alt="whatsapp" />
+                            </a>
+                            <a href="https://www.instagram.com/overland_madeira?igshid=YTQwZjQ0NmI0OA%3D%3D" target="_blank" rel="noopener noreferrer">
+                                <img src="/icons/instagram_white.svg" alt="instagram" />
+                            </a>
+                            <a href="mailto:overlandmadeira@gmail.com" target="_blank" rel="noopener noreferrer">
+                                <img src="/icons/email_white.svg" alt="email" />
+                            </a>
                         </div>
                     </ContactContainer>
                     <LinkContainer>
