@@ -15,6 +15,7 @@ use App\Http\Controllers\IsActivityAvailableInvokable;
 use App\Http\Controllers\LogRecordController;
 use App\Http\Controllers\PartnerController;
 use App\Http\Controllers\ReservationController;
+use App\Http\Controllers\SimulatePriceInvokable;
 use App\Http\Controllers\UpdateActivityStatusInvokable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -45,6 +46,7 @@ Route::get('me', 'App\Http\Controllers\AuthController@me');
 
 Route::apiResource('contact', 'App\Http\Controllers\ContactController');
 
+Route::get('/simulate', SimulatePriceInvokable::class);
 Route::put('/confirm/reservation', ConfirmReservationInvokable::class);
 Route::put('/error/reservation', ErrorReservationInvokable::class);
 

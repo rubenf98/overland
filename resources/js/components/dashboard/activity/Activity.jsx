@@ -4,6 +4,7 @@ import TableContainer from './TableContainer';
 import { connect } from 'react-redux';
 import { fetchActivities, deleteActivity, setCurrentActivity, setActivityStatus } from "../../../redux/activity/actions";
 import FormContainer from './FormContainer';
+import Simulator from '../common/Simulator';
 
 const Banner = styled.section`
     background: url("/images/dashboard/banner.svg");
@@ -60,6 +61,8 @@ function Activity(props) {
             <Banner>
                 <h1>As minhas atividades</h1>
             </Banner>
+
+            <Simulator />
 
             <FormContainer
                 visible={visible}

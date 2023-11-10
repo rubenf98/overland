@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { fetchRelevantReservations } from "../../redux/reservation/actions";
 import Sidemenu from "./common/Sidemenu";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
     display: flex;
@@ -16,6 +17,14 @@ const Container = styled.div`
 `;
 
 function Dashboard(props) {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        if (!props.isAuthenticated) {
+            navigate("/login");
+        }
+    }, [props.isAuthenticated])
+
     return (
         <Container>
             <Sidemenu user={props.user} />
@@ -32,6 +41,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) => {
     return {
+        isAuthenticated: state.auth.isAuthenticated,
         user: state.auth.currentUser,
         loading: state.reservation.loading,
         data: state.reservation.relevantData

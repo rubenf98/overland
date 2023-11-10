@@ -17,6 +17,13 @@ export const fetchReservationsPerMonth = (filters = {}) => ({
     })}`)
 })
 
+export const simulatePrice = (filters = {}) => ({
+    type: types.SIMULATE_PRICE,
+    payload: axios.get(`${window.location.origin}/api/simulate?${queryString.stringify(filters, {
+        arrayFormat: "index"
+    })}`)
+})
+
 export const fetchReservationsArchive = (page = 1, filters = {}) => ({
     type: types.FETCH_RESERVATIONS_ARCHIVE,
     payload: axios.get(`${window.location.origin}/api/reservations-archive?${queryString.stringify(filters, {

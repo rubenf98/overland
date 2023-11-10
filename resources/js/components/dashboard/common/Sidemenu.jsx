@@ -2,6 +2,8 @@ import { Menu } from 'antd';
 import React from 'react'
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { logout } from '../../../redux/auth/actions';
+import { connect } from 'react-redux';
 
 const Logo = styled.img`
     width: 70px;
@@ -61,7 +63,7 @@ const Container = styled.div`
     
 `;
 
-function Sidemenu({ user }) {
+function Sidemenu(props) {
 
     const items = [
         {
@@ -103,7 +105,10 @@ function Sidemenu({ user }) {
             </Link>,
             key: 'logs',
         },
-
+        {
+            label: <img onClick={props.logout} className='icon' src="/icon/dashboard/logout.svg" />,
+            key: 'logout',
+        },
 
     ];
     return (
@@ -118,4 +123,19 @@ function Sidemenu({ user }) {
     )
 }
 
-export default Sidemenu
+const mapDispatchToProps = (dispatch) => {
+    return {
+        logout: () => dispatch(logout()),
+    };
+};
+
+const mapStateToProps = (state) => {
+    return {
+        isAuthenticated: state.auth.isAuthenticated,
+        user: state.auth.currentUser,
+        loading: state.reservation.loading,
+        data: state.reservation.relevantData
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Sidemenu);

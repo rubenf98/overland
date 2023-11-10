@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react'
-import { Row, Form, Col, Input } from 'antd';
-import { CustomCascader, CustomInput, CustomSelect, CustomTextArea } from './styles';
+import { Row, Form, Col } from 'antd';
+import { CustomInput, CustomSelect } from './styles';
 import { fetchCategorySelector } from "../../../redux/category/actions";
 import { connect } from "react-redux";
-import CouncilRemoteSelectContainer from "../../dashboard/council/CouncilRemoteSelectContainer";
+import CustomCouncilRemoteSelectContainer from '../../dashboard/council/CustomCouncilRemoteSelectContainer';
 
 const rules = {
     required: [
@@ -102,7 +102,7 @@ function Information({ fetchCategorySelector, data, text }) {
                         rules={rules.required}
                     >
 
-                        <CouncilRemoteSelectContainer placeholder={text.form.council.placeholder} />
+                        <CustomCouncilRemoteSelectContainer placeholder={text.form.council.placeholder} />
                     </Form.Item>
                 </Col>
 

@@ -2,6 +2,7 @@ import { Select } from 'antd';
 import React, { useEffect } from 'react'
 import { connect } from "react-redux";
 import { fetchCouncilSelector } from '../../../redux/council/actions';
+import { CustomSelect } from '../../client/form/styles';
 
 function CouncilRemoteSelectContainer({ fetchCouncilSelector, data, loading, value, onChange, placeholder }) {
     useEffect(() => {
@@ -9,12 +10,11 @@ function CouncilRemoteSelectContainer({ fetchCouncilSelector, data, loading, val
     }, [])
 
     return (
-        <Select
+        <CustomSelect
             value={value}
             onChange={onChange}
             loading={loading}
             showSearch
-            style={{ width: "100%" }}
             size="large"
             placeholder={placeholder}
             optionFilterProp="name"
@@ -23,7 +23,7 @@ function CouncilRemoteSelectContainer({ fetchCouncilSelector, data, loading, val
             {data.map((element) => (
                 <Select.Option key={element.id} value={element.id}>{element.name}</Select.Option>
             ))}
-        </Select>
+        </CustomSelect>
     )
 }
 

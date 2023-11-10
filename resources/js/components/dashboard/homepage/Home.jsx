@@ -5,6 +5,7 @@ import { fetchRelevantReservations } from "../../../redux/reservation/actions";
 import DrawerContainer from "../reservation/DrawerContainer";
 import TableContainer from "./TableContainer";
 import CalendarContainer from "./CalendarContainer";
+import Simulator from "../common/Simulator";
 
 const Container = styled.section`
 `;
@@ -44,6 +45,7 @@ function Home({ fetchRelevantReservations, data }) {
     const [current, setCurrent] = useState(undefined);
     const [drawerState, setDrawerState] = useState(0);
 
+
     useEffect(() => {
         fetchRelevantReservations();
     }, [])
@@ -60,12 +62,17 @@ function Home({ fetchRelevantReservations, data }) {
                 <h1>Bem vindo de volta ao painel de controlo</h1>
             </Banner>
 
+
+
             <DrawerContainer currentId={current} drawerState={drawerState} setDrawerState={setDrawerState} />
             <Content>
+
+
                 <TodayContainer>
                     <TableContainer handleRowClick={handleRowClick} title="Atividades hoje" data={data.today} />
                     <TableContainer handleRowClick={handleRowClick} title="Próximas atividades" data={data.next} />
                 </TodayContainer>
+
                 <CalendarContainer />
             </Content>
 

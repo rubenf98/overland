@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { fetchCouncils, deleteCouncil, setCurrentCouncil } from "../../../redux/council/actions";
 import FormContainer from './FormContainer';
 import Banner from '../common/Banner';
+import Simulator from '../common/Simulator';
 
 
 function Council(props) {
@@ -44,6 +45,8 @@ function Council(props) {
             <Banner>
                 <h1>Listagem de counciles</h1>
             </Banner>
+
+            <Simulator />
 
             <FormContainer
                 visible={visible}

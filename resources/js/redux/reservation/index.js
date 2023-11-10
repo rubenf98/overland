@@ -17,6 +17,7 @@ export const initialState = {
     errors: [],
     loadingExport: false,
     change: 0,
+    simulatedPrice: undefined,
     card: {},
 }
 
@@ -51,6 +52,8 @@ export default (state = initialState, action = {}) => {
         case `${types.FETCH_RESERVATION}_PENDING`:
         case `${types.FETCH_RESERVATIONS_PER_MONTH}_PENDING`:
         case `${types.FETCH_RESERVATIONS_ARCHIVE}_PENDING`:
+        case `${types.SIMULATE_PRICE}_PENDING`:
+
             return {
                 ...state,
                 loading: true,
@@ -70,9 +73,17 @@ export default (state = initialState, action = {}) => {
         case `${types.ERROR_RESERVATION}_FULFILLED`:
         case `${types.FETCH_RESERVATIONS_ARCHIVE}_REJECTED`:
         case `${types.CONFIRM_RESERVATION}_FULFILLED`:
+        case `${types.SIMULATE_PRICE}_REJECTED`:
             return {
                 ...state,
                 loading: false,
+            };
+
+        case `${types.SIMULATE_PRICE}_FULFILLED`:
+            return {
+                ...state,
+                loading: false,
+                simulatedPrice: action.payload.data,
             };
 
         case `${types.FETCH_CARD}_FULFILLED`:
