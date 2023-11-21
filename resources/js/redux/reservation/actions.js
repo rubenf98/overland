@@ -10,6 +10,14 @@ export const fetchReservations = (page = 1, filters = {}) => ({
     })}&page=${page}`)
 })
 
+
+export const getPaymentDetails = (filters = {}) => ({
+    type: types.GET_PAYMENT_DETAILS,
+    payload: axios.get(`${window.location.origin}/api/get-payment-details?${queryString.stringify(filters, {
+        arrayFormat: "index"
+    })}`)
+})
+
 export const fetchReservationsPerMonth = (filters = {}) => ({
     type: types.FETCH_RESERVATIONS_PER_MONTH,
     payload: axios.get(`${window.location.origin}/api/reservations-per-month?${queryString.stringify(filters, {

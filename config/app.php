@@ -15,6 +15,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'eupago_key' => env('EUPAGO_KEY', 'demo-4b74-73db-c3b0-a29'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

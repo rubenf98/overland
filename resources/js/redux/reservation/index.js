@@ -19,6 +19,7 @@ export const initialState = {
     change: 0,
     simulatedPrice: undefined,
     card: {},
+    paymentDetails: {},
 }
 
 export default (state = initialState, action = {}) => {
@@ -36,6 +37,11 @@ export default (state = initialState, action = {}) => {
                 loadingExport: false
             };
 
+        case `${types.SIMUGET_PAYMENT_DETAILSLATE_PRICE}_FULFILLED`:
+            return {
+                ...state,
+                paymentDetails: action.payload.data,
+            };
 
         case `${types.FETCH_CARD}_PENDING`:
         case `${types.GET_CARD}_PENDING`:

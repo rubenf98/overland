@@ -129,9 +129,8 @@
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
                     <tr>
                         <td align="center" valign="top" style="padding: 36px 24px;">
-                            <a href="https://teste.overlandmadeira.com" target="_blank" style="display: inline-block;">
-                                <img src="https://teste.overlandmadeira.com/images/logo.svg" alt="Logo" border="0"
-                                    width="48"
+                            <a href="https://overlandmadeira.com" target="_blank" style="display: inline-block;">
+                                <img src="https://overlandmadeira.com/images/logo.svg" alt="Logo" border="0" width="48"
                                     style="display: block; width: 120px; max-width: 120px; min-width: 120px;">
                             </a>
                         </td>
@@ -225,23 +224,13 @@
         <![endif]-->
                 <table border="0" cellpadding="0" cellspacing="0" width="100%" style="max-width: 600px;">
 
-                    <!-- start permission -->
-                    <tr>
-                        <td align="center" bgcolor="#e9ecef"
-                            style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;">
-                            <p style="margin: 0;">You received this email because we received a reservation from this
-                                email address. If you didn't book a product from Overland Madeira you can safely
-                                delete this email.</p>
-                        </td>
-                    </tr>
-                    <!-- end permission -->
-
                     <!-- start unsubscribe -->
                     <tr>
                         <td align="center" bgcolor="#e9ecef"
                             style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;">
                             <p style="margin: 0;">
-                                +351 123 123 123 | Rua das pretas Nº4 2ºL 9000-049 Funchal</p>
+                                00351 944 180 092 | overlandmadeira@gmail.com | Estrada de Santo Antonio 3B,
+                                9230-114 Santana</p>
                         </td>
                     </tr>
                     <!-- end unsubscribe -->

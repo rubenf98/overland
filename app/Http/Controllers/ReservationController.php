@@ -5,15 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ReservationRequest;
 use App\Http\Requests\UpdateReservationRequest;
 use App\Http\Resources\ReservationResource;
+use App\Jobs\HandlePaymentJob;
 use App\Jobs\HandleReservationJob;
 use App\Models\BlockDate;
 use App\Models\Client;
 use App\Models\LogRecord;
+use App\Models\Payment;
 use App\Models\Reservation;
 use App\QueryFilters\ReservationFilters;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Mail;
 
 class ReservationController extends Controller
 {
@@ -39,6 +43,7 @@ class ReservationController extends Controller
         DB::beginTransaction();
         $token = uniqid();
         $client = Client::store($validator);
+
         $reservation = Reservation::create([
             'token' => $token,
             'date' => $validator['date'],
@@ -52,6 +57,21 @@ class ReservationController extends Controller
             'client_id' => $client->id,
             'address' => Arr::get($validator, 'address'),
         ]);
+        $paymentRequest = new \GuzzleHttp\Client();
+
+        $response = $paymentRequest->request('POST', 'https://clientes.eupago.pt/clientes/rest_api/multibanco/create', [
+            'body' => '{"chave":"' . config('app.eupago_key') . '","valor":' . $validator['price'] . ',"id":"' . $reservation->id . '","per_dup":"0","failOver":"1","email":"' . $validator['email'] . '"}',
+            'headers' => [
+                'accept' => 'application/json',
+                'content-type' => 'application/json',
+            ],
+        ]);
+
+        $data = json_decode($response->getBody(), true);
+
+
+        $payment = Payment::store($reservation->id, $data);
+
 
         BlockDate::create([
             "date" => $validator['date'],
@@ -59,20 +79,12 @@ class ReservationController extends Controller
             "reservation_id" => $reservation->id
         ]);
         DB::commit();
+
         HandleReservationJob::dispatch($reservation);
+        HandlePaymentJob::dispatch($reservation, $payment);
         //$reservation->generateInvoice();
-        $payment = new \GuzzleHttp\Client();
 
-        $response = $payment->request('POST', 'https://sandbox.eupago.pt/api/v1.02/creditcard/create', [
-            'body' => '{"payment":{"amount":{"currency":"EUR","value":' . $validator['price'] . '},"lang":"EN","successUrl":"https://teste.overlandmadeira.com/confirmation?token=' . $reservation->token . '","failUrl":"https://teste.overlandmadeira.com/error?token=' . $reservation->token . '","backUrl":"https://teste.overlandmadeira.com/error?token=' . $reservation->token . '","identifier":"' . $reservation->token . '"},"customer":{"notify":true,"email":"joseruben98@hotmail.com"}}',
-            'headers' => [
-                'Authorization' => 'ApiKey demo-4b74-73db-c3b0-a29',
-                'accept' => 'application/json',
-                'content-type' => 'application/json',
-            ],
-        ]);
-
-        return json_decode($response->getBody(), true);
+        return $data;
 
         //return new ReservationResource($reservation);
     }

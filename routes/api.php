@@ -11,6 +11,7 @@ use App\Http\Controllers\CouncilController;
 use App\Http\Controllers\ErrorReservationInvokable;
 use App\Http\Controllers\FetchRelevantReservationsInvokable;
 use App\Http\Controllers\FetchReservationsPerMonthInvokable;
+use App\Http\Controllers\GetPaymentDetailsInvokable;
 use App\Http\Controllers\IsActivityAvailableInvokable;
 use App\Http\Controllers\LogRecordController;
 use App\Http\Controllers\PartnerController;
@@ -43,6 +44,8 @@ Route::post('login', [AuthController::class, 'login']);
 Route::post('logout', 'App\Http\Controllers\AuthController@logout');
 Route::post('refresh', 'App\Http\Controllers\AuthController@refresh');
 Route::get('me', 'App\Http\Controllers\AuthController@me');
+
+Route::get('get-payment-details', GetPaymentDetailsInvokable::class);
 
 Route::apiResource('contact', 'App\Http\Controllers\ContactController');
 

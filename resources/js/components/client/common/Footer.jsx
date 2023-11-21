@@ -101,7 +101,7 @@ function Footer(props) {
 
                     <ContactContainer>
                         <h3>{text.titles[0]}</h3>
-                        <p>Entreposto Comercial e Industrial Sambrasense – Sítio dos BarrabésCx Postal 908-Z, 8150-016, São Brás de Alportel</p>
+                        <p>Estrada de Santo Antonio 3B, 9230-114 Santana</p>
                         <p>00351 944 180 092</p>
                         <p>overlandmadeira@gmail.com</p>
 
@@ -132,7 +132,7 @@ function Footer(props) {
 
             <LegalContainer>
                 <Link to="/privacy">{text.links[0]}</Link>
-                <Link to="/policy">{text.links[1]}</Link>
+                {/* <Link to="/policy">{text.links[1]}</Link> */}
             </LegalContainer>
         </Container>
     )

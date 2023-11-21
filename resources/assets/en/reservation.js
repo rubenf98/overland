@@ -1,7 +1,8 @@
 export const text = {
     success: {
         title: "You're almost done!",
-        text: "Please check the email account you provided in your client information and confirm the reservation through the email we sent you.",
+        text: "Please check the payment information below and the email provided in the client information section of reservation.",
+        details: ["Entity", "Reference", "Value"],
         button: "return",
     },
     error: {

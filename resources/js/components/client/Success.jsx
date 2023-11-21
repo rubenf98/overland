@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { connect } from 'react-redux';
 import styled from "styled-components";
 import { dimensions } from '../../helper';
-import { confirmReservation } from '../../redux/reservation/actions';
+import { getPaymentDetails } from '../../redux/reservation/actions';
 import { Link, useSearchParams } from 'react-router-dom';
 import { PrimaryButton } from '../helpers/style';
+import { Row } from 'antd';
 
 const Container = styled.section`
     padding: 0px 0px;
@@ -53,11 +54,18 @@ const Container = styled.section`
 function Success(props) {
     const { text } = require('../../../assets/' + props.language + "/reservation");
     const [searchParams] = useSearchParams();
+    const [details, setDetails] = useState({ reference: undefined, entity: undefined, value: undefined })
 
     useEffect(() => {
-        var token = searchParams.get("token");
+        var reference = searchParams.get("reference");
 
-        props.confirmReservation({ token: token });
+        props.getPaymentDetails({ reference: reference }).then((response) => {
+            setDetails({
+                reference: response.action.payload.data.reference,
+                entity: response.action.payload.data.entity,
+                value: response.action.payload.data.value,
+            });
+        });
     }, [])
 
 
@@ -67,12 +75,21 @@ function Success(props) {
                 <img src="/images/other/email.svg" alt="email" />
                 <h2>{text.success.title}</h2>
                 <p>{text.success.text}</p>
+                <Row type="flex" justify="center">
+                    <ul>
+                        <li><span>{text.success.details[0]}</span>: {details.reference}</li>
+                        <li><span>{text.success.details[1]}</span>: {details.entity}</li>
+                        <li><span>{text.success.details[2]}</span>: {details.value}€</li>
+                    </ul>
+                </Row>
+                <Row type="flex" justify="center">
 
-                <Link to="/">
-                    <PrimaryButton>
-                        {text.success.button}
-                    </PrimaryButton>
-                </Link>
+                    <Link to="/">
+                        <PrimaryButton>
+                            {text.success.button}
+                        </PrimaryButton>
+                    </Link>
+                </Row>
             </div>
         </Container>
     )
@@ -80,7 +97,7 @@ function Success(props) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        confirmReservation: (data) => dispatch(confirmReservation(data)),
+        getPaymentDetails: (filters) => dispatch(getPaymentDetails(filters)),
     };
 };
 

@@ -30,7 +30,7 @@ class ConfirmReservationInvokable extends Controller
         $reservation->save();
 
         $reservation->generateInvoice();
-        // Mail::to("jrubenf98@gmail.com")->queue(new ReservationEmail($reservation->token, $reservation->pickup_date, $reservation->return_date, $reservation->carPref->title));
-        Mail::to("jrubenf98@gmail.com")->queue(new ReservationEmail($reservation->token, $reservation->date, $reservation->activity->title));
+        // Mail::to("overlandmadeira@gmail.com")->queue(new ReservationEmail($reservation->token, $reservation->pickup_date, $reservation->return_date, $reservation->carPref->title));
+        Mail::to("overlandmadeira@gmail.com")->queue(new ReservationEmail($reservation->token, $reservation->date, $reservation->activity->title));
     }
 }

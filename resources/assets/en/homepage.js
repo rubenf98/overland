@@ -20,24 +20,24 @@ export const text = {
     services: {
         transportation: {
             title: "Transportation",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            description: "Choose where you want to be picked up, and we provide a solution."
         },
         guides: {
             title: "Experienced guides",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            description: "Our guides are certified for every activity we offer, providing the amazing adventure you seek."
         },
         language: {
             title: "Multilangual",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            description: "We communicate in English, Spanish and Portuguese."
         },
         nature: {
             title: "Nature connection",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            description: "Creating your experience is entirely collaborative and our guides are here for every step"
         },
     },
     safari: {
         title: (<><span>Jeep Safari</span> crafted by us, designed for you.</>),
-        subtitle: "Our West Yorkshire workshop leads the way in Micro Camper, VW Transporter and Ford Transit van conversions. Each campervan conversion comes with a lifetime guarantee.",
+        subtitle: "Our overland options will amaze you through the inaccessible roads all around the island. Each overland transformation comes with unlimited stories and views that you'll never forget.",
         button: "Check more"
     },
     levada: {

@@ -25,6 +25,7 @@ import Safari from "./components/client/Safari";
 import LogRecord from "./components/dashboard/logRecord/LogRecord";
 import Council from "./components/dashboard/council/Council";
 import ClientDetails from "./components/dashboard/client/ClientDetails";
+import Privacy from "./components/client/Privacy";
 
 export const history = createBrowserHistory();
 
@@ -53,6 +54,7 @@ function Router() {
                 <Route exact path="/tours/:tourId" element={<Layout enable><Tour /></Layout>} />
                 <Route exact path="/levadas/:levadaId" element={<Layout enable><Levada /></Layout>} />
                 <Route exact path="/about" element={<Layout enable><About /></Layout>} />
+                <Route exact path="/privacy" element={<Layout enable><Privacy /></Layout>} />
                 <Route exact path="/contact" element={<Layout enable><Contact /></Layout>} />
                 <Route exact path="/" element={<Layout enable><Homepage /></Layout>} />
             </Routes>

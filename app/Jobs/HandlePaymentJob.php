@@ -2,6 +2,7 @@
 
 namespace App\Jobs;
 
+use App\Mail\PaymentInfoMail;
 use App\Mail\ReservationEmail;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
@@ -11,20 +12,21 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Mail;
 
-class HandleReservationJob implements ShouldQueue
+class HandlePaymentJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
-    protected $reservation;
+    protected $reservation, $payment;
 
     /**
      * Create a new job instance.
      *
      * @return void
      */
-    public function __construct($aReservation)
+    public function __construct($aReservation, $aPayment)
     {
         $this->reservation = $aReservation;
+        $this->payment = $aPayment;
     }
 
     /**
@@ -36,11 +38,15 @@ class HandleReservationJob implements ShouldQueue
     {
         $this->reservation->generateInvoice();
 
-        Mail::to('overlandmadeira@gmail.com')->queue(
-            new ReservationEmail(
+        Mail::to($this->reservation->client->email)->queue(
+            new PaymentInfoMail(
                 $this->reservation->token,
                 $this->reservation->date,
                 $this->reservation->activity->name,
+                $this->payment->entity,
+                $this->payment->reference,
+                $this->payment->value,
+
             )
         );
     }

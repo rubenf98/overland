@@ -27,7 +27,6 @@ class ReservationRequest extends FormRequest
         $activity = Activity::find($activityId);
         $council = Council::find($this->council_id);
 
-
         $activityPrice = $activity->price * $this->participants;
         $total = $activityPrice + $council->price;
 

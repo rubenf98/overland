@@ -8,6 +8,7 @@ import { connect } from "react-redux";
 import Summary from './form/Summary';
 import dayjs from 'dayjs';
 import { borderRadius, dimensions } from '../../helper';
+import { useNavigate } from 'react-router-dom';
 
 const rotate = keyframes`
   from {
@@ -143,6 +144,7 @@ const FormContainer = ({ initForm, handleVisibility, createReservation, loading,
     const [drawerWidth, setDrawerWidth] = useState(720);
     const [form] = Form.useForm();
     const themeContext = useContext(ThemeContext);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (initForm.date && initForm.time && initForm.activity) {
@@ -197,9 +199,9 @@ const FormContainer = ({ initForm, handleVisibility, createReservation, loading,
         form.validateFields().then((currentStepData) => {
             createReservation({ ...formData, ...currentStepData, date: dayjs(formData.date).format('YYYY-MM-DD') + " " + formData.time }).then((response, err) => {
                 if (!err) {
-                    if (response.action.payload.data.transactionStatus == "Success") {
+                    if (response.action.payload.data.sucesso == true) {
                         handleReset(false);
-                        window.location.href = response.action.payload.data.redirectUrl;
+                        navigate("/success/?reference=" + response.action.payload.data.referencia);
                     } else {
                         navigate("/error");
                     }

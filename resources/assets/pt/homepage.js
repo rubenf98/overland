@@ -20,24 +20,24 @@ export const text = {
     services: {
         transportation: {
             title: "Transporte",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            description: "Escolha onde deseja ser recolhido e nós oferecemos uma solução."
         },
         guides: {
             title: "Guias experientes",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            description: "Os nossos guias são certificados para todas as atividades que oferecemos, proporcionando a incrível aventura que você procura."
         },
         language: {
             title: "Multilíngue",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            description: "Nós temos guias que comunicam em inglês, espanhol e português."
         },
         nature: {
             title: "Conexão à natureza",
-            description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+            description: "Criar a sua experiência é totalmente colaborativo e nossos guias estão aqui para cada etapa"
         },
     },
     safari: {
         title: (<><span>Safari Jeep</span> criado por nós, desenhado para ti.</>),
-        subtitle: "Our West Yorkshire workshop leads the way in Micro Camper, VW Transporter and Ford Transit van conversions. Each campervan conversion comes with a lifetime guarantee.",
+        subtitle: "Nossas opções terrestres irão surpreendê-lo pelas estradas inacessíveis por toda a ilha. Cada transformação terrestre vem com histórias e visualizações ilimitadas que você nunca esquecerá.",
         button: "Check more"
     },
     levada: {

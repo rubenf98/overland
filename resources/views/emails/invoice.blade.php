@@ -137,7 +137,7 @@
     <div class="vrc-emailc-wrap"
         style="max-width: 720px; background: #fff; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; border-left: 1px solid #ddd; border-right: 1px solid #ddd; margin: 0 auto; padding: 24px;">
         <div class="vrc-emailc-logo" style="text-align: center; margin: 8px 0;">
-            <img src="https://teste.overlandmadeira.com/images/logo.svg" alt="Logo" border="0" width="48"
+            <img src="https://overlandmadeira.com/images/logo.svg" alt="Logo" border="0" width="48"
                 style="display: block; width: 120px; max-width: 120px; min-width: 120px; margin: auto">
         </div>
 
