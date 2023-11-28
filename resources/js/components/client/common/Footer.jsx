@@ -102,7 +102,7 @@ function Footer(props) {
                     <ContactContainer>
                         <h3>{text.titles[0]}</h3>
                         <p>Estrada de Santo Antonio 3B, 9230-114 Santana</p>
-                        <p>00351 944 180 092</p>
+                        <p>00351 910 178 500</p>
                         <p>overlandmadeira@gmail.com</p>
 
                         <h3>{text.titles[1]}</h3>
