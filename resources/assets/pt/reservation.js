@@ -12,7 +12,7 @@ export const text = {
     },
     confirmation: {
         title: "Obrigado pela sua reserva!",
-        text: "A sua reserva está confirmada. Se quiser colocar alguma questão envie-nos um email para overlandmadeira@gmail.com ou contacte-nos através do nº +351 944 180 092",
+        text: "A sua reserva está confirmada. Se quiser colocar alguma questão envie-nos um email para overlandmadeira@gmail.com ou contacte-nos através do nº +351 910 178 500",
         button: "voltar"
     }
 };

@@ -226,7 +226,7 @@ function Activity(props) {
                             </div>
                         </div>
 
-                        <p>Não sabe se esta atividade é para si? Quer saber mais sobre isso? Envie-nos uma mensagem no Whatsapp para +351 944 180 092 ou contacte-nos através do email overlandmadeira@gmail.com</p>
+                        <p>Não sabe se esta atividade é para si? Quer saber mais sobre isso? Envie-nos uma mensagem no Whatsapp para +351 910 178 500 ou contacte-nos através do email overlandmadeira@gmail.com</p>
                     </Details>
                 }
                 <FormContainer

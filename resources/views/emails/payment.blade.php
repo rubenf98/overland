@@ -241,7 +241,7 @@
                         <td align="center" bgcolor="#e9ecef"
                             style="padding: 12px 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 14px; line-height: 20px; color: #666;">
                             <p style="margin: 0;">
-                                00351 944 180 092 | overlandmadeira@gmail.com | Estrada de Santo Antonio 3B,
+                                00351 910 178 500 | overlandmadeira@gmail.com | Estrada de Santo Antonio 3B,
                                 9230-114 Santana</p>
                         </td>
                     </tr>
