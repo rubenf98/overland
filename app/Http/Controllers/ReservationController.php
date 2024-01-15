@@ -70,7 +70,6 @@ class ReservationController extends Controller
 
         $data = json_decode($response->getBody(), true);
 
-        return $data;
         $payment = Payment::store($reservation->id, $data);
 
 
