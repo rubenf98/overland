@@ -51,7 +51,7 @@ function CalendarContainer(props) {
             <div>
                 {listData.map((item) => (
                     <PopoverContainer key={item.content} item={item.reservation}>
-                        <p >
+                        <p>
                             <Badge status={item.type} text={item.content} />
                         </p>
                     </PopoverContainer>

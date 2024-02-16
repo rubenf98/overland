@@ -2,6 +2,10 @@ export const text = {
     links: [
         "Home",
         "About",
-        "Contact"
+        "Contact",
+        "Overland",
+        "Safari",
+        "Levada",
+        "Tour"
     ],
 } 

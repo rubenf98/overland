@@ -77,8 +77,8 @@ function Success(props) {
                 <p>{text.success.text}</p>
                 <Row type="flex" justify="center">
                     <ul>
-                        <li><span>{text.success.details[0]}</span>: {details.reference}</li>
-                        <li><span>{text.success.details[1]}</span>: {details.entity}</li>
+                        <li><span>{text.success.details[0]}</span>: {details.entity}</li>
+                        <li><span>{text.success.details[1]}</span>: {details.reference}</li>
                         <li><span>{text.success.details[2]}</span>: {details.value}€</li>
                     </ul>
                 </Row>

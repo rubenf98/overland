@@ -15,14 +15,16 @@ class CreatePaymentsTable extends Migration
     {
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('reservation_id');
+            $table->unsignedBigInteger('reservation_id')->nullable();
+            $table->unsignedBigInteger('overland_id')->nullable();
             $table->string('reference');
             $table->string('entity');
             $table->integer('status');
             $table->double('value', 6, 2);
             $table->timestamps();
 
-            $table->foreign('reservation_id')->references('id')->on('reservations');
+            $table->foreign('reservation_id')->references('id')->on('reservations')->onDelete('set null');
+            $table->foreign('overland_id')->references('id')->on('overlands')->onDelete('set null');
         });
     }
 

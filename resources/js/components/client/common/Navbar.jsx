@@ -212,7 +212,11 @@ function Navbar(props) {
             <PageContainer color={params.color}>
                 <Link to="/about">{text.links[1]}</Link>
                 <Link to="/contact">{text.links[2]}</Link>
-                <button className='phone'>+351 910 178 500</button>
+                <a href="/#overland">{text.links[3]}</a>
+                <Link to="/safaries">{text.links[4]}</Link>
+                <a href="/#levadas">{text.links[5]}</a>
+                <a href="/#tours">{text.links[6]}</a>
+                {/* <button className='phone'>+351 910 178 500</button> */}
                 <CustomSelect
                     color={params.color}
                     onChange={handleLanguageChange}

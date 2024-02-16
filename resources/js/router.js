@@ -10,6 +10,8 @@ import Dashboard from "./components/dashboard/Dashboard";
 import DashboardActivity from "./components/dashboard/activity/Activity";
 import Home from "./components/dashboard/homepage/Home";
 import BlockPeriod from "./components/dashboard/blockPeriod/BlockPeriod";
+import OverlandDashboard from "./components/dashboard/overland/Overland";
+import OverlandDetails from "./components/dashboard/overland/OverlandDetails";
 import Reservation from "./components/dashboard/reservation/Reservation";
 import About from "./components/client/About";
 import ReservationDetails from "./components/dashboard/reservation/ReservationDetails";
@@ -26,6 +28,11 @@ import LogRecord from "./components/dashboard/logRecord/LogRecord";
 import Council from "./components/dashboard/council/Council";
 import ClientDetails from "./components/dashboard/client/ClientDetails";
 import Privacy from "./components/client/Privacy";
+import VehicleDetails from "./components/dashboard/vehicle/VehicleDetails";
+import Vehicle from "./components/dashboard/vehicle/Vehicle";
+import Overland from "./components/client/Overland";
+import Conditions from "./components/client/Conditions";
+import BookingCondtions from "./components/client/BookingCondtions";
 
 export const history = createBrowserHistory();
 
@@ -33,7 +40,11 @@ function Router() {
     return (
         <BrowserRouter history={history}>
             <Routes>
+                <Route path="/painel/veiculos/:vehicleId" element={<Layout><Dashboard><VehicleDetails /></Dashboard></Layout>} />
+                <Route path="/painel/veiculos" element={<Layout><Dashboard><Vehicle /></Dashboard></Layout>} />
                 <Route path="/painel/logs" element={<Layout><Dashboard><LogRecord /></Dashboard></Layout>} />
+                <Route path="/painel/overlands/:overlandId" element={<Layout><Dashboard><OverlandDetails /></Dashboard></Layout>} />
+                <Route path="/painel/overlands" element={<Layout><Dashboard><OverlandDashboard /></Dashboard></Layout>} />
                 <Route path="/painel/reservas/:reservationId" element={<Layout><Dashboard><ReservationDetails /></Dashboard></Layout>} />
                 <Route path="/painel/reservas" element={<Layout><Dashboard><Reservation /></Dashboard></Layout>} />
                 <Route path="/painel/datas" element={<Layout><Dashboard><BlockPeriod /></Dashboard></Layout>} />
@@ -50,10 +61,13 @@ function Router() {
                 {/* <Route exact path="/booking" element={<Layout enable><Checkout /></Layout>} />
                 <Route exact path="/activity/:activityId" element={<Layout enable><Activity /></Layout>} />
                 <Route exact path="/category/:category" element={<Layout enable><Activities /></Layout>} /> */}
+                <Route exact path="/overland" element={<Layout enable><Overland /></Layout>} />
                 <Route exact path="/safaries" element={<Layout enable><Safari /></Layout>} />
                 <Route exact path="/tours/:tourId" element={<Layout enable><Tour /></Layout>} />
                 <Route exact path="/levadas/:levadaId" element={<Layout enable><Levada /></Layout>} />
                 <Route exact path="/about" element={<Layout enable><About /></Layout>} />
+                <Route exact path="/bookingConditions" element={<Layout enable><BookingCondtions /></Layout>} />
+                <Route exact path="/conditions" element={<Layout enable><Conditions /></Layout>} />
                 <Route exact path="/privacy" element={<Layout enable><Privacy /></Layout>} />
                 <Route exact path="/contact" element={<Layout enable><Contact /></Layout>} />
                 <Route exact path="/" element={<Layout enable><Homepage /></Layout>} />

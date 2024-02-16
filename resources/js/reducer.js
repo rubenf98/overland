@@ -13,6 +13,9 @@ import blockPeriod from './redux/blockPeriod'
 import client from './redux/client'
 import logRecord from './redux/logRecord'
 import council from './redux/council'
+import vehicle from './redux/vehicle'
+import charateristic from './redux/charateristic'
+import overland from './redux/overland'
 
 const reducer = combineReducers({
     auth,
@@ -26,7 +29,10 @@ const reducer = combineReducers({
     blockPeriod,
     client,
     logRecord,
-    council
+    council,
+    vehicle,
+    charateristic,
+    overland
 })
 
 export default reducer

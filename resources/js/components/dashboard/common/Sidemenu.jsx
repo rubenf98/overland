@@ -86,6 +86,14 @@ function Sidemenu(props) {
             key: 'carros',
         },
         {
+            label: <Link to="/painel/overlands"><img className='icon' src="/icon/dashboard/overland.svg" /></Link>,
+            key: 'overland',
+        },
+        {
+            label: <Link to="/painel/veiculos"><img className='icon' src="/icon/dashboard/vehicle.svg" /></Link>,
+            key: 'veiculos',
+        },
+        {
             label:
                 <Link to="/painel/concelhos">
                     <img className='icon' src="/icon/dashboard/council.svg" />

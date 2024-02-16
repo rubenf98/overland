@@ -165,7 +165,7 @@ function Levada(props) {
     return (
         <Container>
 
-            <Title>
+            <Title id="levadas">
                 <SectionTitle>{props.text.title}</SectionTitle>
                 <p>{props.text.subtitle}</p>
             </Title>

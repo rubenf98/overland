@@ -72,7 +72,7 @@ function Tour(props) {
 
     return (
         <Section>
-            <SectionTitle style={{ textAlign: "center" }}>
+            <SectionTitle id="tours" style={{ textAlign: "center" }}>
                 {props.text.title}
             </SectionTitle>
             <Container>

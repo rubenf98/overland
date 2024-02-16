@@ -6,11 +6,11 @@ import { isActivityAvailable } from "../../../redux/activity/actions";
 import { handleForm } from '../../../redux/application/actions';
 import { connect } from 'react-redux';
 import dayjs from "dayjs";
-import { dimensions } from '../../../helper';
+import { borderRadius, dimensions } from '../../../helper';
 
 const Container = styled.section`
     width: 100%;
-    height: calc(100vh - 100px);
+    min-height: calc(100vh - 100px);
     position: relative;
     display: flex;
     align-items: center;
@@ -36,34 +36,59 @@ export const CustomCascader = styled(Cascader)`
 `;
 
 const TextContainer = styled.div`
-    width: 50%;
     box-sizing: border-box;
     display: flex;
     align-items: center;
     color: white;
     padding: 0px 30px;
+    min-height: calc(70vh - 100px);
+    position: relative;
 
-    @media (max-width: ${dimensions.lg}) {
-        width: 70%;
-    }
-
-    @media (max-width: ${dimensions.md}) {
-        width: 100%;
-    }
 
     h2 {
-        font-size: clamp(30px, 3vw, 50px);
+        font-size: clamp(40px, 4vw, 90px);
         margin: 0px;
-
-        span {
-            color: ${({ theme }) => theme.primary}
-        }
     }
 
     p {
-        font-size: 20px;
+        font-size: clamp(18px, 3vw, 22px);
         box-sizing: border-box;
-        margin: 30px 0px 100px 0px;
+        width: 50%;
+        font-family: 'Montserrat', sans-serif;
+    }
+
+    .transition {
+        position: absolute;
+        z-index: 1;
+        bottom: -2px;
+        left: 0;
+        width: 100%;
+    }
+
+    @media (max-width: ${dimensions.lg}) {
+        p {
+            width: 70%;
+        }
+    }
+
+    @media (max-width: ${dimensions.md}) {
+        p {
+            width: 100%;
+        }
+    }
+
+`;
+
+const ActivityContainer = styled.div`
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-around;
+    width: 100vw;
+    height: 100%;
+    min-height: 30vh;
+
+    @media (max-width: ${dimensions.lg}) {
+        flex-wrap: wrap;
     }
 
 `;
@@ -73,28 +98,34 @@ const SocialContainer = styled.div`
     flex-direction: column;
     align-items: center;
     position: absolute;
-    gap: 20px;
+    gap: 10px;
     bottom: 20px;
     right: 20px;
+    z-index: 3;
 
     a {
         background-color: ${({ theme }) => theme.primary};
-        padding: 7px;
-        box-sizing: border-box;
-        border-radius: 32px;
+        width: 30px;
+        height: 30px;
+        border-radius: 30px;
     }
 
     img {
-        height: 25px;
-        width: 25px;
+        height: 20px;
+        width: 20px;
+        margin: 5px;
     }
 
     @media (max-width: ${dimensions.md}) {
         flex-direction: row;
+        bottom: -40px;
 
         a {
-            border-radius: 22px;
+            width: 25px;
+            height: 25px;
+            border-radius: 25px;
         }
+
         img {
             height: 15px;
             width: 15px;
@@ -105,7 +136,7 @@ const SocialContainer = styled.div`
 
 const Background = styled.img`
     width: 100vw;
-    height: 100vh;
+    height: 70vh;
     object-fit: cover;
     position: absolute;
     top: -100px;
@@ -113,71 +144,91 @@ const Background = styled.img`
     z-index: -1;
 `;
 
-const Form = styled.div`
-    background-color: rgba(0, 0, 0, 0.3);
-    padding: 20px 30px;
-    box-sizing: border-box;
-    width: 60%;
+const Activity = styled.div`
+    width: 25%;
+    height: 100%;
+    z-index: 2;
+    min-height: 30vh;
+    position: relative;
+
+    
+
+    img {
+        z-index: -1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        min-height: 30vh;
+    }
+
+    .content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        padding: 20px;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+
+        .button {
+            flex: 1;
+            margin-left: auto;
+            margin-top: 20px;
+
+            button {
+                background-color: ${({ theme }) => theme.secundary};
+                
+                padding: 8px 16px;
+                box-sizing: border-box;
+                cursor: pointer;
+                border: 0px;
+                font-size: clamp(16px, 2vw, 18px);
+                font-family: 'Jockey One', sans-serif;
+                
+                a{
+                    color: white;
+                    text-decoration: none;
+                    margin: 0px;
+                } 
+            }
+        }
+
+    
+        h3 {
+            color: white;
+            font-size: clamp(26px, 3vw, 40px);
+            margin: 0px;
+            font-family: 'Jockey One', sans-serif;
+        }
+
+        p {
+            color: white;
+            font-size: 18px;
+            box-sizing: border-box;
+            width: 80%;
+        }
+
+        
+    }
 
     @media (max-width: ${dimensions.lg}) {
-        width: 70%;
+        width: 50%;
     }
 
     @media (max-width: ${dimensions.md}) {
         width: 100%;
-    }
+        min-height: 0px;
+        z-index: 0;
 
-    p {
-        margin: 0px 0px 5px 0px;
-        font-size: 18px;
-        font-weight: 400;
-        opacity: .7;
-        color: white;
-    }
-
-    input::placeholder, .ant-select-selection-placeholder {
-        font-size: 18px;
-        font-weight: bold;
-        color: white;
-    }
-    .ant-select-selector {
-        background-color: transparent !important;
-    }
-
-    input, .ant-select-selection-item {
-        color: white !important;
-        font-weight: bold;
-    }
-
-    input::placeholder, .ant-select-selection-placeholder {
-        font-size: clamp(16px, 2vw, 18px);;
-        font-weight: bold;
-        color: white !important;
-    }
-
-    button {
-        background-color: transparent;
-        border: 0px;
-        display: block;
-        padding: 20px;
-        box-sizing: border-box;
-        box-shadow: 0px;
-        margin: auto;
-        cursor: pointer;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        img {
-            width: 50%;
-            height: 50%;
-            object-fit: contain;
+        .content {
+            p {
+                font-size: 16px;
+                width: 100%;
+            }
         }
-    }
-    
-
-    .ant-select-selector, .ant-input {
-        padding: 0px !important;
+        
     }
 `;
 
@@ -249,9 +300,50 @@ function Header(props) {
                         <p>{props.text.subtitle}</p>
 
                     </div>
+                    <img className='transition' src="/images/homepage/transition.svg" alt="transition bar" />
                 </TextContainer>
 
-                <Form>
+                <ActivityContainer>
+
+                    <Activity>
+                        <img className='background' src="/images/homepage/overland.jpg" alt="green leafs" />
+                        <div className='content'>
+                            <div className='button'><button><a href='/#overland'>book now</a></button></div>
+
+                            <h3>Overland</h3>
+                            <p>From beaches to mountains, take the old roads and dirt roads in unspoiled nature.</p>
+                        </div>
+                    </Activity>
+                    <Activity>
+                        <img className='background' src="/images/homepage/jeepsafari.jpg" alt="green leafs" />
+                        <div className='content'>
+                            <div className='button'><button><a href='/safaries'>book now</a></button></div>
+
+                            <h3>Jeep Safari</h3>
+                            <p>From beaches to mountains, take the old roads and dirt roads in unspoiled nature.</p>
+                        </div>
+                    </Activity>
+                    <Activity>
+                        <img className='background' src="/images/homepage/levada.jpg" alt="green leafs" />
+                        <div className='content'>
+                            <div className='button'><button><a href='/#levadas'>book now</a></button></div>
+
+                            <h3>Levadas</h3>
+                            <p>From beaches to mountains, take the old roads and dirt roads in unspoiled nature.</p>
+                        </div>
+                    </Activity>
+                    <Activity>
+                        <img className='background' src="/images/homepage/tour.jpg" alt="green leafs" />
+                        <div className='content'>
+                            <div className='button'><button><a href='/#tours'>book now</a></button></div>
+
+                            <h3>Tours</h3>
+                            <p>From beaches to mountains, take the old roads and dirt roads in unspoiled nature.</p>
+                        </div>
+                    </Activity>
+                </ActivityContainer>
+
+                {/* <Form>
                     <Row type="flex" align="middle" gutter={64}>
                         <Col span={6} >
                             <p>{props.text.form.date.label}</p>
@@ -309,7 +401,7 @@ function Header(props) {
                         </Col>
                     </Row>
 
-                </Form>
+                </Form> */}
             </div>
         </Container>
     )

@@ -1,6 +1,6 @@
 export const text = {
     header: {
-        title: (<>Levada, Tours, Safari: <span>Madeira</span> Unveiled</>),
+        title: "Your Madeira island exploration partner",
         subtitle: "Discover Madeira's hidden beauty through guided levada tours, exhilarating hikes, and memorable camping experiences, immersing you in the island's natural wonders.",
         form: {
             date: {
@@ -34,6 +34,13 @@ export const text = {
             title: "Nature connection",
             description: "Creating your experience is entirely collaborative and our guides are here for every step"
         },
+    },
+    overland: {
+        price: {
+            from: "starting at",
+            day: "day"
+        },
+        button: "Book now"
     },
     safari: {
         title: (<><span>Jeep Safari</span> crafted by us, designed for you.</>),

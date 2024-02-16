@@ -1,6 +1,6 @@
 export const text = {
     header: {
-        title: (<>Levada, Tours, Safari: <span>Madeira</span> Descoberta</>),
+        title: "O teu parceito de exploração da Ilha da Madeira",
         subtitle: "Descubra a beleza escondida da Madeira através de passeios guiados pelas levadas, caminhadas emocionantes e experiências de campismo memoráveis, mergulhando-o nas maravilhas naturais da ilha.",
         form: {
             date: {
@@ -16,6 +16,13 @@ export const text = {
                 label: "Atividade"
             },
         }
+    },
+    overland: {
+        price: {
+            from: "desde",
+            day: "dia"
+        },
+        button: "Reservar"
     },
     services: {
         transportation: {
