@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
-import { borderRadius, dimensions } from '../../helper';
+import { borderRadius, dimensions } from '../../../helper';
 import styled, { keyframes } from 'styled-components'
 import axios from "axios";
-import { Section } from '../helpers/style';
+
 import { connect } from 'react-redux';
-import { notification } from 'antd';
+import { Collapse, notification } from 'antd';
+import { Section, SectionTitle } from '../../helpers/style';
+import { Link } from 'react-router-dom';
 
 const spin = keyframes`
   from { transform: rotate(0deg); }
@@ -52,7 +54,6 @@ const Form = styled.div`
     button {
         position: relative;
         background-color: ${({ theme }) => theme.primary};
-        border-radius: ${borderRadius};
         border: 0px;
         padding: 12px 32px;
         box-sizing: border-box;
@@ -62,6 +63,7 @@ const Form = styled.div`
         align-items: center;
         font-size: clamp(16px, 2vw, 20px);
         cursor: pointer;
+        text-transform: uppercase;
     }
 
     @media (max-width: ${dimensions.md}) {
@@ -103,12 +105,45 @@ const Loading = styled.div`
 
 `;
 
+const FaqContainer = styled.div`
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 30px;
+    margin: 30px 0px 100px 0px;
+    flex-wrap: wrap;
+
+    .contact-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+        padding: 40px;
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.2); 
+    
+
+        button {
+            margin-top: 30px;
+            font-size: 18px;
+            padding: 12px 40px; 
+            border: 1px solid #000; 
+            background-color: white;
+            cursor: pointer;
+        }
+    } 
+
+    .ant-collapse {
+        flex: 1;
+        padding-right: 50px;
+        box-sizing: border-box;
+    }
+`;
+
 function Contact(props) {
-    const { text } = require('../../../assets/' + props.language + "/contact");
     const [form, setForm] = useState({ name: undefined, email: undefined, message: undefined })
     const [loading, setLoading] = useState(false)
     const [api, contextHolder] = notification.useNotification();
-
+    const { text } = props;
     const openNotificationWithIcon = (type) => {
         api[type]({
             message: '',
@@ -123,7 +158,7 @@ function Contact(props) {
             if (response.status == 201) {
                 setLoading(false);
                 openNotificationWithIcon('success');
-                setForm({ name: undefined, email: undefined, message: undefined });;
+                setForm({ name: undefined, email: undefined, message: undefined });
             }
 
         }).catch(() => {
@@ -135,11 +170,25 @@ function Contact(props) {
     };
 
     return (
-        <Section>
+        <Section id="contact">
             {contextHolder}
-            <h1>{text.title}</h1>
+            <SectionTitle>{text.faqTitle}</SectionTitle>
 
-            <Form>
+            <FaqContainer>
+                <Collapse accordion defaultActiveKey={['1']} ghost items={text.faq} />
+                <div className='contact-container'>
+                    <div>
+                        <h3>{text.contact.title}</h3>
+                        <p>{text.contact.description}</p>
+                        <a href="/#contact-form"><button>{text.contact.button}</button></a>
+
+                    </div>
+                </div>
+            </FaqContainer>
+
+            <SectionTitle>{text.title}</SectionTitle>
+
+            <Form id="contact-form">
 
                 <input className="contact-fields" placeholder={text.form.name} onChange={(e) => setForm({ ...form, name: e.target.value })} />
 
@@ -162,6 +211,7 @@ function Contact(props) {
                 </button>
 
             </Form>
+
 
 
         </Section>

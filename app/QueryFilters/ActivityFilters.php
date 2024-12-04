@@ -10,6 +10,16 @@ use Cerbero\QueryFilters\QueryFilters;
  */
 class ActivityFilters extends QueryFilters
 {
+    public function search($string)
+    {
+        $this->query->where(function ($query) use ($string) {
+            $query->where('name', 'like', '%' . $string . '%')
+                ->orWhereHas('category', function ($q) use ($string) {
+                    $q->where('name', 'like', '%' .  $string . '%');
+                });
+        });
+    }
+
     public function categoryId($id)
     {
         $this->query->where('category_id', $id);

@@ -9,6 +9,7 @@ import Summary from './form/Summary';
 import dayjs from 'dayjs';
 import { borderRadius, dimensions } from '../../helper';
 import { useNavigate } from 'react-router-dom';
+import { fetchActivity } from '../../redux/activity/actions';
 
 const rotate = keyframes`
   from {
@@ -26,7 +27,7 @@ const Content = styled(Drawer)`
     
 
     .ant-drawer-wrapper-body {
-        background: ${({ theme }) => theme.secundary};
+        background: ${({ theme }) => theme.primary};
         padding: 50px;
         box-sizing: border-box;
 
@@ -110,10 +111,9 @@ const Button = styled.button`
     color: white;
     padding: 12px 35px;
     box-sizing: border-box;
-    border-radius: ${borderRadius};
     cursor: pointer;
-    border: 0px;
-    font-size: clamp(16px, 2vw, 20px);
+    border: 1px solid white;
+    font-size: clamp(16px, 2vw, 18px);
 `;
 
 const Submit = styled(Button)`
@@ -136,7 +136,7 @@ const Submit = styled(Button)`
 `;
 
 
-const FormContainer = ({ initForm, handleVisibility, createReservation, loading, activityInitialValue }) => {
+const FormContainer = ({ initForm, handleVisibility, createReservation, loading, activityInitialValue, fetchActivity }) => {
     const { text } = require('../../../assets/' + localStorage.getItem('language') + "/form");
     const [formData, setFormData] = useState({})
     const [step, setStep] = useState(0);
@@ -147,7 +147,8 @@ const FormContainer = ({ initForm, handleVisibility, createReservation, loading,
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (initForm.date && initForm.time && initForm.activity) {
+        if (initForm.activity.length) {
+            fetchActivity(initForm.activity[1])
             handleReset(true);
             setFormData({ ...formData, ...initForm });
         }
@@ -160,7 +161,7 @@ const FormContainer = ({ initForm, handleVisibility, createReservation, loading,
     const steps = [
         {
             title: text.pages[0].title,
-            content: <Information text={text.pages[0]} />
+            content: <Information initForm={initForm} text={text.pages[0]} />
         },
         {
             title: text.pages[1].title,
@@ -182,7 +183,7 @@ const FormContainer = ({ initForm, handleVisibility, createReservation, loading,
     }
 
     const previousStep = () => {
-        setStep(0);
+        setStep(step > 0 ? step - 1 : 0);
     }
 
     const handleReset = (close = true) => {
@@ -242,7 +243,7 @@ const FormContainer = ({ initForm, handleVisibility, createReservation, loading,
             width={drawerWidth}
             closable={false}
             maskClosable={false}
-            open={initForm.date && initForm.time && initForm.activity.length > 0}
+            open={initForm.activity.length > 0}
         >
             <FlexContainer>
                 <Previous visible={step != 0} onClick={previousStep} src='/icon/previous.svg' alt="previous step" />
@@ -294,6 +295,7 @@ const FormContainer = ({ initForm, handleVisibility, createReservation, loading,
 const mapDispatchToProps = (dispatch) => {
     return {
         createReservation: (data) => dispatch(createReservation(data)),
+        fetchActivity: (id) => dispatch(fetchActivity(id)),
     };
 };
 

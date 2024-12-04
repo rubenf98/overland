@@ -2,6 +2,7 @@ import { types } from "./types";
 
 export const initialState = {
     data: [],
+    highlightedData: [],
     levadas: [],
     tours: [],
     safaries: [],
@@ -22,10 +23,19 @@ export default (state = initialState, action = {}) => {
         case `${types.FETCH_ACTIVITY_SELECTOR}_PENDING`:
         case `${types.FETCH_LEVADAS}_PENDING`:
         case `${types.FETCH_TOURS}_PENDING`:
+        case `${types.FETCH_HIGHLIGHTED_ACTIVITIES}_PENDING`:
+        case `${types.FETCH_HIGHLIGHTED_ACTIVITIES}_REJECTED`:
         case `${types.FETCH_SAFARIES}_REJECTED`:
             return {
                 ...state,
                 loading: true,
+            };
+
+        case `${types.FETCH_HIGHLIGHTED_ACTIVITIES}_FULFILLED`:
+            return {
+                ...state,
+                loading: false,
+                highlightedData: action.payload.data.data,
             };
 
         case `${types.IS_ACTIVITY_AVAILABLE}_PENDING`:

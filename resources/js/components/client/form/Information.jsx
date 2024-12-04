@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react'
 import { Row, Form, Col } from 'antd';
-import { CustomInput, CustomSelect } from './styles';
+import { CustomDatePicker, CustomInput, CustomSelect } from './styles';
 import { fetchCategorySelector } from "../../../redux/category/actions";
 import { connect } from "react-redux";
 import CustomCouncilRemoteSelectContainer from '../../dashboard/council/CustomCouncilRemoteSelectContainer';
+import dayjs from "dayjs";
+
 
 const rules = {
     required: [
@@ -48,7 +50,7 @@ const rules = {
     ],
 };
 
-function Information({ fetchCategorySelector, data, text }) {
+function Information({ fetchCategorySelector, initForm, text }) {
     useEffect(() => {
         //fetchCategorySelector({ language: localStorage.getItem('language') });
     }, [])
@@ -57,6 +59,49 @@ function Information({ fetchCategorySelector, data, text }) {
 
         <div>
             <Row gutter={16}>
+                <Col xs={24} md={12}>
+                    {!initForm.date &&
+                        <Form.Item
+                            name="date"
+                            rules={rules.required}
+                        >
+                            <CustomDatePicker
+                                style={{ width: "100%", paddingLeft: "0px" }}
+
+                                placeholder='DD / MM / YYYY'
+                                format="DD/MM/YYYY"
+                                disabledDate={(currentDate) => {
+                                    return currentDate &&
+                                        (currentDate <= dayjs());
+                                }}
+                            />
+                        </Form.Item>
+                    }
+
+                </Col>
+                <Col xs={24} md={12}>
+                    {!initForm.time &&
+                        <Form.Item
+                            name="time"
+                            rules={rules.required}
+                        >
+                            <CustomSelect
+                                style={{ width: "100%" }}
+
+                                placeholder="HH:MM"
+                                options={[
+                                    { value: "08:30", label: "08:30" },
+                                    { value: "09:00", label: "09:00" },
+                                    { value: "09:30", label: "09:30" },
+                                    { value: "10:00", label: "10:00" },
+                                    { value: "10:30", label: "10:30" },
+                                    { value: "14:30", label: "14:30" },
+                                ]}
+                            />
+                        </Form.Item>
+                    }
+
+                </Col>
                 <Col xs={24} md={12}>
                     <Form.Item
                         name="name"

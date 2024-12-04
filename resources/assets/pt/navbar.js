@@ -6,6 +6,6 @@ export const text = {
         "Overland",
         "Safari",
         "Levada",
-        "Tour"
+        "Tours"
     ],
 } 

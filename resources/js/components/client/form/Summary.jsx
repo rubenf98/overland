@@ -4,6 +4,7 @@ import { Row } from 'antd';
 import { dimensions } from '../../../helper';
 import dayjs from 'dayjs';
 import { connect } from "react-redux";
+import { fetchActivity } from '../../../redux/activity/actions';
 
 const Flex = styled(Row)`
     margin: 10px auto 60px auto;
@@ -13,7 +14,7 @@ const Flex = styled(Row)`
 `;
 
 const Detail = styled.div`
-    font-size: 18px;
+    font-size: 16px;
     width: 50%;
     padding: 10px 10px;
     box-sizing: border-box;
@@ -47,34 +48,30 @@ const Feedback = styled.h3`
 `;
 
 
-function Summary({ text, data, categories, councils }) {
+function Summary({ text, data, currentActivity, councils }) {
     const [activityName, setActivityName] = useState("");
     const [activityPrice, setActivityPrice] = useState(0);
     const [councilName, setCouncilName] = useState("");
     const [councilPrice, setCouncilPrice] = useState(0);
 
     useEffect(() => {
-        categories.map((category) => {
-            if (data.activity.length == 2) {
-                category.activities.map((activity) => {
-                    if (activity.id == data.activity[1]) {
-                        setActivityName(activity.name);
-                        var price = activity.price * data.participants;
-                        if (price < activity.minimum) {
-                            price = activity.minimum;
-                        }
-                        setActivityPrice(price);
-
-                        var council = councils.find((val) => {
-                            return val.id === data.council_id;
-                        })
-
-                        setCouncilName(council.name)
-                        setCouncilPrice(council.price)
-                    }
-                })
+        console.log(data.activity)
+        console.log(currentActivity)
+        if (data.activity.length == 2 && currentActivity.id) {
+            setActivityName(currentActivity.name);
+            var price = currentActivity.price * data.participants;
+            if (price < currentActivity.minimum) {
+                price = currentActivity.minimum;
             }
-        })
+            setActivityPrice(price);
+
+            var council = councils.find((val) => {
+                return val.id === data.council_id;
+            })
+
+            setCouncilName(council.name)
+            setCouncilPrice(council.price)
+        }
     }, [data])
 
 
@@ -102,6 +99,7 @@ const mapStateToProps = (state) => {
     return {
         categories: state.category.selector,
         councils: state.council.selector,
+        currentActivity: state.activity.current
     };
 };
 

@@ -16,6 +16,11 @@ export const fetchLevadas = (filters = {}) => ({
     })}`)
 })
 
+export const fetchHighlightedActivities = () => ({
+    type: types.FETCH_HIGHLIGHTED_ACTIVITIES,
+    payload: axios.get(`${window.location.origin}/api/highlighted-activities`)
+})
+
 
 export const fetchTours = (filters = {}) => ({
     type: types.FETCH_TOURS,

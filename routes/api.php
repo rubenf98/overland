@@ -11,6 +11,7 @@ use App\Http\Controllers\ConfirmReservationInvokable;
 use App\Http\Controllers\CouncilController;
 use App\Http\Controllers\ErrorReservationInvokable;
 use App\Http\Controllers\ExtraController;
+use App\Http\Controllers\FetchHighlightActivitiesInvokable;
 use App\Http\Controllers\FetchRelevantReservationsInvokable;
 use App\Http\Controllers\FetchReservationsPerMonthInvokable;
 use App\Http\Controllers\GetPaymentDetailsInvokable;
@@ -69,6 +70,9 @@ Route::get('/reservations-relevant', FetchRelevantReservationsInvokable::class);
 
 Route::get('/is-available', IsActivityAvailableInvokable::class);
 Route::get('/is-vehicle-available', IsVehicleAvailableInvokable::class);
+
+Route::get('/highlighted-activities', FetchHighlightActivitiesInvokable::class);
+
 
 Route::apiResource('logRecord', LogRecordController::class);
 Route::apiResource('categories', CategoryController::class);

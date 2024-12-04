@@ -43,7 +43,7 @@ const PageContainer = styled.div`
     }
 
     button {
-        background-color: ${({ theme }) => theme.secundary};
+        background-color: ${({ theme }) => theme.primary};
         color: white;
         font-size: clamp(16px, 2vw, 20px);
         border-radius: ${borderRadius};
@@ -210,12 +210,9 @@ function Navbar(props) {
         <Container>
             <Link to="/"><img className="logo" alt="logo" src={params.logo} /></Link>
             <PageContainer color={params.color}>
-                <Link to="/about">{text.links[1]}</Link>
-                <Link to="/contact">{text.links[2]}</Link>
-                <a href="/#overland">{text.links[3]}</a>
-                <Link to="/safaries">{text.links[4]}</Link>
-                <a href="/#levadas">{text.links[5]}</a>
-                <a href="/#tours">{text.links[6]}</a>
+                <a href="/#about">{text.links[1]}</a>
+                <Link to="/tours">{text.links[6]}</Link>
+                <a href="/#contact">{text.links[2]}</a>
                 {/* <button className='phone'>+351 910 178 500</button> */}
                 <CustomSelect
                     color={params.color}
@@ -256,9 +253,12 @@ function Navbar(props) {
                     />
                     <div>
                         <ul style={{ padding: "0px" }}>
-                            <li><Link onClick={() => setVisible(0)} to="/">{text.links[0]}</Link></li>
-                            <li><Link onClick={() => setVisible(0)} to="/about">{text.links[1]}</Link></li>
-                            <li><Link onClick={() => setVisible(0)} to="/contact">{text.links[2]}</Link></li>
+
+
+
+                            <li><a onClick={() => setVisible(0)} href="/#about">{text.links[1]}</a></li>
+                            <li> <Link onClick={() => setVisible(0)} to="/tours">{text.links[6]}</Link> </li>
+                            <li><a onClick={() => setVisible(0)} href="/#contact">{text.links[2]}</a></li>
                             <li>
                                 <img className='logo' src="/images/logo.svg" alt="logo" />
                             </li>

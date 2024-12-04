@@ -9,6 +9,7 @@ export const baseInputStyles = css`
     border-bottom: 1px solid #fff;
     background: transparent !important;
     color: #ffffff;
+    border-radius: 0px;
 
     .ant-input-status-error{
         background: transparent !important;  
@@ -112,7 +113,7 @@ export const CustomDatePicker = styled(DatePicker)`
     } 
     
     .ant-picker-focused:not(.ant-picker-disabled).ant-picker:not(.ant-picker-customize-input) .ant-picker-input, .ant-picker-input {
-        border: none !important;
+        /* border: none !important; */
         box-shadow: none !important;
         
     }
@@ -129,6 +130,12 @@ export const CustomDatePicker = styled(DatePicker)`
             border: none !important;
         }   
     }
+
+    .ant-picker-input>input::placeholder {
+        color: white;
+    }
+
+
 
     svg {
         color: white;

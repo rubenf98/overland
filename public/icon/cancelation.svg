@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   viewBox="0 0 54 66"
+   x="0px"
+   y="0px"
+   version="1.1"
+   id="svg11"
+   sodipodi:docname="cancelation.svg"
+   width="54"
+   height="66"
+   inkscape:version="1.4 (1:1.4+202410161351+e7c3feb100)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <defs
+     id="defs11" />
+  <sodipodi:namedview
+     id="namedview11"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:zoom="4.5055556"
+     inkscape:cx="43.279901"
+     inkscape:cy="46.054254"
+     inkscape:window-width="1920"
+     inkscape:window-height="1016"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg11" />
+  <title
+     id="title1">line</title>
+  <g
+     data-name="Layer 25"
+     id="g10"
+     transform="translate(-9,-3)">
+    <path
+       d="M 37,63 H 14 A 3.00328,3.00328 0 0 1 11,60 V 14 a 3.00328,3.00328 0 0 1 3,-3 h 36 a 3.00328,3.00328 0 0 1 3,3 v 27 a 1,1 0 0 0 2,0 V 14 A 5.00588,5.00588 0 0 0 50,9 H 18 V 8 a 3.00328,3.00328 0 0 1 3,-3 h 36 a 3.00328,3.00328 0 0 1 3,3 v 37 a 1,1 0 0 0 2,0 V 8 A 5.00588,5.00588 0 0 0 57,3 H 21 a 5.00588,5.00588 0 0 0 -5,5 v 1 h -2 a 5.00588,5.00588 0 0 0 -5,5 v 46 a 5.00588,5.00588 0 0 0 5,5 h 23 a 1,1 0 0 0 0,-2 z"
+       id="path1" />
+    <path
+       d="m 41,20 a 3,3 0 0 0 0,-6 H 23 a 3,3 0 0 0 0,6 z M 22,17 a 1.001,1.001 0 0 1 1,-1 h 18 a 1,1 0 0 1 0,2 H 23 a 1.001,1.001 0 0 1 -1,-1 z"
+       id="path2" />
+    <path
+       d="M 47,24 H 25 a 1,1 0 0 0 0,2 h 22 a 1,1 0 0 0 0,-2 z"
+       id="path3" />
+    <path
+       d="M 47,29 H 17 a 1,1 0 0 0 0,2 h 30 a 1,1 0 0 0 0,-2 z"
+       id="path4" />
+    <path
+       d="M 47,34 H 17 a 1,1 0 0 0 0,2 h 30 a 1,1 0 0 0 0,-2 z"
+       id="path5" />
+    <path
+       d="M 48,40 A 0.99974,0.99974 0 0 0 47,39 H 17 a 1,1 0 0 0 0,2 h 30 a 0.99974,0.99974 0 0 0 1,-1 z"
+       id="path6" />
+    <path
+       d="M 29,45 A 0.99974,0.99974 0 0 0 28,44 H 17 a 1,1 0 0 0 0,2 h 11 a 0.99974,0.99974 0 0 0 1,-1 z"
+       id="path7" />
+    <path
+       d="M 50,43 A 13,13 0 1 0 63,56 13.01474,13.01474 0 0 0 50,43 Z m 0,24 A 11,11 0 1 1 61,56 11.01245,11.01245 0 0 1 50,67 Z"
+       id="path8" />
+    <path
+       d="m 56.707,49.293 a 0.99962,0.99962 0 0 0 -1.41406,0 L 50,54.58594 44.707,49.29294 A 0.99989,0.99989 0 0 0 43.293,50.707 l 5.29294,5.293 -5.293,5.293 A 0.99989,0.99989 0 1 0 44.707,62.707 L 50,57.41406 l 5.293,5.293 A 0.99989,0.99989 0 0 0 56.707,61.293 L 51.41406,56 l 5.293,-5.293 a 0.99962,0.99962 0 0 0 -6e-5,-1.414 z"
+       id="path9" />
+    <path
+       d="m 18.832,53.55469 0.69287,-1.03906 a 0.19734,0.19734 0 0 1 0.1958,-0.09083 0.19429,0.19429 0 0 1 0.17041,0.13379 l 1.042,2.77735 a 2.20669,2.20669 0 0 0 4.1333,10e-4 l 0.67285,-1.793 a 0.20324,0.20324 0 0 1 0.19824,-0.13477 0.18921,0.18921 0 0 1 0.19189,0.14258 2.20027,2.20027 0 0 0 1.93848,1.50293 2.17571,2.17571 0 0 0 2.12988,-1.21387 l 0.69678,-1.39355 a 1.00012,1.00012 0 1 0 -1.78906,-0.89454 l -0.69678,1.39356 a 0.18366,0.18366 0 0 1 -0.19971,0.11328 0.19085,0.19085 0 0 1 -0.18212,-0.13965 2.20671,2.20671 0 0 0 -4.16016,-0.07812 l -0.67285,1.793 a 0.20655,0.20655 0 0 1 -0.3877,-0.001 l -1.042,-2.77832 A 2.20712,2.20712 0 0 0 17.8608,51.40625 l -0.6928,1.03906 a 1,1 0 1 0 1.664,1.10938 z"
+       id="path10" />
+  </g>
+  <metadata
+     id="metadata11">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:title>line</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+</svg>

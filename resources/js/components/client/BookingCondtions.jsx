@@ -78,19 +78,6 @@ function BookingCondtions() {
             <ul>
                 <li>All returned vehicles are charged an extra cleaning tax of 50.00 EUR. In case the car requires a special cleaning this value may be adjusted.</li>
             </ul>
-
-
-
-
-
-
-
-
-
-
-
-
-
         </div>
     )
 }

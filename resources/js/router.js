@@ -13,26 +13,22 @@ import BlockPeriod from "./components/dashboard/blockPeriod/BlockPeriod";
 import OverlandDashboard from "./components/dashboard/overland/Overland";
 import OverlandDetails from "./components/dashboard/overland/OverlandDetails";
 import Reservation from "./components/dashboard/reservation/Reservation";
-import About from "./components/client/About";
 import ReservationDetails from "./components/dashboard/reservation/ReservationDetails";
 import Client from "./components/dashboard/client/Client";
-import Contact from "./components/client/Contact";
 import Confirmation from "./components/client/Confirmation";
 import Success from "./components/client/Success";
 import Error from "./components/client/Error";
-import Levada from "./components/client/Levada";
 import Tour from "./components/client/Tour";
 import ActivityDetails from "./components/dashboard/activity/ActivityDetails";
-import Safari from "./components/client/Safari";
 import LogRecord from "./components/dashboard/logRecord/LogRecord";
 import Council from "./components/dashboard/council/Council";
 import ClientDetails from "./components/dashboard/client/ClientDetails";
-import Privacy from "./components/client/Privacy";
 import VehicleDetails from "./components/dashboard/vehicle/VehicleDetails";
 import Vehicle from "./components/dashboard/vehicle/Vehicle";
 import Overland from "./components/client/Overland";
 import Conditions from "./components/client/Conditions";
-import BookingCondtions from "./components/client/BookingCondtions";
+import Tours from "./components/client/Tours";
+import Privacy from "./components/client/Privacy";
 
 export const history = createBrowserHistory();
 
@@ -62,14 +58,9 @@ function Router() {
                 <Route exact path="/activity/:activityId" element={<Layout enable><Activity /></Layout>} />
                 <Route exact path="/category/:category" element={<Layout enable><Activities /></Layout>} /> */}
                 <Route exact path="/overland" element={<Layout enable><Overland /></Layout>} />
-                <Route exact path="/safaries" element={<Layout enable><Safari /></Layout>} />
+                <Route exact path="/tours" element={<Layout enable><Tours /></Layout>} />
                 <Route exact path="/tours/:tourId" element={<Layout enable><Tour /></Layout>} />
-                <Route exact path="/levadas/:levadaId" element={<Layout enable><Levada /></Layout>} />
-                <Route exact path="/about" element={<Layout enable><About /></Layout>} />
-                <Route exact path="/bookingConditions" element={<Layout enable><BookingCondtions /></Layout>} />
-                <Route exact path="/conditions" element={<Layout enable><Conditions /></Layout>} />
-                <Route exact path="/privacy" element={<Layout enable><Privacy /></Layout>} />
-                <Route exact path="/contact" element={<Layout enable><Contact /></Layout>} />
+                <Route exact path="/conditions" element={<Layout enable><Privacy /></Layout>} />
                 <Route exact path="/" element={<Layout enable><Homepage /></Layout>} />
             </Routes>
         </BrowserRouter>

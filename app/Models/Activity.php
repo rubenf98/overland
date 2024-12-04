@@ -31,6 +31,11 @@ class Activity extends Model
         'name',
     ];
 
+    public function images()
+    {
+        return $this->hasMany(ActivityImage::class);
+    }
+
     public function category()
     {
         return $this->belongsTo(Category::class);

@@ -5,11 +5,9 @@ import { setLanguage } from '../../redux/application/actions';
 import { fetchBlockDates } from '../../redux/blockDate/actions';
 import { useNavigate } from 'react-router-dom';
 import Header from './homepage/Header';
-import Services from './homepage/Services';
-import Safari from './homepage/Safari';
-import Levada from './homepage/Levada';
 import Tour from './homepage/Tour';
-import Overland from './homepage/Overland';
+import About from './homepage/About';
+import Contact from './homepage/Contact';
 
 const Container = styled.section`
     //
@@ -22,12 +20,13 @@ function Homepage(props) {
     return (
         <Container>
             <Header text={text.header} />
-
-            <Overland text={text.overland} />
-            <Services text={text.services} />
-            <Safari text={text.safari} />
-            <Levada text={text.levada} />
+            <About text={text.about} />
+            {/* <Overland text={text.overland} /> */}
+            {/* <Services text={text.services} /> */}
+            {/* <Safari text={text.safari} /> */}
+            {/* <Levada text={text.levada} /> */}
             <Tour text={text.tour} />
+            <Contact text={text.contact} />
         </Container>
     )
 }

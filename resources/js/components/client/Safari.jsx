@@ -9,11 +9,21 @@ import dayjs from "dayjs";
 import { Section } from '../helpers/style';
 import { handleForm } from '../../redux/application/actions';
 
+const Safaries = styled.section`
+    width: 100% ;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    
+`;
+
 const Content = styled.section`
     display: flex;
     align-items: stretch;
     margin-bottom: 70px;
     gap: 50px;
+    flex-basis: calc(33% - 20px);
 
     @media (max-width: ${dimensions.md}) {
         flex-wrap: wrap;
@@ -27,62 +37,27 @@ const Content = styled.section`
     }
 `;
 
-const ImageContainer = styled.div`
-    width: 40%;
-    min-height: 60vh;  
-    order: ${props => props.order};
-
-    img {
-        width: 100%;
-        border-radius: ${borderRadius};
-        height: 100%;
-        object-fit: cover;
-          
-    }
-
-    @media (max-width: ${dimensions.md}) {
-  
-            width: 100%;
-            padding-right: 0px;
-            min-height: 0px;
-        
-            
-    }
+const ImageContainer = styled.img`
+    width: 100%;
+    border-radius: ${borderRadius};
+    height: 100%;
+    object-fit: cover;
 `;
 
 const InfoContent = styled.section`
-    width: 60%;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    order: ${props => props.order};
+    justify-content: space-between;
+    gap: 20px;
 
-    @media (max-width: ${dimensions.md}) {
-        width: 100%;   
-        display: block;
+    h3 {
+        font-size: clamp(26px, 3vw, 36px);
+        line-height: 100%;
     }
 
-    .description {
-        margin-bottom: 30px;
-        margin-top: 0px;
-    }
-
-    h1 {
-        font-size: clamp(30px, 3vw, 50px);
-        margin: 0px;
-    }
-
-    h2 {
-        margin-bottom: 50px;
-        font-weight: 200;
-        font-size: clamp(24px, 2.5vw, 30px);
-
-        .price {
-            color: ${({ theme }) => theme.secundary};
-        }
-
-        .person {
-           font-size: 16px;
-        }
+    p {
+        font-weight: black;
+        font-size: clamp(40px, 5vw, 50px);
     }
 `;
 
@@ -189,60 +164,13 @@ function Safari(props) {
         props.handleForm(form[index])
 
     }
-    console.log(form);
+
     const SectionSafari = ({ activity, index }) => (
         <Content >
-            <ImageContainer order={index % 2 == 0 ? 1 : 2}>
-                <img src={activity.image} alt={activity.name} />
-            </ImageContainer >
+            <ImageContainer src={activity.image} alt={activity.name} />
             <InfoContent order={index % 2 == 0 ? 2 : 1}>
-                <h1>{activity?.translation_names[language]}</h1>
-                <h2>{text.price} <span className='price'>{activity.price}</span> <span className='person'>€/p</span></h2>
-
-                <p className='description'>{activity.description1[language]}</p>
-                <p className='description'>{activity.description2[language]}</p>
-                <p className='description' style={{ flex: 1 }}>{activity.description3[language]}</p>
-
-                <Form>
-                    <Row type="flex" align="middle" gutter={{ xs: 8, md: 64 }}>
-                        <Col span={8} >
-                            <p>{text.form.date.label}</p>
-                            <DatePicker
-                                onChange={(e) => handleFormData(index, 'date', e)}
-                                value={form[index].date}
-                                style={{ width: "100%", paddingLeft: "0px" }}
-                                bordered={false}
-                                placeholder='DD / MM / YYYY'
-                                format="DD/MM/YYYY"
-                                disabledDate={(currentDate) => {
-                                    return currentDate &&
-                                        (currentDate <= dayjs());
-                                }}
-                            />
-                        </Col>
-                        <Col span={8}>
-                            <p>{text.form.hour.label}</p>
-                            <Select
-                                onChange={(e) => handleFormData(index, 'time', e)}
-                                style={{ width: "100%" }}
-                                value={form[index].time}
-                                bordered={false}
-                                size='large'
-                                placeholder="HH:MM"
-                                options={[
-                                    { value: "08:30", label: "08:30" },
-                                    { value: "09:00", label: "09:00" },
-                                    { value: "09:30", label: "09:30" },
-                                    { value: "10:00", label: "10:00" },
-                                    { value: "10:30", label: "10:30" },
-                                    { value: "14:30", label: "14:30" },
-                                ]}
-                            /></Col>
-                        <Col span={8}>
-                            <button onClick={() => handleItemClick(index)}>{text.button}</button>
-                        </Col>
-                    </Row>
-                </Form>
+                <h3>{activity?.translation_names[language]}</h3>
+                <p><span className='price'>{activity.price}</span> <span className='person'>€/p</span></p>
             </InfoContent>
 
 
@@ -251,9 +179,12 @@ function Safari(props) {
 
     return (
         <Section>
-            {!loading && safaries.map((safari, index) => (
-                <SectionSafari activity={safari} index={index} />
-            ))}
+            <h2>A local's view on the best <span>tours </span>around the island</h2>
+            <Safaries>
+                {!loading && safaries.map((safari, index) => (
+                    <SectionSafari activity={safari} index={index} />
+                ))}
+            </Safaries>
         </Section>
     )
 }

@@ -20,7 +20,7 @@ const Background = styled.div`
     height: 100%;
     top: 0;
     left: 0px;
-    background-color: ${({ theme }) => theme.secundary};
+    background-color: ${({ theme }) => theme.primary};
 `;
 
 const FlexContainer = styled.div`
@@ -131,7 +131,7 @@ function Footer(props) {
             </Section>
 
             <LegalContainer>
-                <Link to="/privacy">{text.links[0]}</Link>
+                <Link to="/conditions">{text.links[0]}</Link>
                 {/* <Link to="/policy">{text.links[1]}</Link> */}
             </LegalContainer>
         </Container>

@@ -24,6 +24,7 @@ class CreateActivitiesTable extends Migration
             $table->text('description1');
             $table->text('description2');
             $table->text('description3');
+            $table->boolean('highlight')->default(false);
             $table->timestamps();
 
             $table->foreign("category_id")->references("id")->on("categories")->onDelete("cascade");

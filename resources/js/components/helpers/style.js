@@ -1,6 +1,6 @@
 import { DatePicker, Input } from "antd";
 import styled, { css } from "styled-components";
-import { borderRadius } from "../../helper";
+import { borderRadius, dimensions } from "../../helper";
 
 export const UnderlineTitle = styled.div`
     width: 100%;
@@ -84,9 +84,15 @@ export const Section = styled.section`
     max-width: 1600px;
     margin: 100px auto;
     display: block;
+    padding: 20px;
+    box-sizing: border-box;
 
     @media (max-width: "1600px") {
         padding: 0px 30px;
         box-sizing: border-box;
+    }
+
+    @media (max-width: ${dimensions.md}) {
+        margin: 50px auto;
     }
 `;
