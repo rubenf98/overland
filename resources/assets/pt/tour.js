@@ -21,7 +21,7 @@ export const text = {
             {
                 img: "/icon/language.svg",
                 title: "Guia turístico multilíngue",
-                detail: "Português, Espanhol, Inglês, Alemão, Francês"
+                detail: "Português e Inglês"
             },
             {
                 img: "/icon/group.svg",

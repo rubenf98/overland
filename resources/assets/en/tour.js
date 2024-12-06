@@ -21,7 +21,7 @@ export const text = {
             {
                 img: "/icon/language.svg",
                 title: "Multilingual tour guide",
-                detail: "Portuguese, Spanish, English, German, French"
+                detail: "Portuguese and English"
             },
             {
                 img: "/icon/group.svg",
