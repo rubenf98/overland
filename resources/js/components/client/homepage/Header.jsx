@@ -54,19 +54,19 @@ const TextContainer = styled.div`
     color: white;
     padding: 0px 30px;
     min-height: calc(80vh - 100px);
-
+    padding-bottom: 100px;
 
 
     h2 {
-        font-size: clamp(30px, 4vw, 90px);
+        font-size: clamp(30px, 4vw, 70px);
         margin: 0px;
+        width: 50%;
     }
 
     p {
-        font-size: clamp(16px, 3vw, 22px);
+        font-size: clamp(16px, 2vw, 22px);
         box-sizing: border-box;
-        width: 50%;
-        font-family: 'Montserrat', sans-serif;
+        width: 45%;
     }
 
     button {
@@ -92,14 +92,18 @@ const TextContainer = styled.div`
     }
 
     @media (max-width: ${dimensions.lg}) {
-        p {
+        p, h2 {
             width: 70%;
         }
     }
 
     @media (max-width: ${dimensions.md}) {
-        p {
+        p, h2 {
             width: 100%;
+        }
+
+        p {
+            margin-bottom: 20px;
         }
     }
 

@@ -1,6 +1,6 @@
 export const text = {
     header: {
-        title: "Your Madeira island exploration partner",
+        title: "Your Madeira Island exploration partner",
         subtitle: "Discover Madeira's hidden beauty through guided levada tours, exhilarating hikes, and memorable camping experiences, immersing you in the island's natural wonders.",
         button: "Book now",
         activities: ["01. Overland", "02. Jeep Safari", "03. Island Tours", "04. Levadas"]

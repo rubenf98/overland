@@ -1,6 +1,6 @@
 export const text = {
     header: {
-        title: "O teu parceito de exploração da Ilha da Madeira",
+        title: "O teu parceiro de exploração na Madeira",
         subtitle: "Descubra a beleza escondida da Madeira através de passeios guiados pelas levadas, caminhadas emocionantes e experiências de campismo memoráveis, mergulhando-o nas maravilhas naturais da ilha.",
         button: "Reservar",
         activities: ["01. Overland", "02. Jeep Safari", "03. Tours", "04. Levadas"]
