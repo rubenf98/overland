@@ -179,10 +179,10 @@ function Tour(props) {
                             </div>
                             <p className='description'>{activity.description1[props.language]}</p>
 
-                            <div className='button-container'>
+                            {/* <div className='button-container'>
                                 <button onClick={() => props.handleForm({ activity: [activity.category.id, activity.id] })} className='primary'>{props.text.buttons[0]}</button>
                                 <button onClick={(e) => handleItemClick(e, this, activity.id)} className='secundary'>{props.text.buttons[1]}</button>
-                            </div>
+                            </div> */}
                         </div>
                     </TourActivity>
 

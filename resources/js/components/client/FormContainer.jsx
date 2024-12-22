@@ -245,7 +245,7 @@ const FormContainer = ({ initForm, handleVisibility, createReservation, loading,
             maskClosable={false}
             open={initForm.activity.length > 0}
         >
-            <FlexContainer>
+            {/* <FlexContainer>
                 <Previous visible={step != 0} onClick={previousStep} src='/icon/previous.svg' alt="previous step" />
                 <CloseContainer>
                     <Popconfirm
@@ -284,7 +284,7 @@ const FormContainer = ({ initForm, handleVisibility, createReservation, loading,
                         </Submit>
                     </Row>
 
-            }
+            } */}
 
         </Content >
 

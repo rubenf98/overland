@@ -25,6 +25,10 @@
     <meta name="msapplication-TileColor" content="#067c60">
     <meta name="theme-color" content="#ffffff">
 
+
+
+    <script type="text/javascript" src="https://widgets.regiondo.net/catalog/v1/catalog-widget.min.js"></script>
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

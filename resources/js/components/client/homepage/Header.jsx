@@ -223,7 +223,6 @@ function Header(props) {
             <Background src={"/images/homepage/" + backgrounds[backgroundIndex]} alt="green leafs" />
 
 
-
             <div>
                 <TextContainer>
                     <div>

@@ -46,6 +46,8 @@ const Container = styled.section`
     display: block;
     padding: 20px;
     box-sizing: border-box;
+
+    
 `;
 
 const ActivityContainer = styled.section`
@@ -164,9 +166,11 @@ function Tours(props) {
     console.log(filters)
     return (
         <Container>
-            <Title>{text.title}</Title>
+            {/* <Title>{text.title}</Title> */}
 
-            <SearchBar>
+            <product-catalog-widget widget-id="f056d2f0-1c8b-4f45-b52c-0484571e533b"></product-catalog-widget>
+
+            {/* <SearchBar>
                 <Input onChange={(e) => setFilters({ search: e.target.value })} size='large' placeholder={text.search.placeholder} />
                 <Button onClick={() => props.fetchActivities(1, filters)} size='large' type="primary">{text.search.button}</Button>
             </SearchBar>
@@ -195,9 +199,9 @@ function Tours(props) {
                         </div>
                     </div>
                 ))}
-            </ActivityContainer>
+            </ActivityContainer> */}
 
-            <PaginationContainer style={{ width: "100%" }} onChange={(e) => setPage(e)} align="center" current={page} total={props?.meta?.total} />
+            {/* <PaginationContainer style={{ width: "100%" }} onChange={(e) => setPage(e)} align="center" current={page} total={props?.meta?.total} /> */}
         </Container>
     )
 }
